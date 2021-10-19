@@ -11,7 +11,7 @@ class Review(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     reviewed_user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.Text, nullable=False)
     author = db.relationship('User', back_populates='reviews_created', foreign_keys=author_id)
     reviewed_user = db.relationship('User', back_populates='reviews_recieved', foreign_keys=reviewed_user_id)
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
