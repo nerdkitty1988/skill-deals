@@ -17,10 +17,16 @@ class User(db.Model, UserMixin):
     latitude = db.Column(db.String(20), nullable=False)
     longitude = db.Column(db.String(20), nullable=False)
     profile_pic = db.Column(db.String(255), nullable=True)
-    reviews_recieved = db.relationship('Review', back_populates='reviewed_user', cascade="all, delete")
-    reviews_created = db.relationship('Review', back_populates='author', cascade="all, delete")
+
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
+
+    reviews_recieved = db.relationship('Review', back_populates='reviewed_user', cascade="all, delete")
+    reviews_created = db.relationship('Review', back_populates='author', cascade="all, delete")
+
+    offers = db.relationship('Offer', back_populates='user', cascade="all, delete")
+    requests = db.relationship('Request', back_populates='user', cascade="all, delete")
+
 
     @property
     def password(self):
