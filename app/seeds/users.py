@@ -4,11 +4,11 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', public_email='demo@aa.io', private_email='demo@aa.io', password='password', latitude='42.3601° N', longitude='71.0589° W', profile_pic='https://image.shutterstock.com/image-photo/handsome-unshaven-young-darkskinned-male-260nw-640011838.jpg')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', public_email='marnie@aa.io', private_email='marnie@aa.io', password='password', latitude='29.7604° N', longitude='95.3698° W', profile_pic='https://image.shutterstock.com/image-photo/happy-cheerful-young-woman-wearing-260nw-613759379.jpg')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', public_email='bobbie@aa.io', private_email='bobbie@aa.io', password='password', latitude='37.7749° N', longitude='122.4194° W', profile_pic='https://media.istockphoto.com/photos/portrait-of-handsome-latino-african-man-picture-id1007763808?k=20&m=1007763808&s=612x612&w=0&h=q4qlV-99EK1VHePL1-Xon4gpdpK7kz3631XK4Hgr1ls=')
 
     db.session.add(demo)
     db.session.add(marnie)
