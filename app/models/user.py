@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime
+from .review import Review
 
 
 
@@ -21,8 +22,8 @@ class User(db.Model, UserMixin):
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
 
-    reviews_recieved = db.relationship('Review', back_populates='reviewed_user', cascade="all, delete")
-    reviews_created = db.relationship('Review', back_populates='author', cascade="all, delete")
+    reviews_recieved = db.relationship('Review', back_populates='reviewed_user', cascade="all, delete", foreign_keys=Review.reviewed_user_id)
+    reviews_created = db.relationship('Review', back_populates='author', cascade="all, delete", foreign_keys=Review.author_id)
 
     offers = db.relationship('Offer', back_populates='user', cascade="all, delete")
     requests = db.relationship('Request', back_populates='user', cascade="all, delete")
