@@ -10,17 +10,17 @@ const Home = () => {
     const [nearOffers, setNearOffers] = useState([]);
     const [nearRequests, setNearRequests] = useState([]);
 
-    useEffect(() => {
-        async function fetchData() {
-            const res = await fetch(`/api/offers/near/${sessionUser.id}`);
-            const result = await fetch(`api/requests/near/${sessionUser.id}`);
-            const offers = await res.json();
-            const requests = await result.json();
-            setNearOffers(offers);
-            setNearRequests(requests);
-        }
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         const res = await fetch(`/api/offers/near/${sessionUser.id}`);
+    //         const result = await fetch(`api/requests/near/${sessionUser.id}`);
+    //         const offers = await res.json();
+    //         const requests = await result.json();
+    //         setNearOffers(offers);
+    //         setNearRequests(requests);
+    //     }
+    //     fetchData();
+    // }, []);
 
     const nearOfferCard = nearOffers.map((offer) => {
         return (
