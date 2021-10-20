@@ -1,0 +1,12 @@
+.logoutButton {
+    width: fit-content;
+    height: 25px;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 5px;
+    border: none;
+    background-color: rgb(217, 222, 231);
+    box-shadow: 0px 0px 3px 2px rgb(62, 62, 165);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}

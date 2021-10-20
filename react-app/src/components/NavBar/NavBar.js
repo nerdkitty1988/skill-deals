@@ -11,7 +11,7 @@ const NavBar = () => {
 			<nav id="navbar" hidden={!sessionUser}>
 				<div className="navbarLinks">
 					<NavLink to="/" exact={true} className="homeNav">
-						<img src="/react-app/src/components/NavBar/logo.jpg" className="logo" alt="logo" />
+						{/* <img src="" className="logo" alt="logo" /> */}
 					</NavLink>
 					<LogoutButton />
 				</div>
