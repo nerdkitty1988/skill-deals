@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Splash.css";
+import Home from "../Home/Home"
 import { useSelector } from "react-redux";
 
 
@@ -21,7 +22,7 @@ const Splash = () => {
         )
     }else{
         return (
-            <h1>{sessionUser.username} is logged in!!</h1>
+            <Home />
         )
     }
 }
