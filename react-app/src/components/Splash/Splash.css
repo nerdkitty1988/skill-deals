@@ -1,3 +1,41 @@
-.wholePage {
-    background-image: url()
+#wholePage {
+    opacity: 0.90;
+    background: url(splashbkgd.png) left center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 150%;
+
+}
+
+
+.splashPage {
+    display: flex;
+    width: 100rem;
+    height: 60rem;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+
+.welcome {
+    display: flex;
+    font-family: 'Courgette', cursive;
+    font-size: xx-large;
+}
+
+.welcomeNav {
+    text-decoration: none;
+    padding: 5px;
+    margin-left: 25px;
+    color: aliceblue;
+}
+
+.welcomeNav:hover {
+    text-shadow: 0px 0px 25px blue;
+}
+
+.links {
+    color: aliceblue;
 }
