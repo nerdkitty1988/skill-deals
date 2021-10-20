@@ -7,7 +7,6 @@ offer_routes = Blueprint('offers', __name__)
 
 
 @offer_routes.route('/')
-@login_required
 def offers():
     offers = Offer.query.all()
     return {'offers': [offer.to_dict() for offer in offers]}
