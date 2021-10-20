@@ -1,12 +1,30 @@
-#navContainer {
+body {
+    margin: -5px;
+    padding: 5px;
+}
+
+.navContainer {
 	display: flex;
 	width: 100%;
+}
 
+#navbar {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.889);
 }
 
 .navbarLinks {
     display: inline-flex;
-    justify-content: space-between;
     width: 100%;
     text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homeNav {
+    background: url("/home/jami/aafun/skillDeals/react-app/src/components/NavBar/logo.jpg");
+    width: 90px;
+    height: 90px;
+    display: flex;
+    background-size: cover;
 }
