@@ -15,8 +15,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     public_email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    latitude = db.Column(db.String(20), nullable=False)
-    longitude = db.Column(db.String(20), nullable=False)
+    zipcode = db.Column(db.String(10), nullable=False)
     profile_pic = db.Column(db.String(255), nullable=True)
 
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
@@ -46,8 +45,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'publicEmail': self.public_email,
-            'latitude': self.latitude,
-            'longitude': self.longitude,
+            'zipcode': self.zipcode,
             'profilePic': self.profile_pic,
             'reviewsRecieved': self.reviews_recieved,
             'createdAt': self.time_created,
