@@ -10,9 +10,7 @@ const NavBar = () => {
 		<div className="navContainer">
 			<nav id="navbar" hidden={!sessionUser}>
 				<div className="navbarLinks">
-					<NavLink to="/" exact={true} className="homeNav">
-						{/* <img src="" className="logo" alt="logo" /> */}
-					</NavLink>
+					<NavLink to="/" exact={true} className="homeNav" />
 					<LogoutButton />
 				</div>
 			</nav>
