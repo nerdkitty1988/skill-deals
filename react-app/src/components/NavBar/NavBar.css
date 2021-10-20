@@ -10,11 +10,3 @@
     width: 100%;
     text-decoration: none;
 }
-
-.homeNav {
-    background: url(https://github.com/nerdkitty1988/skill-deals/blob/main/react-app/src/components/NavBar/logo.png);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    background-size: contain;
-}
