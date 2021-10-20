@@ -7,8 +7,7 @@ class Request(db.Model):
     __tablename__ = 'requests'
 
     id = db.Column(db.Integer, primary_key=True)
-    latitude = db.Column(db.String(20), nullable=False)
-    longitude = db.Column(db.String(20), nullable=False)
+    zipcode = db.Column(db.String(10), nullable=False)
     location_range = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(150), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -23,8 +22,7 @@ class Request(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'latitude': self.latitude,
-            'longitude': self.longitude,
+            'zipcode': self.zipcode,
             'range': self.location_range,
             'title': self.title,
             'description': self.description,

@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from sqlalchemy.sql.sqltypes import String
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
@@ -27,6 +28,5 @@ class SignUpForm(FlaskForm):
     public_email = StringField('email', validators=[DataRequired(), user_exists, Email()])
     email = StringField('email', validators=[DataRequired(), Email()])
     password = StringField('password', validators=[DataRequired()])
-    latitude = StringField('latitude', validators=[DataRequired()])
-    longitude = StringField('longitude', validators=[DataRequired()])
+    zipcode = StringField('zipcode', validators=[DataRequired()])
     profile_pic = StringField('profile_pic')
