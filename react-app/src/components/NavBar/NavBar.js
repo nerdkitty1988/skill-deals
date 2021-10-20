@@ -11,7 +11,6 @@ const NavBar = () => {
 			<nav id="navbar" hidden={!sessionUser}>
 				<div className="navbarLinks">
 					<NavLink to="/" exact={true} className="homeNav">
-						<img src="" className="logo" alt="logo" />
 					</NavLink>
 					<LogoutButton />
 				</div>
