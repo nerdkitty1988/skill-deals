@@ -19,7 +19,6 @@ def close_requests(user_id):
     user = User.query.get(user_id)
     reqs = Request.query.all()
     for req in reqs:
-        if get_distance(user.zipcode, req.zipcode) <= req.location_range:
+        if get_distance(user.zipcode, req.zipcode) <= req.location_range and user_id != req.user_id:
             reqList.append(req)
-    print(reqList)
     return {"closeRequests": [rqst.to_dict() for rqst in reqList]}

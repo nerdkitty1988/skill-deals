@@ -16,10 +16,12 @@ def offers():
 @offer_routes.route('/near/<int:user_id>/')
 def close_offers(user_id):
     offerList = []
+    offerDistance = {}
     user = User.query.get(user_id)
     offers = Offer.query.all()
     for offer in offers:
-        if get_distance(user.zipcode, offer.zipcode) <= offer.location_range:
+        distance = get_distance(user.zipcode, offer.zipcode)
+        if distance <= offer.location_range:# and user_id != offer.user_id:
+            offerDistance[offer.id] = distance
             offerList.append(offer)
-    print(offerList)
-    return {"closeOffers": [offr.to_dict() for offr in offerList]}
+    return {"closeOffers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}
