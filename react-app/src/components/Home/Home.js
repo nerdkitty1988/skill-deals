@@ -15,7 +15,7 @@ const Home = () => {
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(`/api/offers/`);
-            const result = await fetch(`api/requests/`);
+            const result = await fetch(`api/requests/near/${sessionUser.id}`);
             const offers = await res.json();
             const requests = await result.json();
 
@@ -23,6 +23,7 @@ const Home = () => {
             setNearRequests(requests);
         }
         fetchData();
+        console.log(nearOffers, nearRequests)
     }, []);
 
     // const nearOfferCard = nearOffers?.map((offer) => {
