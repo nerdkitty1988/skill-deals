@@ -1,65 +1,72 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./Home.css"
-
+import "./Home.css";
 
 const Home = () => {
-    const sessionUser = useSelector((state) => state.session.user);
+	const sessionUser = useSelector((state) => state.session.user);
 
-    const [nearOffers, setNearOffers] = useState([]);
-    const [nearRequests, setNearRequests] = useState([]);
+	const [nearOffers, setNearOffers] = useState([]);
+	const [nearRequests, setNearRequests] = useState([]);
 
-    // useEffect(() => {
-    //     async function fetchData() {
-    //         const res = await fetch(`/api/offers/near/${sessionUser.id}`);
-    //         const result = await fetch(`api/requests/near/${sessionUser.id}`);
-    //         const offers = await res.json();
-    //         const requests = await result.json();
-    //         setNearOffers(offers);
-    //         setNearRequests(requests);
-    //     }
-    //     fetchData();
-    // }, []);
+	useEffect(() => {
+		async function fetchData() {
+			const res = await fetch(`/api/offers/near/${sessionUser.id}/`);
+			const offers = await res.json().then((offers) => setNearOffers(offers.closeOffers));
+			// setNearOffers(offers.offers);
+		}
+		fetchData();
+	}, [setNearOffers]);
 
-    const nearOfferCard = nearOffers.map((offer) => {
-        return (
+
+    useEffect(() => {
+        async function fetchData() {
+			const result = await fetch(`api/requests/near/${sessionUser.id}/`);
+			const requests = await result.json().then((requests) => setNearRequests(requests.closeRequests));
+			// setNearRequests(requests.requests);
+        }
+        fetchData();
+    }, [setNearRequests, sessionUser.id])
+
+	const nearOfferCard = nearOffers?.map((offer) => {
+	    return (
 			<NavLink key={`offer'_${offer.id}`} to={`/offers/${offer.id}`} className="offerNav">
 				<div key={`offer'_${offer.id}`} className="singleOffer">
 					<h4 className="offerTitle">{offer.title}</h4>
-				    <p className="authorName">by: {offer.author.username} </p>
+				    <p className="authorName">by: {offer.user.username} </p>
 			    </div>
-            </NavLink>
-        )
-    })
+	        </NavLink>
+	    )
+	})
 
-    const nearRequestCard = nearRequests.map((request) => {
-        return (
+	const nearRequestCard = nearRequests?.map((request) => {
+
+	    return (
 			<NavLink key={`request'_${request.id}`} to={`/requests/${request.id}`} className="requestNav">
-				<div key={`request'_${request.id}`} className="singlerequest">
+				<div key={`request'_${request.id}`} className="singleRequest">
 					<h4 className="requestTitle">{request.title}</h4>
-				    <p className="authorName">by: {request.author.username} </p>
+				    <p className="authorName">by: {request.user.username} </p>
 			    </div>
-            </NavLink>
-        )
-    })
+	        </NavLink>
+	    )
+	})
 
-    return (
-        <div className="homeContainer">
-            <div className="cardContainer">
-                Offers
-                <div className="cardLineup">
-                    <ul className="cardLists">{nearOfferCard}</ul>
-                </div>
-            </div>
-            <div className="cardContainer">
-                Requests
-                <div className="cardLineup">
-                    <ul className="cardLists">{nearRequestCard}</ul>
-                </div>
-            </div>
-        </div>
-    )
-}
+	return (
+		<div className="homeContainer">
+			<div className="cardContainer">
+				Offers
+				<div className="cardLineup">
+					<ul className="cardLists">{nearOfferCard}</ul>
+				</div>
+			</div>
+			<div className="cardContainer">
+				Requests
+				<div className="cardLineup">
+					<ul className="cardLists">{nearRequestCard}</ul>
+				</div>
+			</div>
+		</div>
+	);
+};
 
 export default Home;

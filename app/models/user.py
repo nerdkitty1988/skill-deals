@@ -47,7 +47,7 @@ class User(db.Model, UserMixin):
             'publicEmail': self.public_email,
             'zipcode': self.zipcode,
             'profilePic': self.profile_pic,
-            'reviewsRecieved': self.reviews_recieved,
+            'reviewsRecieved': [review.to_dict() for review in self.reviews_recieved],
             'createdAt': self.time_created,
             'updatedAt': self.time_updated
         }
