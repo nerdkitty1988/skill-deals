@@ -1,0 +1,131 @@
+#footer {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.889);
+    padding: 30px;
+    margin-top: 0px;
+
+    position: relative;
+    width:100%;
+    bottom:0px;
+    z-index: 500;
+  }
+
+
+  #footer .title {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+
+  #footer .footer-rule {
+    width: 100%;
+  }
+
+
+  #footer .footer-rule hr {
+    border-top-width: 1px;
+    border-bottom-width: 0;
+    border-color: #bbb;
+  }
+
+  #footer li a {
+    color: #bbb;
+    line-height: 21px;
+    padding: 2px 0;
+    display: inline-block;
+  }
+
+
+  #footer li a:hover {
+    color: rgb(129, 12, 133);
+    text-decoration: none;
+  }
+
+
+  #footer li a .category-icon {
+    font-size: 20px;
+    margin-top: -3px;
+    margin-right: 12px;
+  }
+
+
+  #footer .footer-row {
+    width: 100%;
+    max-width: 1016px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: center;
+
+  }
+
+
+  @media (max-width: 1199px) {
+    #footer .footer-row {
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+  }
+
+
+  #footer .footer-row-bottom {
+    max-width: 100%;
+    justify-content: space-around;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #bbb;
+  }
+
+
+
+  .footer-find-me {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    text-align: center !important;
+  }
+
+
+  .fa-linkedin {
+    font-size: 1.4rem;
+    padding-right: 7px;
+    padding-left: 3px;
+  }
+
+  .fa-github-square {
+    font-size: 1.4rem;
+  }
+
+  .group-name {
+    text-align: left;
+    color: #bbb;
+    justify-content: space-between;
+  }
+
+  .footer-find-us > ul {
+    text-align: right;
+
+  }
+
+  .footer-find-us > ul > li {
+    justify-content: space-between;
+    text-align: right;
+  }

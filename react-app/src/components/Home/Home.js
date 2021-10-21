@@ -69,13 +69,13 @@ const Home = () => {
             <div className="homepageImg"/>
 			<div className="offersAndRequests">
 				<div className="cardContainer">
-					<h1>Offers near {sessionUser.username}</h1>
+					<h1 className="cardLabel">Offers near {sessionUser.username}</h1>
 					<div className="cardLineup">
 						<ul className="cardLists">{nearOfferCard}</ul>
 					</div>
 				</div>
 				<div className="cardContainer">
-					<h1>Requests near {sessionUser.username}</h1>
+					<h1 className="cardLabel">Requests near {sessionUser.username}</h1>
 					<div className="cardLineup">
 						<ul className="cardLists">{nearRequestCard}</ul>
 					</div>

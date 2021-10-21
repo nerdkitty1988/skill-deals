@@ -23,9 +23,35 @@ body {
 
 .homeNav {
     background: url(logo.jpg) no-repeat center fixed;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     display: flex;
-    background-size: cover;
+    background-size: contain;
     z-index: 3;
+}
+
+.navbarButtons {
+    text-decoration: none;
+    color: rgba(224, 255, 255, 0.616);
+    font-size: larger;
+    border: 1px solid rgba(0, 0, 0, 0.582);
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.356);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbarButtons:hover {
+    color: rgba(224, 255, 255, 0.932);
+    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.849);
+}
+
+.fas {
+    color: rgba(224, 255, 255, 0.932);
+}
+
+.submit-btn {
+    border: none;
+    background-color: transparent;
 }

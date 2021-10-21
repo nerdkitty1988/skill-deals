@@ -11,6 +11,25 @@ const NavBar = () => {
 			<nav id="navbar" hidden={!sessionUser}>
 				<div className="navbarLinks">
 					<NavLink to="/" exact={true} className="homeNav" />
+                    <NavLink to="/offers" exact={true} className="navbarButtons">Offers</NavLink>
+                    <NavLink to="/requests" exact={true} className="navbarButtons">Requests</NavLink>
+                    <form
+						id="header-search-form"
+						className="site-search-form"
+						title="Search Site"
+					>
+						<label className="sr-only">Enter search term</label>
+						<input
+							className="input-medium site-search-input"
+							id="site-search-input"
+							type="text"
+							placeholder="Find..."
+						/>
+						<button className="submit-btn" type="button">
+							<i className="fas fa-search-dollar"></i>
+						</button>
+					</form>
+                    <i className="fas fa-plus"></i>
 					<LogoutButton />
 				</div>
 			</nav>
