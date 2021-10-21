@@ -21,7 +21,7 @@ def close_offers(user_id):
     offers = Offer.query.all()
     for offer in offers:
         distance = get_distance(user.zipcode, offer.zipcode)
-        if distance <= offer.location_range:# and user_id != offer.user_id:
+        if distance <= offer.location_range and user_id != offer.user_id:
             offerDistance[offer.id] = distance
             offerList.append(offer)
     return {"closeOffers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}

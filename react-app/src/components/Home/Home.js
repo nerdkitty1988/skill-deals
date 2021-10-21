@@ -9,6 +9,7 @@ const Home = () => {
 	const [nearOffers, setNearOffers] = useState([]);
 	const [nearRequests, setNearRequests] = useState([]);
 	const [offerDistance, setOfferDistance] = useState({});
+    const [reqDistance, setReqDistance] = useState({});
 
 	useEffect(() => {
 		async function fetchData() {
@@ -23,14 +24,17 @@ const Home = () => {
 	}, [setNearOffers]);
 
 	useEffect(() => {
-		async function fetchData() {
+		async function fetchData2() {
 			const result = await fetch(`api/requests/near/${sessionUser.id}/`);
 			const requests = await result
 				.json()
-				.then((requests) => setNearRequests(requests.closeRequests));
+				.then((requests) => {
+                    setNearRequests(requests.closeRequests);
+                    setReqDistance(requests.requestDistance);
+                });
 			// setNearRequests(requests.requests);
 		}
-		fetchData();
+		fetchData2();
 	}, [setNearRequests, sessionUser.id]);
 
 	const nearOfferCard = nearOffers?.map((offer) => {
@@ -43,7 +47,7 @@ const Home = () => {
 				<div key={`offer'_${offer.id}`} className="singleOffer">
 					<h4 className="offerTitle">{offer.title}</h4>
 					<p className="authorName">by: {offer.user.username} </p>
-					<p className="distance">{offerDistance[offer.id]}</p>
+					<p className="distance">{offerDistance[offer.id] ? offerDistance[offer.id].toFixed() : offerDistance[offer.id]} miles away</p>
 				</div>
 			</NavLink>
 		);
@@ -59,6 +63,7 @@ const Home = () => {
 				<div key={`request'_${request.id}`} className="singleOffer">
 					<h4 className="requestTitle">{request.title}</h4>
 					<p className="authorName">by: {request.user.username} </p>
+                    <p className="distance">{reqDistance[request.id]} miles away</p>
 				</div>
 			</NavLink>
 		);
