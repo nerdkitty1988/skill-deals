@@ -66,7 +66,7 @@ const Home = () => {
 
 	return (
 		<div className="homeContainer">
-            <img src="./homegraphic.png" />
+            <div className="homepageImg"/>
 			<div className="offersAndRequests">
 				<div className="cardContainer">
 					<h1>Offers near {sessionUser.username}</h1>

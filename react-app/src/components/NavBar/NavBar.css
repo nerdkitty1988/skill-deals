@@ -22,9 +22,10 @@ body {
 }
 
 .homeNav {
-    background: url(logo.jpg);
+    background: url(logo.jpg) no-repeat center fixed;
     width: 90px;
     height: 90px;
     display: flex;
     background-size: cover;
+    z-index: 3;
 }
