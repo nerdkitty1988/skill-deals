@@ -7,7 +7,10 @@ class Offer(db.Model):
     __tablename__ = 'offers'
 
     id = db.Column(db.Integer, primary_key=True)
+    city = db.Column(db.String(50), nullable=False)
+    state = db.Column(db.String(2), nullable=False)
     zipcode = db.Column(db.String(10), nullable=False)
+    latlon = db.Column(db.Sting(255), nullable=False)
     location_range = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(150), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -22,7 +25,10 @@ class Offer(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            'city': self.city,
+            'state': self.state,
             'zipcode': self.zipcode,
+            'latlon': self.latlon,
             'range': self.location_range,
             'title': self.title,
             'description': self.description,

@@ -11,6 +11,4 @@ def get_coordinates(zipcode):
 
 
 def get_distance(loc1, loc2):
-    location1 = get_coordinates(loc1)
-    location2 = get_coordinates(loc2)
-    return hs.haversine(location1, location2, unit=Unit.MILES)
+    return hs.haversine(loc1.latlon, loc2.latlon, unit=Unit.MILES)
