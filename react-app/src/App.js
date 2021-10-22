@@ -9,8 +9,8 @@ import Footer from './components/Footer/Footer';
 import Request from './components/Request/Request';
 import Offer from './components/Offer/Offer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
 import { authenticate } from './store/session';
+import UserPage from './components/UserPage/UserPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,8 +43,8 @@ function App() {
         <ProtectedRoute path='/offers' exact={true} >
           <Offer />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/user' exact={true} >
+          <UserPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Splash />

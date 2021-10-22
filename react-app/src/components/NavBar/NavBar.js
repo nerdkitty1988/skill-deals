@@ -13,6 +13,7 @@ const NavBar = () => {
 					<NavLink to="/" exact={true} className="homeNav" />
                     <NavLink to="/offers" exact={true} className="navbarButtons">Offers</NavLink>
                     <NavLink to="/requests" exact={true} className="navbarButtons">Requests</NavLink>
+                    <NavLink to="/user" exact={true} className="navbarButtons">{sessionUser.username}'s Page</NavLink>
                     <form
 						id="header-search-form"
 						className="site-search-form"
