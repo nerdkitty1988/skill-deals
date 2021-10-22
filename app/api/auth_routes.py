@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from app.api.route_helpers import get_coordinates
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -65,7 +66,14 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            public_email=form.data['public_email'],
+            password=form.data['password'],
+            city=form.data['city'],
+            state=form.data['state'],
+            lat=get_coordinates(form.data['zipcode'])[0],
+            lon=get_coordinates(form.data['zipcode'])[1],
+            zipcode=form.data['zipcode'],
+            profile_pic = form.data['profile_pic']
         )
         db.session.add(user)
         db.session.commit()

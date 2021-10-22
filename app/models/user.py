@@ -15,7 +15,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     public_email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(50), nullable=False)
+    state = db.Column(db.String(2), nullable=False)
     zipcode = db.Column(db.String(10), nullable=False)
+    lat = db.Column(db.Float, nullable=False)
+    lon = db.Column(db.Float, nullable=False)
     profile_pic = db.Column(db.String(255), nullable=True)
 
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
@@ -45,7 +49,11 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'publicEmail': self.public_email,
+            'city': self.city,
+            'state': self.state,
             'zipcode': self.zipcode,
+            'lat':  self.lat,
+            'lon': self.lon,
             'profilePic': self.profile_pic,
             'reviewsRecieved': [review.to_dict() for review in self.reviews_recieved],
             'createdAt': self.time_created,

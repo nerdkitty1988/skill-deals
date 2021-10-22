@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
+from app.api.route_helpers import Haversine
 from app.models import User, Offer
 from flask_login import login_required
-from app.api.route_helpers import get_distance
+# from app.api.route_helpers import get_distance
 
 
 offer_routes = Blueprint('offers', __name__)
@@ -18,9 +19,11 @@ def close_offers(user_id):
     offerList = []
     offerDistance = {}
     user = User.query.get(user_id)
+    user_info = [user.lat, user.lon]
     offers = Offer.query.all()
     for offer in offers:
-        distance = get_distance(user.zipcode, offer.zipcode)
+        offer_info = [offer.lat, offer.lon]
+        distance = Haversine(user_info, offer_info).miles
         if distance <= offer.location_range and user_id != offer.user_id:
             offerDistance[offer.id] = distance
             offerList.append(offer)

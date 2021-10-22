@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
 from app.models import User, Request
 from flask_login import login_required
-from app.api.route_helpers import get_distance
+# from app.api.route_helpers import get_distance
+from app.api.route_helpers import Haversine
 
 
 request_routes = Blueprint('requests', __name__)
@@ -18,9 +19,11 @@ def close_requests(user_id):
     reqList = []
     requestDistance = {}
     user = User.query.get(user_id)
+    user_info = [user.lat, user.lon]
     reqs = Request.query.all()
     for req in reqs:
-        distance = get_distance(user.zipcode, req.zipcode)
+        req_info = [req.lat, req.lon]
+        distance = Haversine(user_info, req_info).miles
         if distance <= req.location_range and user_id != req.user_id:
             requestDistance[req.id] = distance
             reqList.append(req)
