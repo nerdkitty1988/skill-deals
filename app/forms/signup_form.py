@@ -31,4 +31,4 @@ class SignUpForm(FlaskForm):
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
     zipcode = StringField('zipcode', validators=[DataRequired()])
-    profile_pic = StringField('profile_pic', validators=[URL])
+    profile_pic = StringField('profile_pic')

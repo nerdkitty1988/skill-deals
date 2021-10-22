@@ -70,7 +70,8 @@ def sign_up():
             password=form.data['password'],
             city=form.data['city'],
             state=form.data['state'],
-            latlon=get_coordinates(form.data['zipcode']),
+            lat=get_coordinates(form.data['zipcode'])[0],
+            lon=get_coordinates(form.data['zipcode'])[1],
             zipcode=form.data['zipcode'],
             profile_pic = form.data['profile_pic']
         )
