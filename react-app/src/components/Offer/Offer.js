@@ -10,7 +10,7 @@ const Offer = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`/api/Offers`);
+            const res = await fetch(`/api/offers/`);
             const offers = await res.json().then((offers) => {
                 setOffers(offers.offers)
             });
@@ -24,7 +24,7 @@ const Offer = () => {
                 <NavLink
                     key={`offer'_${offer.id}`}
                     to={`/offers/${offer.id}`}
-                    className="offerNav"
+                    className="requestNav"
                 >
                     <div key={`offer'_${offer.id}`} className="singleOffer">
                         <h4 className="offerTitle">{offer.title}</h4>
