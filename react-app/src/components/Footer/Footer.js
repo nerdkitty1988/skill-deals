@@ -7,7 +7,7 @@ const Footer = () => {
 				<div className="footer-find-me">
 					<span className="title">Find Me</span>
 					<ul>
-						<li className="group-name">
+						<li className="my-name">
 							<span>{`Jami Travers | `}</span>
 							<a
 								href="https://www.linkedin.com/in/jami-travers-3393711aa/"
