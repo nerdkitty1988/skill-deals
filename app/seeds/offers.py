@@ -11,7 +11,7 @@ def seed_offers():
             Offer(
                 title = fake.job(),
                 description = fake.paragraph(nb_sentences=5, variable_nb_sentences=False),
-                user_id = fake.pyint(min_value=1, max_value=20)
+                user_id = fake.pyint(min_value=1, max_value=21)
             )
         )
 
