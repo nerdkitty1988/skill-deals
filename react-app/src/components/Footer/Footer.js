@@ -5,7 +5,6 @@ const Footer = () => {
 		<footer id="footer" className="footer footer-desktop ">
 			<div className="footer-row footer-row-top">
 				<div className="footer-find-me">
-					<span className="title">Find Me</span>
 					<ul>
 						<li className="my-name">
 							<span>{`Jami Travers | `}</span>

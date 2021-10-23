@@ -58,3 +58,10 @@
     opacity: 65%;
     box-shadow: 0px 0px 3px 3px rgba(1, 0, 2, 0.692);
 }
+
+
+.loginButton {
+    width: 25%;
+    border: none;
+    margin-left: 20px;
+}
