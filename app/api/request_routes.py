@@ -20,7 +20,7 @@ def close_requests(user_id):
     requestDistance = {}
     user = User.query.get(user_id)
     user_info = [user.lat, user.lon]
-    reqs = Request.query.all()
+    reqs = Request.query.all().order_by(Request.time_created)
     for req in reqs:
         req_info = [req.user.lat, req.user.lon]
         distance = Haversine(user_info, req_info).miles
@@ -28,3 +28,8 @@ def close_requests(user_id):
             requestDistance[req.id] = distance
             reqList.append(req)
     return {"closeRequests": [rqst.to_dict() for rqst in reqList], "requestDistance": requestDistance}
+
+
+@request_routes.route('/<int:request_id>')
+def single_rewuest(request_id):
+    return (Request.get(request_id).to_dict())
