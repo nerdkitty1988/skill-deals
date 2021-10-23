@@ -15,9 +15,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     public_email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    city = db.Column(db.String(50), nullable=False)
-    state = db.Column(db.String(2), nullable=False)
-    zipcode = db.Column(db.String(10), nullable=False)
+    range = db.Column(db.Integer, nullable=False)
+    address = db.Column(db.String(255), nullable=False)
     lat = db.Column(db.Float, nullable=False)
     lon = db.Column(db.Float, nullable=False)
     profile_pic = db.Column(db.String(255), nullable=True)
@@ -49,9 +48,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'publicEmail': self.public_email,
-            'city': self.city,
-            'state': self.state,
-            'zipcode': self.zipcode,
+            'range': self.range,
+            'address': self.address,
             'lat':  self.lat,
             'lon': self.lon,
             'profilePic': self.profile_pic,

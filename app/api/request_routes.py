@@ -22,9 +22,9 @@ def close_requests(user_id):
     user_info = [user.lat, user.lon]
     reqs = Request.query.all()
     for req in reqs:
-        req_info = [req.lat, req.lon]
+        req_info = [req.user.lat, req.user.lon]
         distance = Haversine(user_info, req_info).miles
-        if distance <= req.location_range and user_id != req.user_id:
+        if distance <= req.user.range and user_id != req.user_id:
             requestDistance[req.id] = distance
             reqList.append(req)
     return {"closeRequests": [rqst.to_dict() for rqst in reqList], "requestDistance": requestDistance}

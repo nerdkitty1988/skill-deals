@@ -22,9 +22,9 @@ def close_offers(user_id):
     user_info = [user.lat, user.lon]
     offers = Offer.query.all()
     for offer in offers:
-        offer_info = [offer.lat, offer.lon]
+        offer_info = [offer.user.lat, offer.user.lon]
         distance = Haversine(user_info, offer_info).miles
-        if distance <= offer.location_range and user_id != offer.user_id:
+        if distance <= offer.user.range and user_id != offer.user_id:
             offerDistance[offer.id] = distance
             offerList.append(offer)
     return {"closeOffers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}
