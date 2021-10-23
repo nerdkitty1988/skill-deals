@@ -28,6 +28,8 @@ Mako = "==1.1.4"
 email-validator = "*"
 geopy = "*"
 haversine = "*"
+faker = "*"
+factory-boy = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

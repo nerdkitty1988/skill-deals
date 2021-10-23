@@ -10,6 +10,7 @@ def get_coordinates(zipcode):
     location = geocode(zipcode)
     return(location.latitude, location.longitude)
 
+get_coordinates('40475')
 
 # def get_distance(loc1, loc2):
 #     return haversine(loc1, loc2, unit=Unit.MILES)

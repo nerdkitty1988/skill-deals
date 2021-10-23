@@ -68,11 +68,9 @@ def sign_up():
             email=form.data['email'],
             public_email=form.data['public_email'],
             password=form.data['password'],
-            city=form.data['city'],
-            state=form.data['state'],
-            lat=get_coordinates(form.data['zipcode'])[0],
-            lon=get_coordinates(form.data['zipcode'])[1],
-            zipcode=form.data['zipcode'],
+            address=form.data['address'],
+            lat=get_coordinates(form.data['address'])[0],
+            lon=get_coordinates(form.data['address'])[1],
             profile_pic = form.data['profile_pic']
         )
         db.session.add(user)

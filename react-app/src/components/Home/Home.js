@@ -63,7 +63,7 @@ const Home = () => {
 				<div key={`request'_${request.id}`} className="singleOffer">
 					<h4 className="requestTitle">{request.title}</h4>
 					<p className="authorName">by: {request.user.username} </p>
-                    <p className="distance">{reqDistance[request.id]} miles away</p>
+                    <p className="distance">{reqDistance[request.id] ? reqDistance[request.id].toFixed() : reqDistance[request.id]} miles away</p>
 				</div>
 			</NavLink>
 		);
