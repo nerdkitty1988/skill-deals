@@ -20,7 +20,7 @@ def close_offers(user_id):
     offerDistance = {}
     user = User.query.get(user_id)
     user_info = [user.lat, user.lon]
-    offers = Offer.query.all()
+    offers = Offer.query.all().order_by(Offer.time_created)
     for offer in offers:
         offer_info = [offer.user.lat, offer.user.lon]
         distance = Haversine(user_info, offer_info).miles
@@ -28,3 +28,8 @@ def close_offers(user_id):
             offerDistance[offer.id] = distance
             offerList.append(offer)
     return {"closeOffers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}
+
+
+@offer_routes.route('/<int:offer_id>')
+def single_offer(offer_id):
+    return (Offer.get(offer_id).to_dict())
