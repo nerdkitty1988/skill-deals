@@ -13,7 +13,7 @@
     border: 1px solid black;
     position: absolute;
     top: 20%;
-    left: 40%;
+    right: 10%;
     border-radius: 5px;
     padding: 10px;
     background-color: rgba(78, 78, 78, 0.555);
@@ -29,4 +29,31 @@
 	height: 150px;
 	object-fit: cover;
 	border-radius: 100%;
+}
+
+.requestPage {
+    display: flex;
+    width: 80%;
+    display: absolute;
+    margin: 15px;
+    background-color: rgba(78, 78, 78, 0.555);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 3px rgba(78, 78, 78, 0.555);
+}
+
+.profileHeads {
+    color: rgb(77, 189, 189);
+    font-family: 'Dosis', sans-serif;
+}
+
+.offerPage {
+    display: flex;
+    width: 80%;
+    display: absolute;
+    margin: 15px;
+    background-color: rgba(78, 78, 78, 0.555);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 3px rgba(78, 78, 78, 0.555);
 }

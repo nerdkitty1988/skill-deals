@@ -43,7 +43,7 @@ const UserPage = () => {
     }, [userId])
 
 	const offerCard = offers?.map((offer) => {
-		if (offer.userId === parseInt(userId)) {
+		if (offer.userId === user?.id) {
 			return (
 				<NavLink
 					key={`offer'_${offer.id}`}
@@ -66,7 +66,7 @@ const UserPage = () => {
 	});
 
 	const requestCard = requests?.map((request) => {
-		if (request.userId === user.id) {
+		if (request.userId === user?.id) {
 			return (
 				<NavLink
 					key={`request'_${request.id}`}
@@ -105,7 +105,7 @@ const UserPage = () => {
 							className="profilePic"
 						/>
 					</div>
-					<h1>{user.username}'s Profile</h1>
+					<h1 className="profileHeads">{user.username}'s Profile</h1>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
@@ -132,13 +132,43 @@ const UserPage = () => {
 		}
 	};
 
+
+    const review = user.reviews?.map((review) => {
+		if (review.userId === user?.id) {
+			return (
+				<div
+					key={`review'_${review.id}`}
+					className="reviewDiv"
+				>
+					<div key={`review'_${review.id}`} className="singleOffer">
+						<h4 className="reviewTitle">{review.comment}</h4>
+						<p className="authorName">
+							by: {review.author.username}{" "}
+						</p>
+						{/* <p className="distance">{reqDistance[review.id]} miles away</p> */}
+						<p className="posted">
+							POSTED:
+							{new Date(review.createdAt).toLocaleDateString()}
+						</p>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	});
+
 	return (
 		<div className="profilePage">
 			<div className="userInfo">{profileInfo()}</div>
 			<div className="userCards">
+                <h1 className="profileHeads">{user?.username}'s Requests:</h1>
 				<div className="requestPage">{requestCard}</div>
+                <h1 className="profileHeads">{user?.username}'s Offers:</h1>
 				<div className="offerPage">{offerCard}</div>
 			</div>
+            <div className="reviews">
+
+            </div>
 		</div>
 	);
 };

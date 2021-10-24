@@ -24,16 +24,20 @@ def seed_users():
                 profile_pic=fake.image_url()
             )
         )
+    address_beg2 = fake.address()
+    address_list2 = address_beg.split(' ')
+    coords2 = get_coordinates(address_list2[-1])
     demo = User(
         username='Demo',
         public_email='demo@aa.io',
         email='demo@aa.io',
         password='password',
         range=100,
-        address=fake.address(),
-        lat=29.634144,
-        lon=-96.063934,
-        profile_pic='https://image.shutterstock.com/image-photo/handsome-unshaven-young-darkskinned-male-260nw-640011838.jpg')
+        address=address_beg2,
+        lat=coords2[0],
+        lon=coords[1],
+        profile_pic=fake.image_url()
+    )
 
     db.session.add(demo)
 
