@@ -14,19 +14,19 @@ const Home = () => {
 	useEffect(() => {
 		async function fetchData() {
 			const res = await fetch(`/api/offers/near/${sessionUser.id}/`);
-			const offers = await res.json().then((offers) => {
+			await res.json().then((offers) => {
 				setNearOffers(offers.closeOffers);
 				setOfferDistance(offers.offerDistance);
 			});
 			// setNearOffers(offers.offers);
 		}
 		fetchData();
-	}, [setNearOffers]);
+	}, [setNearOffers, sessionUser.id]);
 
 	useEffect(() => {
 		async function fetchData2() {
 			const result = await fetch(`api/requests/near/${sessionUser.id}/`);
-			const requests = await result
+			await result
 				.json()
 				.then((requests) => {
                     setNearRequests(requests.closeRequests);
@@ -73,6 +73,9 @@ const Home = () => {
 		<div className="homeContainer">
             <div className="homepageImg"/>
 			<div className="offersAndRequests">
+                <div className="intro">
+                    <p>Welcome to Skill Deals!  Do you have a task that requires a skill you don't possess? </p><p> Search for offers in your area, or create a new "request" and let other users find you!</p> <p>Have a skill you are willing to barter with?  Create a new offer!  </p> <p>The only catch, no cash is traded in these transactions.  Pay with a SERVICE you can provide!</p>
+                </div>
 				<div className="cardContainer">
 					<h1 className="cardLabel">Offers near {sessionUser.username}</h1>
 					<div className="cardLineup">

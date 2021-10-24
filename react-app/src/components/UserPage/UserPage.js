@@ -11,8 +11,8 @@ const UserPage = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const res = await fetch(`/api/requests`);
-			const requests = await res.json().then((requests) => {
+			const res = await fetch(`/api/requests/`);
+			await res.json().then((requests) => {
 				setRequests(requests.requests);
 			});
 		}
@@ -22,7 +22,7 @@ const UserPage = () => {
 	useEffect(() => {
 		async function fetchData() {
 			const res = await fetch(`/api/offers/`);
-			const offers = await res.json().then((offers) => {
+			await res.json().then((offers) => {
 				setOffers(offers.offers);
 			});
 		}
@@ -48,7 +48,7 @@ const UserPage = () => {
 					</div>
 				</NavLink>
 			);
-		}
+		}return null;
 	});
 
 	const requestCard = requests?.map((request) => {
@@ -72,7 +72,7 @@ const UserPage = () => {
 					</div>
 				</NavLink>
 			);
-		}
+		}return null;
 	});
 
 	return (

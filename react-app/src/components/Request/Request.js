@@ -11,7 +11,7 @@ const Request = () => {
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(`/api/requests`);
-            const requests = await res.json().then((requests) => {
+            await res.json().then((requests) => {
                 setRequests(requests.requests)
             });
         }
@@ -34,7 +34,7 @@ const Request = () => {
                     </div>
                 </NavLink>
             )
-        }
+        }return null;
     })
 
     return (

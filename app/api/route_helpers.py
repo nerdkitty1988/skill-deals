@@ -39,5 +39,3 @@ class Haversine:
         self.miles=self.meters*0.000621371      # output distance in miles
         self.feet=self.miles*5280               # output distance in feet
 
-if __name__ == "__Haversine__":
-    main()
