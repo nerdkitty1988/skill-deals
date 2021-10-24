@@ -1,6 +1,6 @@
 body {
-    margin: -5px;
-    padding: 5px;
+	margin: -5px;
+	padding: 5px;
 }
 
 .navContainer {
@@ -9,50 +9,73 @@ body {
 }
 
 #navbar {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.889);
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.644);
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.889);
+	box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.644);
 }
 
 .navbarLinks {
-    display: inline-flex;
-    width: 100%;
-    text-decoration: none;
-    justify-content: space-between;
-    align-items: center;
+	display: inline-flex;
+	width: 100%;
+	text-decoration: none;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .homeNav {
-    background: url(logo.jpg) no-repeat center fixed;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    background-size: contain;
-    z-index: 3;
+	/* background: url(logo.png) no-repeat center fixed; */
+	width: 100px;
+	height: 100px;
+	display: flex;
+	z-index: 3;
+	border-radius: 50%;
 }
 
 .navbarButtons {
-    text-decoration: none;
-    color: rgba(224, 255, 255, 0.616);
-    font-size: larger;
-    border: 1px solid rgba(0, 0, 0, 0.582);
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 10px;
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.425);
-    font-family: 'Dosis', sans-serif;
+	text-decoration: none;
+	color: rgba(224, 255, 255, 0.616);
+	font-size: larger;
+	border: 1px solid rgba(0, 0, 0, 0.582);
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	padding: 5px;
+	box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.425);
+	font-family: "Dosis", sans-serif;
 }
 
 .navbarButtons:hover {
-    color: rgba(224, 255, 255, 0.932);
-    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.849);
+	color: rgba(224, 255, 255, 0.932);
+	box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.849);
 }
 
 .fas {
-    color: rgba(224, 255, 255, 0.932);
+	color: rgba(224, 255, 255, 0.932);
 }
 
 .submit-btn {
-    border: none;
-    background-color: transparent;
+	border: none;
+	background-color: transparent;
+}
+
+#site-search-input {
+	padding: 10px;
+	background-color: rgba(211, 211, 211, 0.678);
+	border-radius: 8px;
+}
+
+.fa-search-dollar {
+	font-size: x-large;
+	margin-top: 3px;
+}
+
+.fa-search-dollar:hover {
+	cursor: pointer;
+    color: lightskyblue;
+}
+
+#site-search-input::placeholder {
+    color: rgba(224, 255, 255, 0.932);
+    font-weight: 500;
+    font-family: 'Dosis', sans-serif;
+    font-size: large;
 }
