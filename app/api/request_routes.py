@@ -33,3 +33,4 @@ def close_requests(user_id):
 @request_routes.route('/<int:request_id>/')
 def single_request(request_id):
     return (Request.get(request_id).to_dict())
+

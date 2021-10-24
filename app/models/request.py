@@ -23,7 +23,7 @@ class Request(db.Model):
             'title': self.title,
             'description': self.description,
             'userId': self.user_id,
-            'user': self.user.to_dict(),
+            'user': self.user.to_author_dict(),
             'createdAt': self.time_created,
             'updatedAt': self.time_updated
         }
