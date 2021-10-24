@@ -57,3 +57,13 @@ class User(db.Model, UserMixin):
             'createdAt': self.time_created,
             'updatedAt': self.time_updated
         }
+
+
+    def to_author_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'publicEmail': self.public_email,
+            'profilePic': self.profile_pic,
+            'createdAt': self.time_created
+        }

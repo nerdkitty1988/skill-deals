@@ -10,8 +10,8 @@ def seed_reviews():
             Review(
                 author_id = fake.pyint(min_value=1, max_value=21),
                 reviewed_user_id = fake.pyint(min_value=1, max_value=21),
-                rating = fake.pyint(min_value=0, max_value=10),
-                comment = fake.paragraph(nb_sentences=3, variable_nb_sentences=False),
+                rating = fake.pyint(min_value=1, max_value=10),
+                comment = fake.paragraph(nb_sentences=10, variable_nb_sentences=True),
             )
         )
 
