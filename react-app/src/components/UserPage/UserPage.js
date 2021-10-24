@@ -109,6 +109,7 @@ const UserPage = () => {
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
+                    <button type="button">Edit Profile</button>
 				</div>
 			);
 		} else if (sessionUser && user && sessionUser.id !== user.id){
@@ -133,7 +134,7 @@ const UserPage = () => {
 	};
 
 
-    const review = user.reviews?.map((review) => {
+    const review = user?.reviews?.map((review) => {
 		if (review.userId === user?.id) {
 			return (
 				<div
