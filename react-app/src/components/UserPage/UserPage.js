@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
 
@@ -8,6 +8,9 @@ const UserPage = () => {
 
 	const [requests, setRequests] = useState([]);
 	const [offers, setOffers] = useState([]);
+    const [user, setUser] = useState();
+
+	const { userId } = useParams();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -29,8 +32,18 @@ const UserPage = () => {
 		fetchData();
 	}, [setOffers]);
 
+    useEffect(() => {
+        async function fetchUser() {
+            const result = await fetch(`/api/users/${parseInt(userId)}`);
+            const user = await result.json();
+            console.log(user)
+            setUser(user);
+        }
+        fetchUser();
+    }, [userId])
+
 	const offerCard = offers?.map((offer) => {
-		if (offer.userId === sessionUser.id) {
+		if (offer.userId === parseInt(userId)) {
 			return (
 				<NavLink
 					key={`offer'_${offer.id}`}
@@ -48,11 +61,12 @@ const UserPage = () => {
 					</div>
 				</NavLink>
 			);
-		}return null;
+		}
+		return null;
 	});
 
 	const requestCard = requests?.map((request) => {
-		if (request.userId === sessionUser.id) {
+		if (request.userId === user.id) {
 			return (
 				<NavLink
 					key={`request'_${request.id}`}
@@ -72,13 +86,59 @@ const UserPage = () => {
 					</div>
 				</NavLink>
 			);
-		}return null;
+		}
+		return null;
 	});
 
+	const profileInfo = () => {
+		if (sessionUser && user && sessionUser.id === user.id) {
+			return (
+				<div className="profileInfo">
+					<div>
+						<img
+							alt={user.username}
+							src={
+								user.profilePic
+									? user.profilePic
+									: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+							}
+							className="profilePic"
+						/>
+					</div>
+					<h1>{user.username}'s Profile</h1>
+					<h3>Public Email: {user.publicEmail}</h3>
+					<h3>Email: {user.email}</h3>
+					<h3>Address: {user.address}</h3>
+				</div>
+			);
+		} else if (sessionUser && user && sessionUser.id !== user.id){
+			return (
+				<div className="profileInfo">
+					<div>
+						<img
+							alt={user.username}
+							src={
+								user.profilePic
+									? user.profilePic
+									: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+							}
+							className="profilePic"
+						/>
+					</div>
+					<h1>{user.username}'s Profile</h1>
+					<h3>Public Email: {user.publicEmail}</h3>
+				</div>
+			);
+		}
+	};
+
 	return (
-		<div>
-			<div className="requestPage">{requestCard}</div>
-			<div className="offerPage">{offerCard}</div>
+		<div className="profilePage">
+			<div className="userInfo">{profileInfo()}</div>
+			<div className="userCards">
+				<div className="requestPage">{requestCard}</div>
+				<div className="offerPage">{offerCard}</div>
+			</div>
 		</div>
 	);
 };
