@@ -10,7 +10,7 @@ const Request = () => {
 
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`/api/requests`);
+            const res = await fetch(`/api/requests/`);
             await res.json().then((requests) => {
                 setRequests(requests.requests)
             });

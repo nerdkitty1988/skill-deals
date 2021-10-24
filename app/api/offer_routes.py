@@ -30,6 +30,6 @@ def close_offers(user_id):
     return {"closeOffers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}
 
 
-@offer_routes.route('/<int:offer_id>')
+@offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
     return (Offer.get(offer_id).to_dict())

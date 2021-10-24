@@ -30,6 +30,6 @@ def close_requests(user_id):
     return {"closeRequests": [rqst.to_dict() for rqst in reqList], "requestDistance": requestDistance}
 
 
-@request_routes.route('/<int:request_id>')
+@request_routes.route('/<int:request_id>/')
 def single_request(request_id):
     return (Request.get(request_id).to_dict())
