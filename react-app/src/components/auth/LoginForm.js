@@ -32,7 +32,7 @@ const LoginForm = () => {
 
 	return (
 		<form className="signinForm" onSubmit={onLogin}>
-            <h1 className="signInHead">Have an account?  Sign In... <i class="fas fa-arrow-circle-down" /></h1>
+            <h1 className="signInHead">Have an account?  Sign In... <i className="fas fa-arrow-circle-down" /></h1>
 			<div className="signinElements">
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>

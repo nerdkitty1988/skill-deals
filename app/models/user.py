@@ -35,6 +35,13 @@ class User(db.Model, UserMixin):
     def password(self):
         return self.hashed_password
 
+    def avgRating(self):
+        sum = 0
+        for review in self.reviews_recieved:
+            sum = sum + review.rating
+        avg = (sum/len(self.reviews_recieved)) * 10
+        return avg;
+
     @password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
@@ -53,7 +60,20 @@ class User(db.Model, UserMixin):
             'lat':  self.lat,
             'lon': self.lon,
             'profilePic': self.profile_pic,
+            'requests': [request.to_dict() for request in self.requests],
+            'avgRating': self.avgRating(),
+            'offers': [offer.to_dict() for offer in self.offers],
             'reviewsRecieved': [review.to_dict() for review in self.reviews_recieved],
             'createdAt': self.time_created,
             'updatedAt': self.time_updated
+        }
+
+
+    def to_author_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'publicEmail': self.public_email,
+            'profilePic': self.profile_pic,
+            'createdAt': self.time_created
         }
