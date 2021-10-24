@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import ReactModal from 'react-modal';
 import LoginForm from "../auth/LoginForm";
+import SignUpForm from "../auth/SignUpForm";
 
 const Splash = () => {
 	const sessionUser = useSelector((state) => state.session.user);
-	const [showModal, setShowModal] = useState(false);
+	const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showSignUpModal, setShowSignUpModal] = useState(false);
 
 	if (!sessionUser) {
 		return (
@@ -17,26 +19,41 @@ const Splash = () => {
 					<div className="welcome">
 						<div className="links">
 							<h1 className="siteName">Skill Deals</h1>
+                            <h4>"A new way to barter..."</h4>
 							<button
 								type="button"
 								className="welcomeNav"
-								onClick={() => setShowModal(true)}
+								onClick={() => setShowLoginModal(true)}
 							>
-								Sign In
+								Log In
 							</button>
 							<ReactModal
-								isOpen={showModal}
+								isOpen={showLoginModal}
 								contentLabel="Minimal Modal Example"
                                 className="loginModal"
 							>
                                 <LoginForm />
-								<button className="windowCloseButton" onClick={()=> setShowModal(false)}>
+								<button className="windowCloseButton" onClick={()=> setShowLoginModal(false)}>
                                     <i className="fas fa-window-close"></i>
 								</button>
 							</ReactModal>
-							<NavLink className="welcomeNav" to="/signup">
+							<button
+								type="button"
+								className="welcomeNav"
+								onClick={() => setShowSignUpModal(true)}
+							>
 								Sign Up
-							</NavLink>
+							</button>
+							<ReactModal
+								isOpen={showSignUpModal}
+								contentLabel="Minimal Modal Example"
+                                className="loginModal"
+							>
+                                <SignUpForm />
+								<button className="windowCloseButton" onClick={()=> setShowSignUpModal(false)}>
+                                    <i className="fas fa-window-close"></i>
+								</button>
+							</ReactModal>
 						</div>
 					</div>
 				</div>

@@ -20,7 +20,7 @@ def close_offers(user_id):
     offerDistance = {}
     user = User.query.get(user_id)
     user_info = [user.lat, user.lon]
-    offers = Offer.query.all().order_by(Offer.time_created)
+    offers = Offer.query.order_by(Offer.time_created).all()
     for offer in offers:
         offer_info = [offer.user.lat, offer.user.lon]
         distance = Haversine(user_info, offer_info).miles

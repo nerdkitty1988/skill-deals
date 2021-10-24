@@ -22,14 +22,18 @@
 .welcome {
     display: flex;
     font-family: 'Courgette', cursive;
-    font-size: xx-large;
+    font-size: xxx-large;
 }
 
 .welcomeNav {
     text-decoration: none;
     padding: 5px;
-    margin-left: 25px;
+    margin-left: 105px;
     color: aliceblue;
+    border: none;
+    background-color: transparent;
+    font-family: 'Courgette', cursive;
+    font-size: x-large;
 }
 
 .welcomeNav:hover {
@@ -38,6 +42,7 @@
 
 .links {
     color: aliceblue;
+    text-align: center;
 }
 
 .windowCloseButton {

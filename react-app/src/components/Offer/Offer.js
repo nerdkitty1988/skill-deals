@@ -11,7 +11,7 @@ const Offer = () => {
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(`/api/offers/`);
-            const offers = await res.json().then((offers) => {
+            await res.json().then((offers) => {
                 setOffers(offers.offers)
             });
         }
@@ -34,7 +34,7 @@ const Offer = () => {
                     </div>
                 </NavLink>
             )
-        }
+        }return null;
     })
 
     return (

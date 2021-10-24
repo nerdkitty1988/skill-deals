@@ -77,7 +77,6 @@ const LoginForm = () => {
                     onClick={(e) => {
                         setEmail("demo@aa.io");
                         setPassword("password");
-                        onLogin(e);
                     }}>
                     Demo
                 </button>
