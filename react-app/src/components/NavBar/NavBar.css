@@ -61,6 +61,9 @@ body {
 	padding: 10px;
 	background-color: rgba(211, 211, 211, 0.678);
 	border-radius: 8px;
+    font-size: large;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
 }
 
 .fa-search-dollar {

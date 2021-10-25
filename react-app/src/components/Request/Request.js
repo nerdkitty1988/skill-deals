@@ -38,7 +38,7 @@ const Request = () => {
     })
 
     return (
-        <div className="requestPage">
+        <div className="requestPage1">
             {requestCard}
         </div>
 

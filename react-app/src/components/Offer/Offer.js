@@ -38,10 +38,9 @@ const Offer = () => {
     })
 
     return (
-        <div className="offerPage">
+        <div className="offerPage1">
             {offerCard}
         </div>
-
     )
 }
 export default Offer;
