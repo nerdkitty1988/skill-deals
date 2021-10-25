@@ -80,3 +80,25 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+
+.signupInput {
+    padding: 10px;
+    width: 100%;
+    margin: 10px;
+    font-family: 'Dosis', sans-serif;
+    border-radius: 5px;
+    background-color: lightgray;
+    font-size: large;
+}
+
+.signupInput::placeholder {
+    color: rgb(26, 75, 75);
+}
+
+.fullSignup {
+    display: flex;
+    justify-content: center;
+    height: fit-content;
+    padding: 10px;
+}
