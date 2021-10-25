@@ -12,39 +12,66 @@ const UserPage = () => {
 	const [user, setUser] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
     const [editType, setEditType] = useState('');
-    const [tradeId, setTradeId] = useState(0)
+    const [tradeId, setTradeId] = useState(0);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('')
 
 
 	//user profile to display
 	const { userId } = useParams();
 
-	//get visiting user
-	useEffect(() => {
-		async function fetchUser() {
-			const result = await fetch(`/api/users/${parseInt(userId)}`);
-			const user = await result.json();
-			setUser(user);
-		}
-		fetchUser();
-	}, [userId]);
 
     const handleOfferEdit = (e) => {
         e.preventDefault();
         setEditType('offers');
-        setTradeId(e.target.value);
+        const data = e.target.value.split(', ')
+        setTradeId(data[0]);
+        setTitle(data[1]);
+        setDescription(data[2]);
         setShowEditModal(true);
     }
 
     const handleRequestEdit = (e) => {
         e.preventDefault();
         setEditType('requests');
-        setTradeId(e.target.value);
+        const data = e.target.value.split(', ')
+        setTradeId(data[0]);
+        setTitle(data[1]);
+        setDescription(data[2]);
         setShowEditModal(true);
     }
 
+    const handleDeleteRequest = async(e) => {
+        e.preventDefault();
+        const request_id = e.target.value;
+        const res = await fetch(`/api/requests/${request_id}/`, {
+            method: 'DELETE'
+        })
+    }
+
+
+    const handleDeleteOffer = async(e) => {
+        e.preventDefault();
+        const offer_id = e.target.value;
+        const res = await fetch(`/api/requests/${offer_id}/`, {
+            method: 'DELETE'
+        })
+    }
+
+    //get visiting user
+    useEffect(() => {
+        async function fetchUser() {
+            const result = await fetch(`/api/users/${parseInt(userId)}`);
+            const user = await result.json();
+            setUser(user);
+        }
+        fetchUser();
+    }, [userId, handleDeleteRequest, handleDeleteOffer]);
+
+
 	//create offer cards
 	const offerCard =
-		user?.offers.length === 0 ? (
+    user?.offers.length === 0 ? (
 			<div className="nothingHere">
 				<h1>No offers to show</h1>
 			</div>
@@ -72,8 +99,8 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={offer.id} onClick={handleOfferEdit}>Edit</button>
-								<button>Delete</button>
+								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={handleOfferEdit}>Edit</button>
+								<button value={offer.id} onClick={handleDeleteOffer}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -139,8 +166,8 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={request.id} onClick={handleRequestEdit}>Edit</button>
-								<button>Delete</button>
+								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={handleRequestEdit}>Edit</button>
+								<button value={request.id} onClick={handleDeleteRequest}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -259,7 +286,7 @@ const UserPage = () => {
 				contentLabel="EditModal"
 				className="loginModal"
 			>
-				<EditTradeForm setShowEditModal={setShowEditModal} editType={editType} tradeId={tradeId} />
+				<EditTradeForm setShowEditModal={setShowEditModal} editType={editType} tradeId={tradeId} title={title} description={description} />
 				<button
 					className="windowCloseButton"
 					onClick={() => setShowEditModal(false)}
