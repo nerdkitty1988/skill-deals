@@ -59,11 +59,12 @@ body {
 
 #site-search-input {
 	padding: 10px;
-	background-color: rgba(211, 211, 211, 0.678);
+	background-color: rgba(128, 124, 124, 0.678);
 	border-radius: 8px;
     font-size: large;
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
+    border: none;
 }
 
 .fa-search-dollar {
@@ -81,4 +82,12 @@ body {
     font-weight: 500;
     font-family: 'Dosis', sans-serif;
     font-size: large;
+}
+
+.fa-plus-circle {
+    font-size: large;
+}
+
+#addCard{
+    background-color: transparent;
 }

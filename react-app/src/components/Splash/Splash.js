@@ -29,7 +29,7 @@ const Splash = () => {
 							</button>
 							<ReactModal
 								isOpen={showLoginModal}
-								contentLabel="Minimal Modal Example"
+								contentLabel="LoginModal"
                                 className="loginModal"
 							>
                                 <LoginForm />

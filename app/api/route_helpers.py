@@ -10,7 +10,6 @@ def get_coordinates(zipcode):
     location = geocode(zipcode)
     return(location.latitude, location.longitude)
 
-get_coordinates('40475')
 
 # def get_distance(loc1, loc2):
 #     return haversine(loc1, loc2, unit=Unit.MILES)
@@ -38,4 +37,3 @@ class Haversine:
         self.km=self.meters/1000.0              # output distance in kilometers
         self.miles=self.meters*0.000621371      # output distance in miles
         self.feet=self.miles*5280               # output distance in feet
-
