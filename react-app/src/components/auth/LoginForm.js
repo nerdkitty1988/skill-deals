@@ -18,6 +18,11 @@ const LoginForm = () => {
 		}
 	};
 
+    const demoUser = async (e) => {
+		e.preventDefault();
+		await dispatch(login('demo@aa.io', 'password'));
+	};
+
 	const updateEmail = (e) => {
 		setEmail(e.target.value);
 	};
@@ -74,10 +79,7 @@ const LoginForm = () => {
                 <button
                     className="loginButton"
                     type="button"
-                    onClick={(e) => {
-                        setEmail("demo@aa.io");
-                        setPassword("password");
-                    }}>
+                    onClick={demoUser}>
                     Demo
                 </button>
 
