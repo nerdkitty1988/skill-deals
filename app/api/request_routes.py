@@ -66,3 +66,12 @@ def close_requests(user_id):
 @request_routes.route('/<int:request_id>/')
 def single_request(request_id):
     return (Request.get(request_id).to_dict())
+
+
+@request_routes.route('/<int:request_id>/', methods=['DELETE'])
+@login_required
+def delete_request(request_id):
+    request = Request.query.get(request_id)
+    db.session.delete(request)
+    db.session.commit()
+    return {'message' ['Deleted Successfully']}

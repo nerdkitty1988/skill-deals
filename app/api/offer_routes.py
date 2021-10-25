@@ -65,3 +65,12 @@ def close_offers(user_id):
 @offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
     return (Offer.query.get(offer_id).to_dict())
+
+
+@offer_routes.route('/<int:offer_id>/', methods=['DELETE'])
+@login_required
+def delete_offer(offer_id):
+    offer = Offer.query.get(offer_id)
+    db.session.delete(offer)
+    db.session.commit()
+    return {'message' ['Deleted Successfully']}
