@@ -25,6 +25,22 @@ def create_request():
         return new_request.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+
+@request_routes.route('/<int:request_id>/', methods=['PATCH'])
+@login_required
+def update_request(request_id):
+    form = TradeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        trade_request = Request.query.get(request_id)
+        trade_request.title = form.data['title']
+        trade_request.description = form.data['description']
+        db.session.commit()
+        return trade_request.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @request_routes.route('/')
 def requests():
     requests = Request.query.all()

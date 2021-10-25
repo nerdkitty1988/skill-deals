@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 
 
-const TradeForm = ({setShowCreateModal}) => {
+const NewTradeForm = ({setShowCreateModal}) => {
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -78,4 +78,4 @@ const TradeForm = ({setShowCreateModal}) => {
     )
 }
 
-export default TradeForm;
+export default NewTradeForm;

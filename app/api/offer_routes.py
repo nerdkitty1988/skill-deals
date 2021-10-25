@@ -26,6 +26,20 @@ def create_offer():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@offer_routes.route('/<int:offer_id>/', methods=['PATCH'])
+@login_required
+def update_offer(offer_id):
+    form = TradeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        offer = Offer.query.get(offer_id)
+        offer.title = form.data['title']
+        offer.description = form.data['description']
+        db.session.commit()
+        return offer.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @offer_routes.route('/')
 def offers():
     offers = Offer.query.all()
@@ -50,4 +64,4 @@ def close_offers(user_id):
 
 @offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
-    return (Offer.get(offer_id).to_dict())
+    return (Offer.query.get(offer_id).to_dict())

@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
+import EditTradeForm from "../EditTrade/EditTrade"
+import ReactModal from "react-modal";
 
 const UserPage = () => {
 	//visiting user
 	const sessionUser = useSelector((state) => state.session.user);
 
 	const [user, setUser] = useState();
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [editType, setEditType] = useState('');
+    const [tradeId, setTradeId] = useState(0)
+
 
 	//user profile to display
 	const { userId } = useParams();
@@ -17,11 +23,24 @@ const UserPage = () => {
 		async function fetchUser() {
 			const result = await fetch(`/api/users/${parseInt(userId)}`);
 			const user = await result.json();
-			console.log(user);
 			setUser(user);
 		}
 		fetchUser();
 	}, [userId]);
+
+    const handleOfferEdit = (e) => {
+        e.preventDefault();
+        setEditType('offers');
+        setTradeId(e.target.value);
+        setShowEditModal(true);
+    }
+
+    const handleRequestEdit = (e) => {
+        e.preventDefault();
+        setEditType('requests');
+        setTradeId(e.target.value);
+        setShowEditModal(true);
+    }
 
 	//create offer cards
 	const offerCard =
@@ -53,7 +72,7 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button>Edit</button>
+								<button value={offer.id} onClick={handleOfferEdit}>Edit</button>
 								<button>Delete</button>
 							</div>
 						</NavLink>
@@ -120,7 +139,7 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button>Edit</button>
+								<button value={request.id} onClick={handleRequestEdit}>Edit</button>
 								<button>Delete</button>
 							</div>
 						</NavLink>
@@ -175,7 +194,7 @@ const UserPage = () => {
 						/>
 					</div>
 					<h1 className="profileHeads">{user.username}'s Profile</h1>
-                    <h3>Rating: {user.avgRating.toFixed(2)}%</h3>
+					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
@@ -197,7 +216,7 @@ const UserPage = () => {
 						/>
 					</div>
 					<h1>{user.username}'s Profile</h1>
-                    <h3>Rating: {user.avgRating.toFixed(2)}%</h3>
+					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 				</div>
 			);
@@ -207,15 +226,17 @@ const UserPage = () => {
 	//create reviews block
 	const reviewBlock = !user?.reviewsRecieved ? (
 		<div className="nothingHere">
-				<h1>No reviews yet</h1>
-			</div>
+			<h1>No reviews yet</h1>
+		</div>
 	) : (
 		user?.reviewsRecieved.map((review) => {
 			return (
 				<div key={`review'_${review.id}`} className="reviewDiv">
 					<div key={`review'_${review.id}`} className="singleReview">
 						<h4 className="reviewTitle">{review.comment}</h4>
-                        <h4 className="reviewTitle">Rating: {review.rating}/10</h4>
+						<h4 className="reviewTitle">
+							Rating: {review.rating}/10
+						</h4>
 						<p className="authorName">
 							by: {review.author.username}{" "}
 						</p>
@@ -233,13 +254,26 @@ const UserPage = () => {
 	//final return with  ^^^ blocks ^^^
 	return (
 		<div className="profilePage">
+			<ReactModal
+				isOpen={showEditModal}
+				contentLabel="EditModal"
+				className="loginModal"
+			>
+				<EditTradeForm setShowEditModal={setShowEditModal} editType={editType} tradeId={tradeId} />
+				<button
+					className="windowCloseButton"
+					onClick={() => setShowEditModal(false)}
+				>
+					<i className="fas fa-window-close"></i>
+				</button>
+			</ReactModal>
 			<div className="userInfo">{profileInfo()}</div>
 			<div className="userCards">
 				<h1 className="profileHeads">{user?.username}'s Requests:</h1>
 				<div className="requestPage">{requestCard}</div>
 				<h1 className="profileHeads">{user?.username}'s Offers:</h1>
 				<div className="offerPage">{offerCard}</div>
-                <h1 className="profileHeads">{user?.username}'s Reviews:</h1>
+				<h1 className="profileHeads">{user?.username}'s Reviews:</h1>
 				<div className="reviews">{reviewBlock}</div>
 			</div>
 		</div>
