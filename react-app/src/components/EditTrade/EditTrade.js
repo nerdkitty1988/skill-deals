@@ -5,20 +5,13 @@ import { useHistory } from "react-router-dom";
 const EditTradeForm = (props) => {
 	const [errors, setErrors] = useState([]);
 	const [trade, setTrade] = useState({});
-	const [title, setTitle] = useState(trade?.title);
-	const [description, setDescription] = useState(trade?.description);
+	const [title, setTitle] = useState(props.title);
+	const [description, setDescription] = useState(props.description);
 	const [type, setType] = useState(props.editType);
 
 	const user = useSelector((state) => state.session.user);
 	const history = useHistory();
 
-	useEffect(() => {
-		async function fetchTrade() {
-			const res = await fetch(`/api/${props.editType}/${props.tradeId}/`);
-			const trade = await res.json();
-			setTrade(trade);
-		}
-	}, []);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -45,7 +38,9 @@ const EditTradeForm = (props) => {
 		}
 	};
 
+
 	return (
+
 		<form onSubmit={onSubmit}>
 			<div>
 				{errors.map((error, ind) => (

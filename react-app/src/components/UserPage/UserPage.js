@@ -12,7 +12,9 @@ const UserPage = () => {
 	const [user, setUser] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
     const [editType, setEditType] = useState('');
-    const [tradeId, setTradeId] = useState(0)
+    const [tradeId, setTradeId] = useState(0);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('')
 
 
 	//user profile to display
@@ -31,14 +33,20 @@ const UserPage = () => {
     const handleOfferEdit = (e) => {
         e.preventDefault();
         setEditType('offers');
-        setTradeId(e.target.value);
+        const data = e.target.value.split(', ')
+        setTradeId(data[0]);
+        setTitle(data[1]);
+        setDescription(data[2]);
         setShowEditModal(true);
     }
 
     const handleRequestEdit = (e) => {
         e.preventDefault();
         setEditType('requests');
-        setTradeId(e.target.value);
+        const data = e.target.value.split(', ')
+        setTradeId(data[0]);
+        setTitle(data[1]);
+        setDescription(data[2]);
         setShowEditModal(true);
     }
 
@@ -72,7 +80,7 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={offer.id} onClick={handleOfferEdit}>Edit</button>
+								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={handleOfferEdit}>Edit</button>
 								<button>Delete</button>
 							</div>
 						</NavLink>
@@ -139,7 +147,7 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={request.id} onClick={handleRequestEdit}>Edit</button>
+								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={handleRequestEdit}>Edit</button>
 								<button>Delete</button>
 							</div>
 						</NavLink>
@@ -259,7 +267,7 @@ const UserPage = () => {
 				contentLabel="EditModal"
 				className="loginModal"
 			>
-				<EditTradeForm setShowEditModal={setShowEditModal} editType={editType} tradeId={tradeId} />
+				<EditTradeForm setShowEditModal={setShowEditModal} editType={editType} tradeId={tradeId} title={title} description={description} />
 				<button
 					className="windowCloseButton"
 					onClick={() => setShowEditModal(false)}
