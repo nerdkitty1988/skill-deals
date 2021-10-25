@@ -69,6 +69,7 @@ def sign_up():
             public_email=form.data['public_email'],
             password=form.data['password'],
             address=form.data['address'],
+            range=form.data['range'],
             lat=get_coordinates(form.data['address'])[0],
             lon=get_coordinates(form.data['address'])[1],
             profile_pic = form.data['profile_pic']
