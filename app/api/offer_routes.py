@@ -1,11 +1,29 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, session, request
+from app.api.auth_routes import validation_errors_to_error_messages
+from app.forms.new_trade import TradeForm
 from app.api.route_helpers import Haversine
-from app.models import User, Offer
+from app.models import User, Offer, db
 from flask_login import login_required
 # from app.api.route_helpers import get_distance
 
 
 offer_routes = Blueprint('offers', __name__)
+
+@offer_routes.route('/', methods=['POST'])
+@login_required
+def create_offer():
+    form = TradeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_offer = Offer(
+            title = form.data['title'],
+            description = form.data['description'],
+            user_id = form.data['user_id']
+        )
+        db.session.add(new_offer)
+        db.session.commit()
+        return new_offer.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @offer_routes.route('/')
