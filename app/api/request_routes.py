@@ -43,7 +43,7 @@ def update_request(request_id):
 
 @request_routes.route('/')
 def requests():
-    requests = Request.query.all()
+    requests = Request.query.order_by(Request.time_created).all()
     return {"requests": [request1.to_dict() for request1 in requests]}
 
 
