@@ -37,9 +37,11 @@ class User(db.Model, UserMixin):
 
     def avgRating(self):
         sum = 0
+        avg = 100
         for review in self.reviews_recieved:
             sum = sum + review.rating
-        avg = (sum/len(self.reviews_recieved)) * 10
+        if sum > 0:
+            avg = (sum/len(self.reviews_recieved)) * 10
         return avg;
 
     @password.setter

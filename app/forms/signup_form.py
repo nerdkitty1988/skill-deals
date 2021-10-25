@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from sqlalchemy.sql.sqltypes import String
-from wtforms import StringField
+from wtforms import StringField, FormField
+from wtforms.fields.core import IntegerField
 from wtforms.validators import URL, DataRequired, Email, ValidationError
 from app.models import User
 
@@ -22,6 +23,7 @@ def username_exists(form, field):
 
 
 
+
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
@@ -29,4 +31,5 @@ class SignUpForm(FlaskForm):
     public_email = StringField('public_email', validators=[DataRequired(), Email()])
     password = StringField('password', validators=[DataRequired()])
     address = StringField('address', validators=[DataRequired()])
+    range = IntegerField('range', validators=[DataRequired()])
     profile_pic = StringField('profile_pic')
