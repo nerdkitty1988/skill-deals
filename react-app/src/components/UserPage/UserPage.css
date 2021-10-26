@@ -96,3 +96,30 @@
     font-family: 'Dosis', sans-serif;
     font-size: large;
 }
+
+
+.fa-edit {
+    color: lightcyan;
+    font-size: 18px;
+}
+
+.fa-trash-alt {
+    color: tomato;
+    font-size: 18px;
+}
+
+.editDeleteButtons {
+    background-color: transparent;
+    border: none;
+    color: lightcyan;
+}
+
+.far:hover {
+    cursor: pointer;
+}
+
+
+.editButtonContainer {
+    display: flex;
+    justify-content: space-between;
+}

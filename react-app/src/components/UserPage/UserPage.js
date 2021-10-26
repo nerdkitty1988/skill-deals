@@ -100,18 +100,22 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button
-									value={`${offer.id}, ${offer.title}, ${offer.description}`}
-									onClick={(e) => handleOfferEdit(e)}
-								>
-									Edit
-								</button>
-								<button
-									value={offer.id}
-									onClick={(e) => handleDeleteOffer(e)}
-								>
-									Delete
-								</button>
+                                <div className='editButtonContainer'>
+                                    <button
+                                        className='editDeleteButtons'
+                                        value={`${offer.id}, ${offer.title}, ${offer.description}`}
+                                        onClick={(e) => handleOfferEdit(e)}
+                                    >
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                    <button
+                                        className='editDeleteButtons'
+                                        value={offer.id}
+                                        onClick={(e) => handleDeleteOffer(e)}
+                                    >
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
 							</div>
 						</NavLink>
 					);
@@ -177,18 +181,22 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button
-									value={`${request.id}, ${request.title}, ${request.description}`}
-									onClick={(e) => handleRequestEdit(e)}
-								>
-									Edit
-								</button>
-								<button
-									value={request.id}
-									onClick={(e) => handleDeleteRequest(e)}
-								>
-									Delete
-								</button>
+                                <div className='editButtonContainer'>
+                                    <button
+                                        className='editDeleteButtons'
+                                        value={`${request.id}, ${request.title}, ${request.description}`}
+                                        onClick={(e) => handleRequestEdit(e)}
+                                    >
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                    <button
+                                        className='editDeleteButtons'
+                                        value={request.id}
+                                        onClick={(e) => handleDeleteRequest(e)}
+                                    >
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </div>
 							</div>
 						</NavLink>
 					);
@@ -247,10 +255,11 @@ const UserPage = () => {
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
 					<button
+                        className='editDeleteButtons'
 						type="button"
 						onClick={() => setShowEditProfileModal(true)}
 					>
-						Edit Profile
+						<i class="far fa-edit"></i>Edit Profile
 					</button>
 				</div>
 			);
