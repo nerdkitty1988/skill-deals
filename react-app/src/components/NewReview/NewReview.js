@@ -3,30 +3,46 @@ import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 const NewReview = () => {
-	const history = useHistory();
+    const history = useHistory();
 	const location = useLocation();
-	const [errors, setErrors] = useState([]);
-	const [rating, setRating] = useState();
-	const [comment, setComment] = useState();
-
+    const { review } = location.state
 	const { reviewedUser } = location.state;
+	const [errors, setErrors] = useState([]);
+	const [rating, setRating] = useState(review?.rating);
+	const [comment, setComment] = useState(review?.comment);
+
 	const sessionUser = useSelector((state) => state.session.user);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(reviewedUser.id, rating, comment, sessionUser.id);
-		const res = await fetch("/api/reviews/", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				author_id: sessionUser.id,
-				reviewed_user_id: reviewedUser.id,
-				rating,
-				comment,
-			}),
-		});
+        let res;
+        if(!review) {
+            res = await fetch("/api/reviews/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    author_id: sessionUser.id,
+                    reviewed_user_id: reviewedUser.id,
+                    rating,
+                    comment,
+                }),
+            });
+        }else{
+            res = await fetch(`/api/reviews/${review.id}/`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    author_id: sessionUser.id,
+                    reviewed_user_id: reviewedUser.id,
+                    rating,
+                    comment,
+                }),
+            });
+        }
 		if (res.ok) {
 			const data = await res.json();
 			if (data.errors) {
@@ -67,7 +83,7 @@ const NewReview = () => {
 						name="rating"
 						min="1"
 						max="10"
-						value={rating}
+						defaultValue={rating}
 						onChange={(e) => {
 							setRating(e.target.value);
 						}}
@@ -75,7 +91,7 @@ const NewReview = () => {
 					<label for="comment">Why this rating?</label>
 					<textarea
 						name="comment"
-						value={comment}
+						defaultValue={comment}
 						onChange={(e) => {
 							setComment(e.target.value);
 						}}

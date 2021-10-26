@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, useParams } from "react-router-dom";
+import { NavLink, Link, useParams, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
 import EditTradeForm from "../EditTrade/EditTrade";
@@ -9,6 +9,7 @@ import ReactModal from "react-modal";
 const UserPage = () => {
 	//visiting user
 	const sessionUser = useSelector((state) => state.session.user);
+    const history = useHistory();
 
 	const [user, setUser] = useState();
 	const [showEditModal, setShowEditModal] = useState(false);
@@ -41,18 +42,25 @@ const UserPage = () => {
 		setShowEditModal(true);
 	};
 
-	const handleDeleteRequest = async (e) => {
+	const handleDeleteRequest = async (e, request) => {
 		e.preventDefault();
-		const request_id = e.target.value;
+		const request_id = request.id;
 		await fetch(`/api/requests/delete/${request_id}/`, {
 			method: "DELETE",
 		});
 	};
 
-	const handleDeleteOffer = async (e) => {
+	const handleDeleteOffer = async (e, offer) => {
 		e.preventDefault();
-		const offer_id = e.target.value;
-		await fetch(`/api/requests/delete/${offer_id}/`, {
+		const offer_id = offer.id;
+		await fetch(`/api/offers/delete/${offer_id}/`, {
+			method: "DELETE",
+		});
+	};
+
+	const handleDeleteReview = async (e, review) => {
+		e.preventDefault();
+		await fetch(`/api/reviews/delete/${review.id}/`, {
 			method: "DELETE",
 		});
 	};
@@ -67,7 +75,7 @@ const UserPage = () => {
 			fetchUser();
 		},
 		[userId],
-		[handleDeleteOffer, handleDeleteRequest]
+		[handleDeleteOffer, handleDeleteRequest, handleDeleteReview]
 	);
 
 	//create offer cards
@@ -100,22 +108,21 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-                                <div className='editButtonContainer'>
-                                    <button
-                                        className='editDeleteButtons'
-                                        value={`${offer.id}, ${offer.title}, ${offer.description}`}
-                                        onClick={(e) => handleOfferEdit(e)}
-                                    >
-                                        <i class="far fa-edit"></i>
-                                    </button>
-                                    <button
-                                        className='editDeleteButtons'
-                                        value={offer.id}
-                                        onClick={(e) => handleDeleteOffer(e)}
-                                    >
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-                                </div>
+								<div className="editButtonContainer">
+									<button
+										className="editDeleteButtons"
+										value={`${offer.id}, ${offer.title}, ${offer.description}`}
+										onClick={(e) => handleOfferEdit(e)}
+									>
+										<i className="far fa-edit"></i>
+									</button>
+									<button
+										className="editDeleteButtons"
+										onClick={(e) => handleDeleteOffer(e, offer)}
+									>
+										<i className="far fa-trash-alt"></i>
+									</button>
+								</div>
 							</div>
 						</NavLink>
 					);
@@ -181,22 +188,21 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-                                <div className='editButtonContainer'>
-                                    <button
-                                        className='editDeleteButtons'
-                                        value={`${request.id}, ${request.title}, ${request.description}`}
-                                        onClick={(e) => handleRequestEdit(e)}
-                                    >
-                                        <i class="far fa-edit"></i>
-                                    </button>
-                                    <button
-                                        className='editDeleteButtons'
-                                        value={request.id}
-                                        onClick={(e) => handleDeleteRequest(e)}
-                                    >
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-                                </div>
+								<div className="editButtonContainer">
+									<button
+										className="editDeleteButtons"
+										value={`${request.id}, ${request.title}, ${request.description}`}
+										onClick={(e) => handleRequestEdit(e)}
+									>
+										<i className="far fa-edit"></i>
+									</button>
+									<button
+										className="editDeleteButtons"
+										onClick={(e) => handleDeleteRequest(e, request)}
+									>
+										<i className="far fa-trash-alt"></i>
+									</button>
+								</div>
 							</div>
 						</NavLink>
 					);
@@ -255,11 +261,11 @@ const UserPage = () => {
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
 					<button
-                        className='editDeleteButtons'
+						className="editDeleteButtons"
 						type="button"
 						onClick={() => setShowEditProfileModal(true)}
 					>
-						<i class="far fa-edit"></i>Edit Profile
+						<i className="far fa-edit"></i>Edit Profile
 					</button>
 				</div>
 			);
@@ -280,12 +286,15 @@ const UserPage = () => {
 					<h1>{user.username}'s Profile</h1>
 					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
-					<Link to={{
-                        pathname: "/reviews/add",
-                        state: {
-                             reviewedUser: user
-                        }
-                    }}>
+					<Link
+						to={{
+							pathname: "/reviews/add",
+							state: {
+								reviewedUser: user,
+								review: null,
+							},
+						}}
+					>
 						Write a review for {user.username}
 					</Link>
 				</div>
@@ -315,6 +324,28 @@ const UserPage = () => {
 							POSTED:
 							{new Date(review.createdAt).toLocaleDateString()}
 						</p>
+						{sessionUser.id === review.authorId ? (
+							<div className="editDeleteButtons">
+								<Link
+									to={{
+										pathname: "/reviews/add",
+										state: {
+											review: review,
+											reviewedUser: user,
+										},
+									}}
+								>
+									<i className="far fa-edit" />
+								</Link>
+								<button
+									value={review}
+									onClick={(e) => handleDeleteReview(e, review)}
+									className="editDeleteButtons"
+								>
+									<i className="far fa-trash-alt" />
+								</button>
+							</div>
+						) : null}
 					</div>
 				</div>
 			);

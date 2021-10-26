@@ -76,4 +76,4 @@ def delete_offer(offer_id):
     offer = Offer.query.get(offer_id)
     db.session.delete(offer)
     db.session.commit()
-    return
+    return {'message': 'offer deleted successfully'}
