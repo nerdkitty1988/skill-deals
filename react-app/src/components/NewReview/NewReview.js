@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+import './NewReview.css';
 
 const NewReview = () => {
     const history = useHistory();
@@ -71,14 +72,15 @@ const NewReview = () => {
 					After you rate your experience, please provide an
 					explaination of why you gave the rating you did.
 				</p>
-				<form onSubmit={(e) => onSubmit(e)}>
+				<form className='addReviewForm' onSubmit={(e) => onSubmit(e)}>
 					<div>
 						{errors.map((error, ind) => (
 							<div key={ind}>{error}</div>
 						))}
 					</div>
-					<label for="rating">Rating</label>
+					<label className='addReviewLabel' for="rating">Rating</label>
 					<input
+                        className='addReviewInput'
 						type="number"
 						name="rating"
 						min="1"
@@ -88,15 +90,16 @@ const NewReview = () => {
 							setRating(e.target.value);
 						}}
 					/>
-					<label for="comment">Why this rating?</label>
+					<label className='addReviewLabel' for="comment">Why this rating?</label>
 					<textarea
+                        className='addReviewText'
 						name="comment"
 						defaultValue={comment}
 						onChange={(e) => {
 							setComment(e.target.value);
 						}}
 					/>
-					<button type="submit">Submit</button>
+					<button className='createReviewButton' type="submit">Submit</button>
 				</form>
 			</div>
 		</div>
