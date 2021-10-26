@@ -66,7 +66,7 @@ const UserPage = () => {
 			}
 			fetchUser();
 		},
-		[sessionUser],
+		[userId],
 		[handleDeleteOffer, handleDeleteRequest]
 	);
 

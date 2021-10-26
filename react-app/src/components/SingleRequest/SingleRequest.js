@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./SingleRequest.css";
 
 
@@ -12,7 +11,6 @@ const SingleRequest = () => {
         async function fetchData() {
             const res = await fetch(`/api/requests/${requestId}/`);
             await res.json().then((data) => {
-                console.log(data)
                 setRequest(data.request);
             });
         }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const NewReview = () => {
 	const history = useHistory();
-    const location = useLocation()
+	const location = useLocation();
 	const [errors, setErrors] = useState([]);
 	const [rating, setRating] = useState();
 	const [comment, setComment] = useState();
@@ -43,7 +43,8 @@ const NewReview = () => {
 		<div className="wholeReview">
 			<div className="reviewFormBox">
 				<p className="describeEdit">
-					Please rate your interaction with this user {reviewedUser.username}.{" "}
+					Please rate your interaction with this user{" "}
+					{reviewedUser.username}.{" "}
 				</p>
 				<p className="describeEdit">
 					Use a value between 1 and 10; 1 Being the worst experience,
@@ -55,6 +56,11 @@ const NewReview = () => {
 					explaination of why you gave the rating you did.
 				</p>
 				<form onSubmit={(e) => onSubmit(e)}>
+					<div>
+						{errors.map((error, ind) => (
+							<div key={ind}>{error}</div>
+						))}
+					</div>
 					<label for="rating">Rating</label>
 					<input
 						type="number"

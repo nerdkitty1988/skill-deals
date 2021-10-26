@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./SingleOffer.css";
 
 
@@ -12,7 +11,6 @@ const SingleOffer = () => {
         async function fetchData() {
             const res = await fetch(`/api/offers/${offerId}/`);
             await res.json().then((data) => {
-                console.log(data)
                 setOffer(data.offer);
             });
         }
