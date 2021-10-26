@@ -8,6 +8,7 @@ import Splash from './components/Splash/Splash';
 import Footer from './components/Footer/Footer';
 import Request from './components/Request/Request';
 import Offer from './components/Offer/Offer';
+import NewReview from './components/NewReview/NewReview';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import UserPage from './components/UserPage/UserPage';
@@ -39,6 +40,9 @@ function App() {
         </Route>
         <ProtectedRoute path='/requests' exact={true} >
           <Request />
+        </ProtectedRoute>
+        <ProtectedRoute path='/reviews/add' exact={true} >
+          <NewReview />
         </ProtectedRoute>
         <ProtectedRoute path='/offers' exact={true} >
           <Offer />
