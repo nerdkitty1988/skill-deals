@@ -9,6 +9,7 @@ from flask_login import login_required
 
 offer_routes = Blueprint('offers', __name__)
 
+
 @offer_routes.route('/', methods=['POST'])
 @login_required
 def create_offer():
@@ -16,9 +17,9 @@ def create_offer():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_offer = Offer(
-            title = form.data['title'],
-            description = form.data['description'],
-            user_id = form.data['user_id']
+            title=form.data['title'],
+            description=form.data['description'],
+            user_id=form.data['user_id']
         )
         db.session.add(new_offer)
         db.session.commit()
