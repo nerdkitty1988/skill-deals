@@ -282,6 +282,7 @@ const UserPage = () => {
 					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<Link
+                        className='addReviewButton'
 						to={{
 							pathname: "/reviews/add",
 							state: {
