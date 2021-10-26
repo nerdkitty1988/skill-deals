@@ -30,7 +30,7 @@ const EditTradeForm = (props) => {
 				setErrors(data.errors);
 			} else {
 				props.setShowEditModal(false);
-				history.push(`/user/${user.id}`);
+				history.push(`/users/${user.id}`);
 			}
 		} else {
 			return ["An error occured.  Please try again."];

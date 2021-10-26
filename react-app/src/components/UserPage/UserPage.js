@@ -64,11 +64,10 @@ const UserPage = () => {
     useEffect(() => {
         async function fetchUser() {
             const result = await fetch(`/api/users/${parseInt(userId)}/`);
-            const user = await result.json();
-            setUser(user);
+            await result.json().then((newUser) => setUser(newUser))
         }
         fetchUser();
-    }, [userId], [handleDeleteRequest, handleDeleteOffer]);
+    }, [sessionUser]);
 
 
 	//create offer cards
@@ -101,8 +100,8 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={handleOfferEdit}>Edit</button>
-								<button value={offer.id} onClick={handleDeleteOffer}>Delete</button>
+								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={(e)=>handleOfferEdit(e)}>Edit</button>
+								<button value={offer.id} onClick={(e)=>handleDeleteOffer(e)}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -168,8 +167,8 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={handleRequestEdit}>Edit</button>
-								<button value={request.id} onClick={handleDeleteRequest}>Delete</button>
+								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={(e)=>handleRequestEdit(e)}>Edit</button>
+								<button value={request.id} onClick={(e)=>handleDeleteRequest(e)}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -227,7 +226,7 @@ const UserPage = () => {
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
-					<button type="button">Edit Profile</button>
+					<button type="button" onClick={()=>setShowEditProfileModal(true)}>Edit Profile</button>
 				</div>
 			);
 		} else if (sessionUser && user && sessionUser.id !== user.id) {

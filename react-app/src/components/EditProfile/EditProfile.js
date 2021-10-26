@@ -1,52 +1,44 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { editUser } from "../../store/session";
 
 
 const EditProfileForm = (props) => {
-	const sessionUser = useSelector((state) => state.session.user);
 	const [errors, setErrors] = useState([]);
-    const [username, setUsername] = useState(sessionUser.username)
-	const [email, setEmail] = useState(sessionUser.email);
-	const [publicEmail, setPublicEmail] = useState(sessionUser.publicEmail);
-	const [range, setRange] = useState(sessionUser.range);
-	const [address, setAddress] = useState(sessionUser.address);
-    const [profilePic, setProfilePic] = useState(sessionUser.profilePic)
+	const [public_email, setPublicEmail] = useState(props.user.publicEmail);
+	const [range, setRange] = useState(props.user.range);
+	const [address, setAddress] = useState(props.user.address);
+    const [profile_pic, setProfilePic] = useState(props.user.profilePic)
 
+	const sessionUser = useSelector((state) => state.session.user);
+    const userId = sessionUser?.id;
 	const history = useHistory();
+    const dispatch = useDispatch();
 
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const res = await fetch(`/api/users/edit/${sessionUser.id}/`, {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-                username,
-				email,
-				publicEmail,
+		const data = await dispatch(
+            editUser(
+                userId,
+                public_email,
                 range,
                 address,
-                profilePic
-			}),
-		});
-		if (res.ok) {
-			const data = await res.json();
-			if (data.errors) {
-				setErrors(data.errors);
-			} else {
-				props.setShowEditProfileModal(false);
-				history.push(`/users/${sessionUser.id}`);
-			}
-		} else {
-			return ["An error occured.  Please try again."];
-		}
+                profile_pic
+            )
+        )
+		if (data) {
+            setErrors(data)
+        }else{
+            props.setShowEditProfileModal(false);
+            history.push(`/users/${userId}`)
+        }
 	};
+
     return (
 
-		<form onSubmit={onSubmit}>
+		<form onSubmit={(e)=> onSubmit(e)}>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
@@ -54,41 +46,18 @@ const EditProfileForm = (props) => {
 			</div>
 
             <div>
-				<label for="username">Username</label>
+				<label htmlFor="public_email">Public Email</label>
 				<input
 					type="text"
-					name="username"
-					onChange={(e) => {
-						setUsername(e.target.value);
-					}}
-					defaultValue={username}
-				/>
-			</div>
-
-			<div>
-				<label for="email">Email</label>
-				<input
-					type="text"
-					name="email"
-					onChange={(e) => {
-						setEmail(e.target.value);
-					}}
-					defaultValue={email}
-				/>
-			</div>
-            <div>
-				<label for="publicEmail">Public Email</label>
-				<input
-					type="text"
-					name="publicEmail"
+					name="public_email"
 					onChange={(e) => {
 						setPublicEmail(e.target.value);
 					}}
-					defaultValue={publicEmail}
+					defaultValue={public_email}
 				/>
 			</div>
 			<div>
-				<label for="range">Mile Range</label>
+				<label htmlFor="range">Mile Range</label>
 				<input
 					name="range"
 					onChange={(e) => {
@@ -98,7 +67,7 @@ const EditProfileForm = (props) => {
 				/>
 			</div>
             <div>
-				<label for="address">Address</label>
+				<label htmlFor="address">Address</label>
 				<textarea
 					name="address"
 					onChange={(e) => {
@@ -108,13 +77,13 @@ const EditProfileForm = (props) => {
 				/>
 			</div>
             <div>
-				<label for="profilePic">Profile Photo URL</label>
+				<label htmlFor="profile_pic">Profile Photo URL</label>
 				<input
-					name="profilePic"
+					name="profile_pic"
 					onChange={(e) => {
 						setProfilePic(e.target.value);
 					}}
-					defaultValue={profilePic}
+					defaultValue={profile_pic}
 				/>
 			</div>
 			<button type="submit">Submit</button>
