@@ -31,3 +31,30 @@ def add_review():
         db.session.commit()
         return new_review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@review_routes.route('/<int:id>/', methods=['PATCH'])
+@login_required
+def update_review(id):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review.query.get(id)
+
+        review.author_id=form.data['author_id'],
+        review.reviewed_user_id=form.data['reviewed_user_id'],
+        review.rating=form.data['rating'],
+        review.comment=form.data['comment']
+
+        db.session.commit()
+        return {'review': review.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@review_routes.route('/delete/<int:review_id>/', methods=['DELETE'])
+@login_required
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    db.session.delete(review)
+    db.session.commit()
+    return {'message': 'review deleted successfully'}

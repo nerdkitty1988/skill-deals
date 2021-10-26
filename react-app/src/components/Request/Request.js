@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./Request.css";
 
 const Request = () => {
-	const sessionUser = useSelector((state) => state.session.user);
 
 	const [requests, setRequests] = useState([]);
 

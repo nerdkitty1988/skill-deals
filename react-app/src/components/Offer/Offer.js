@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./Offer.css";
 
 const Offer = () => {
-	const sessionUser = useSelector((state) => state.session.user);
 
 	const [offers, setOffers] = useState([]);
 

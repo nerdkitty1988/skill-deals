@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 import "./SingleOffer.css";
 
 
@@ -12,7 +11,6 @@ const SingleOffer = () => {
         async function fetchData() {
             const res = await fetch(`/api/offers/${offerId}/`);
             await res.json().then((data) => {
-                console.log(data)
                 setOffer(data.offer);
             });
         }
@@ -22,10 +20,10 @@ const SingleOffer = () => {
     return (
         <div className="wholeTradePage">
             <div className="tradeContainer">
-                <h1>{offer?.title}</h1>
-                <NavLink to={`/users/${offer?.userId}`} ><h2>by: {offer?.user.username}</h2></NavLink>
-                <h2>Posted on: {new Date(offer?.createdAt).toLocaleDateString()}</h2>
-                <p>Description: {offer?.description}</p>
+                <h1 className='title'>{offer?.title}</h1>
+                <NavLink className='authorLink' to={`/users/${offer?.userId}`} ><h2>by: {offer?.user.username}</h2></NavLink>
+                <h2 className='postedDate'>Posted on: {new Date(offer?.createdAt).toLocaleDateString()}</h2>
+                <p className='description'>Description: {offer?.description}</p>
             </div>
         </div>
     )

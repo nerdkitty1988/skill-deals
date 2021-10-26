@@ -76,4 +76,4 @@ def delete_request(request_id):
     request = Request.query.get(request_id)
     db.session.delete(request)
     db.session.commit()
-    return
+    return {'message': 'request deleted successfully'}

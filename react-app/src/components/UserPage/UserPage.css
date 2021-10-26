@@ -73,7 +73,7 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 3px 3px rgba(78, 78, 78, 0.555);
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .nothingHere {
@@ -95,4 +95,31 @@
     color: rgb(187, 214, 214);
     font-family: 'Dosis', sans-serif;
     font-size: large;
+}
+
+
+.fa-edit {
+    color: lightcyan;
+    font-size: 18px;
+}
+
+.fa-trash-alt {
+    color: tomato;
+    font-size: 18px;
+}
+
+.editDeleteButtons {
+    background-color: transparent;
+    border: none;
+    color: lightcyan;
+}
+
+.far:hover {
+    cursor: pointer;
+}
+
+
+.editButtonContainer {
+    display: flex;
+    justify-content: space-between;
 }
