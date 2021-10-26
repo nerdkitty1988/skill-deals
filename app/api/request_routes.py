@@ -66,7 +66,8 @@ def close_requests(user_id):
 
 @request_routes.route('/<int:request_id>/')
 def single_request(request_id):
-    return (Request.get(request_id).to_dict())
+    single_request = Request.query.get(request_id)
+    return {"request": single_request.to_dict()}
 
 
 @request_routes.route('/delete/<int:request_id>/', methods=['DELETE'])

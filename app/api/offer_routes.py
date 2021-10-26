@@ -66,7 +66,8 @@ def close_offers(user_id):
 
 @offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
-    return (Offer.query.get(offer_id).to_dict())
+    offer = Offer.query.get(offer_id)
+    return {"offer": offer.to_dict()}
 
 
 @offer_routes.route('/delete/<int:offer_id>/', methods=['DELETE'])
