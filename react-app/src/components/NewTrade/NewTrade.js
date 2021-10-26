@@ -30,7 +30,7 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 				setErrors(data.errors);
 			} else {
 				setShowCreateModal(false);
-				history.push(`/user/${user.id}`);
+				history.push(`/users/${user.id}`);
 			}
 		} else {
 			return ["An error occured.  Please try again."];

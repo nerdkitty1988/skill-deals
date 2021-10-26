@@ -5,6 +5,7 @@ from app.models import User, Request, db
 from flask_login import login_required
 # from app.api.route_helpers import get_distance
 from app.api.route_helpers import Haversine
+from sqlalchemy import desc
 
 
 request_routes = Blueprint('requests', __name__)
@@ -43,7 +44,7 @@ def update_request(request_id):
 
 @request_routes.route('/')
 def requests():
-    requests = Request.query.order_by(Request.time_created).all()
+    requests = Request.query.order_by(desc(Request.time_created)).all()
     return {"requests": [request1.to_dict() for request1 in requests]}
 
 
@@ -65,7 +66,8 @@ def close_requests(user_id):
 
 @request_routes.route('/<int:request_id>/')
 def single_request(request_id):
-    return (Request.get(request_id).to_dict())
+    single_request = Request.query.get(request_id)
+    return {"request": single_request.to_dict()}
 
 
 @request_routes.route('/delete/<int:request_id>/', methods=['DELETE'])

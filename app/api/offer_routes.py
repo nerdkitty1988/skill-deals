@@ -4,6 +4,7 @@ from app.forms.new_trade import TradeForm
 from app.api.route_helpers import Haversine
 from app.models import User, Offer, db
 from flask_login import login_required
+from sqlalchemy import desc
 # from app.api.route_helpers import get_distance
 
 
@@ -43,7 +44,7 @@ def update_offer(offer_id):
 
 @offer_routes.route('/')
 def offers():
-    offers = Offer.query.all()
+    offers = Offer.query.order_by(desc(Offer.time_created)).all()
     return {"offers": [offer.to_dict() for offer in offers]}
 
 
@@ -65,7 +66,8 @@ def close_offers(user_id):
 
 @offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
-    return (Offer.query.get(offer_id).to_dict())
+    offer = Offer.query.get(offer_id)
+    return {"offer": offer.to_dict()}
 
 
 @offer_routes.route('/delete/<int:offer_id>/', methods=['DELETE'])
