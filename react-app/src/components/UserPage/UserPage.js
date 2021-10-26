@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
 import EditTradeForm from "../EditTrade/EditTrade"
+import EditProfileForm from "../EditProfile/EditProfile";
 import ReactModal from "react-modal";
 
 const UserPage = () => {
@@ -11,6 +12,7 @@ const UserPage = () => {
 
 	const [user, setUser] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showEditProfileModal, setShowEditProfileModal] = useState(false);
     const [editType, setEditType] = useState('');
     const [tradeId, setTradeId] = useState(0);
     const [title, setTitle] = useState('');
@@ -44,7 +46,7 @@ const UserPage = () => {
     const handleDeleteRequest = async(e) => {
         e.preventDefault();
         const request_id = e.target.value;
-        const res = await fetch(`/api/requests/${request_id}/`, {
+        await fetch(`/api/requests/delete/${request_id}/`, {
             method: 'DELETE'
         })
     }
@@ -53,7 +55,7 @@ const UserPage = () => {
     const handleDeleteOffer = async(e) => {
         e.preventDefault();
         const offer_id = e.target.value;
-        const res = await fetch(`/api/requests/${offer_id}/`, {
+        await fetch(`/api/requests/delete/${offer_id}/`, {
             method: 'DELETE'
         })
     }
@@ -61,12 +63,11 @@ const UserPage = () => {
     //get visiting user
     useEffect(() => {
         async function fetchUser() {
-            const result = await fetch(`/api/users/${parseInt(userId)}`);
-            const user = await result.json();
-            setUser(user);
+            const result = await fetch(`/api/users/${parseInt(userId)}/`);
+            await result.json().then((newUser) => setUser(newUser))
         }
         fetchUser();
-    }, [userId, handleDeleteRequest, handleDeleteOffer]);
+    }, [sessionUser, handleDeleteOffer, handleDeleteRequest]);
 
 
 	//create offer cards
@@ -99,8 +100,8 @@ const UserPage = () => {
 										offer.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={handleOfferEdit}>Edit</button>
-								<button value={offer.id} onClick={handleDeleteOffer}>Delete</button>
+								<button value={`${offer.id}, ${offer.title}, ${offer.description}`} onClick={(e)=>handleOfferEdit(e)}>Edit</button>
+								<button value={offer.id} onClick={(e)=>handleDeleteOffer(e)}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -166,8 +167,8 @@ const UserPage = () => {
 										request.createdAt
 									).toLocaleDateString()}
 								</p>
-								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={handleRequestEdit}>Edit</button>
-								<button value={request.id} onClick={handleDeleteRequest}>Delete</button>
+								<button value={`${request.id}, ${request.title}, ${request.description}`} onClick={(e)=>handleRequestEdit(e)}>Edit</button>
+								<button value={request.id} onClick={(e)=>handleDeleteRequest(e)}>Delete</button>
 							</div>
 						</NavLink>
 					);
@@ -225,7 +226,7 @@ const UserPage = () => {
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
 					<h3>Address: {user.address}</h3>
-					<button type="button">Edit Profile</button>
+					<button type="button" onClick={()=>setShowEditProfileModal(true)}>Edit Profile</button>
 				</div>
 			);
 		} else if (sessionUser && user && sessionUser.id !== user.id) {
@@ -290,6 +291,19 @@ const UserPage = () => {
 				<button
 					className="windowCloseButton"
 					onClick={() => setShowEditModal(false)}
+				>
+					<i className="fas fa-window-close"></i>
+				</button>
+			</ReactModal>
+            <ReactModal
+				isOpen={showEditProfileModal}
+				contentLabel="EditProfileModal"
+				className="loginModal"
+			>
+				<EditProfileForm setShowEditProfileModal={setShowEditProfileModal} user={sessionUser} />
+				<button
+					className="windowCloseButton"
+					onClick={() => setShowEditProfileModal(false)}
 				>
 					<i className="fas fa-window-close"></i>
 				</button>

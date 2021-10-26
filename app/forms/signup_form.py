@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
-from sqlalchemy.sql.sqltypes import String
-from wtforms import StringField, FormField
+from wtforms import StringField
 from wtforms.fields.core import IntegerField
-from wtforms.validators import URL, DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 

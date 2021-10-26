@@ -37,7 +37,7 @@ const NavBar = () => {
 						All Requests
 					</NavLink>
 					<NavLink
-						to={`/user/${sessionUser?.id}`}
+						to={`/users/${sessionUser?.id}`}
 						exact={true}
 						className="navbarButtons"
 					>
@@ -48,7 +48,7 @@ const NavBar = () => {
 						id="addCard"
 						onClick={() => setShowCreateModal(true)}
 					>
-						Add Offer or Request <i class="fas fa-plus-circle"></i>
+						Add Offer or Request <i className="fas fa-plus-circle"></i>
 					</button>
 					<ReactModal
 						isOpen={showCreateModal}

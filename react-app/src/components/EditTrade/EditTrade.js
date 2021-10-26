@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const EditTradeForm = (props) => {
 	const [errors, setErrors] = useState([]);
-	const [trade, setTrade] = useState({});
 	const [title, setTitle] = useState(props.title);
 	const [description, setDescription] = useState(props.description);
 	const [type, setType] = useState(props.editType);
@@ -15,7 +14,7 @@ const EditTradeForm = (props) => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const res = await fetch(`/api/${props.editType}/${props.tradeId}/`, {
+		const res = await fetch(`/api/${props.editType}/edit/${props.tradeId}/`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
@@ -31,7 +30,7 @@ const EditTradeForm = (props) => {
 				setErrors(data.errors);
 			} else {
 				props.setShowEditModal(false);
-				history.push(`/user/${user.id}`);
+				history.push(`/users/${user.id}`);
 			}
 		} else {
 			return ["An error occured.  Please try again."];
@@ -80,7 +79,7 @@ const EditTradeForm = (props) => {
 					defaultValue={description}
 				/>
 			</div>
-			<button type="submit">Edit</button>
+			<button type="submit">Submit</button>
 		</form>
 	);
 };
