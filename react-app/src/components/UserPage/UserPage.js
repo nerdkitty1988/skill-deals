@@ -3,6 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
 import EditTradeForm from "../EditTrade/EditTrade"
+import EditProfileForm from "../EditProfile/EditProfile";
 import ReactModal from "react-modal";
 
 const UserPage = () => {
@@ -11,6 +12,7 @@ const UserPage = () => {
 
 	const [user, setUser] = useState();
     const [showEditModal, setShowEditModal] = useState(false);
+    const [showEditProfileModal, setShowEditProfileModal] = useState(false);
     const [editType, setEditType] = useState('');
     const [tradeId, setTradeId] = useState(0);
     const [title, setTitle] = useState('');
@@ -44,7 +46,7 @@ const UserPage = () => {
     const handleDeleteRequest = async(e) => {
         e.preventDefault();
         const request_id = e.target.value;
-        const res = await fetch(`/api/requests/${request_id}/`, {
+        await fetch(`/api/requests/${request_id}/`, {
             method: 'DELETE'
         })
     }
@@ -53,7 +55,7 @@ const UserPage = () => {
     const handleDeleteOffer = async(e) => {
         e.preventDefault();
         const offer_id = e.target.value;
-        const res = await fetch(`/api/requests/${offer_id}/`, {
+        await fetch(`/api/requests/${offer_id}/`, {
             method: 'DELETE'
         })
     }
@@ -66,7 +68,7 @@ const UserPage = () => {
             setUser(user);
         }
         fetchUser();
-    }, [userId, handleDeleteRequest, handleDeleteOffer]);
+    }, [userId], [handleDeleteRequest, handleDeleteOffer]);
 
 
 	//create offer cards
@@ -290,6 +292,19 @@ const UserPage = () => {
 				<button
 					className="windowCloseButton"
 					onClick={() => setShowEditModal(false)}
+				>
+					<i className="fas fa-window-close"></i>
+				</button>
+			</ReactModal>
+            <ReactModal
+				isOpen={showEditProfileModal}
+				contentLabel="EditProfileModal"
+				className="loginModal"
+			>
+				<EditProfileForm setShowEditProfileModal={setShowEditProfileModal} user={sessionUser} />
+				<button
+					className="windowCloseButton"
+					onClick={() => setShowEditProfileModal(false)}
 				>
 					<i className="fas fa-window-close"></i>
 				</button>

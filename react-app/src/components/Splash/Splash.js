@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 import "./Splash.css";
 import Home from "../Home/Home";
 import { useSelector } from "react-redux";

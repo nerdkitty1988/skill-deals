@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, jsonify, request
 from app.api.auth_routes import validation_errors_to_error_messages
 from app.forms.new_trade import TradeForm
 from app.models import User, Request, db
@@ -74,4 +74,4 @@ def delete_request(request_id):
     request = Request.query.get(request_id)
     db.session.delete(request)
     db.session.commit()
-    return {'message' ['Deleted Successfully']}
+    return

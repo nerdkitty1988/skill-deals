@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const EditTradeForm = (props) => {
 	const [errors, setErrors] = useState([]);
-	const [trade, setTrade] = useState({});
 	const [title, setTitle] = useState(props.title);
 	const [description, setDescription] = useState(props.description);
 	const [type, setType] = useState(props.editType);
@@ -80,7 +79,7 @@ const EditTradeForm = (props) => {
 					defaultValue={description}
 				/>
 			</div>
-			<button type="submit">Edit</button>
+			<button type="submit">Submit</button>
 		</form>
 	);
 };
