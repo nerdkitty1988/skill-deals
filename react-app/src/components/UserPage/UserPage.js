@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Link, useParams, useHistory } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./UserPage.css";
 import EditTradeForm from "../EditTrade/EditTrade";
@@ -9,7 +9,6 @@ import ReactModal from "react-modal";
 const UserPage = () => {
 	//visiting user
 	const sessionUser = useSelector((state) => state.session.user);
-    const history = useHistory();
 
 	const [user, setUser] = useState();
 	const [showEditModal, setShowEditModal] = useState(false);
@@ -22,23 +21,21 @@ const UserPage = () => {
 	//user profile to display
 	const { userId } = useParams();
 
-	const handleOfferEdit = (e) => {
+	const handleOfferEdit = (e, offer) => {
 		e.preventDefault();
 		setEditType("offers");
-		const data = e.target.value.split(", ");
-		setTradeId(data[0]);
-		setTitle(data[1]);
-		setDescription(data[2]);
+		setTradeId(offer.id);
+		setTitle(offer.title);
+		setDescription(offer.description);
 		setShowEditModal(true);
 	};
 
-	const handleRequestEdit = (e) => {
+	const handleRequestEdit = (e, request) => {
 		e.preventDefault();
 		setEditType("requests");
-		const data = e.target.value.split(", ");
-		setTradeId(data[0]);
-		setTitle(data[1]);
-		setDescription(data[2]);
+		setTradeId(request.id);
+		setTitle(request.title);
+		setDescription(request.description);
 		setShowEditModal(true);
 	};
 
@@ -111,8 +108,7 @@ const UserPage = () => {
 								<div className="editButtonContainer">
 									<button
 										className="editDeleteButtons"
-										value={`${offer.id}, ${offer.title}, ${offer.description}`}
-										onClick={(e) => handleOfferEdit(e)}
+										onClick={(e) => handleOfferEdit(e, offer)}
 									>
 										<i className="far fa-edit"></i>
 									</button>
@@ -191,8 +187,7 @@ const UserPage = () => {
 								<div className="editButtonContainer">
 									<button
 										className="editDeleteButtons"
-										value={`${request.id}, ${request.title}, ${request.description}`}
-										onClick={(e) => handleRequestEdit(e)}
+										onClick={(e) => handleRequestEdit(e, request)}
 									>
 										<i className="far fa-edit"></i>
 									</button>
