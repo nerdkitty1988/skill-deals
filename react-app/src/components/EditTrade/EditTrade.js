@@ -14,7 +14,7 @@ const EditTradeForm = (props) => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const res = await fetch(`/api/${props.editType}/${props.tradeId}/`, {
+		const res = await fetch(`/api/${props.editType}/edit/${props.tradeId}/`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",

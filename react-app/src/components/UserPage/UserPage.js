@@ -46,7 +46,7 @@ const UserPage = () => {
     const handleDeleteRequest = async(e) => {
         e.preventDefault();
         const request_id = e.target.value;
-        await fetch(`/api/requests/${request_id}/`, {
+        await fetch(`/api/requests/delete/${request_id}/`, {
             method: 'DELETE'
         })
     }
@@ -55,7 +55,7 @@ const UserPage = () => {
     const handleDeleteOffer = async(e) => {
         e.preventDefault();
         const offer_id = e.target.value;
-        await fetch(`/api/requests/${offer_id}/`, {
+        await fetch(`/api/requests/delete/${offer_id}/`, {
             method: 'DELETE'
         })
     }
@@ -63,7 +63,7 @@ const UserPage = () => {
     //get visiting user
     useEffect(() => {
         async function fetchUser() {
-            const result = await fetch(`/api/users/${parseInt(userId)}`);
+            const result = await fetch(`/api/users/${parseInt(userId)}/`);
             const user = await result.json();
             setUser(user);
         }

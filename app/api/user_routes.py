@@ -16,9 +16,9 @@ def users():
 
 
 
-@user_routes.route('/<int:id>/', methods=['PATCH'])
+@user_routes.route('/edit/<int:id>/', methods=['PATCH'])
 @login_required
-def user(id):
+def edit_user(id):
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -31,3 +31,10 @@ def user(id):
         user.profilePic = form.data['profilePic']
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@user_routes.route('/<int:id>/')
+@login_required
+def user(id):
+    user = User.query.get(id)
+    return user.to_dict()

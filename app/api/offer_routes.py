@@ -26,7 +26,7 @@ def create_offer():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@offer_routes.route('/<int:offer_id>/', methods=['PATCH'])
+@offer_routes.route('/edit/<int:offer_id>/', methods=['PATCH'])
 @login_required
 def update_offer(offer_id):
     form = TradeForm()
@@ -67,7 +67,7 @@ def single_offer(offer_id):
     return (Offer.query.get(offer_id).to_dict())
 
 
-@offer_routes.route('/<int:offer_id>/', methods=['DELETE'])
+@offer_routes.route('/delete/<int:offer_id>/', methods=['DELETE'])
 @login_required
 def delete_offer(offer_id):
     offer = Offer.query.get(offer_id)

@@ -4,21 +4,21 @@ import { useHistory } from "react-router-dom";
 
 
 const EditProfileForm = (props) => {
+	const sessionUser = useSelector((state) => state.session.user);
 	const [errors, setErrors] = useState([]);
-    const [username, setUsername] = useState(props.user.username)
-	const [email, setEmail] = useState(props.user.email);
-	const [publicEmail, setPublicEmail] = useState(props.user.publicEmail);
-	const [range, setRange] = useState(props.user.range);
-	const [address, setAddress] = useState(props.user.address);
-    const [profilePic, setProfilePic] = useState(props.user.profilePic)
+    const [username, setUsername] = useState(sessionUser.username)
+	const [email, setEmail] = useState(sessionUser.email);
+	const [publicEmail, setPublicEmail] = useState(sessionUser.publicEmail);
+	const [range, setRange] = useState(sessionUser.range);
+	const [address, setAddress] = useState(sessionUser.address);
+    const [profilePic, setProfilePic] = useState(sessionUser.profilePic)
 
-	const user = useSelector((state) => state.session.user);
 	const history = useHistory();
 
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const res = await fetch(`/api/users/${props.user.id}/`, {
+		const res = await fetch(`/api/users/edit/${sessionUser.id}/`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
@@ -38,7 +38,7 @@ const EditProfileForm = (props) => {
 				setErrors(data.errors);
 			} else {
 				props.setShowEditProfileModal(false);
-				history.push(`/users/${user.id}`);
+				history.push(`/users/${sessionUser.id}`);
 			}
 		} else {
 			return ["An error occured.  Please try again."];

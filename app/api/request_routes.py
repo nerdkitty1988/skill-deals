@@ -27,7 +27,7 @@ def create_request():
 
 
 
-@request_routes.route('/<int:request_id>/', methods=['PATCH'])
+@request_routes.route('/edit/<int:request_id>/', methods=['PATCH'])
 @login_required
 def update_request(request_id):
     form = TradeForm()
@@ -68,7 +68,7 @@ def single_request(request_id):
     return (Request.get(request_id).to_dict())
 
 
-@request_routes.route('/<int:request_id>/', methods=['DELETE'])
+@request_routes.route('/delete/<int:request_id>/', methods=['DELETE'])
 @login_required
 def delete_request(request_id):
     request = Request.query.get(request_id)
