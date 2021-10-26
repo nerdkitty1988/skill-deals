@@ -67,7 +67,7 @@ const UserPage = () => {
             await result.json().then((newUser) => setUser(newUser))
         }
         fetchUser();
-    }, [sessionUser]);
+    }, [sessionUser, handleDeleteOffer, handleDeleteRequest]);
 
 
 	//create offer cards
