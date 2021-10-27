@@ -5,12 +5,14 @@ import "./Offer.css";
 const Offer = () => {
 
 	const [offers, setOffers] = useState([]);
+    const [offerDistance, setOfferDistance] = useState({});
 
 	useEffect(() => {
 		async function fetchData() {
 			const res = await fetch(`/api/offers/`);
 			await res.json().then((offers) => {
 				setOffers(offers.offers);
+                setOfferDistance(offers.offerDistance)
 			});
 		}
 		fetchData();
@@ -26,8 +28,8 @@ const Offer = () => {
 				<div key={`offer'_${offer.id}`} className="singleOffer">
 					<h4 className="offerTitle">{offer.title}</h4>
 					<p className="authorName">by: {offer.user.username} </p>
-					{/* <p className="distance">{reqDistance[Offer.id]} miles away</p> */}
-					<p className="posted">
+					<p className="distance">{offerDistance[offer.id] ? offerDistance[offer.id].toFixed() : offerDistance[offer.id]} miles away</p>
+                    <p>
 						POSTED:{new Date(offer.createdAt).toLocaleDateString()}
 					</p>
 				</div>
