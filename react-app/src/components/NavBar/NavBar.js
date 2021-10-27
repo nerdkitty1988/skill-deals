@@ -19,53 +19,69 @@ const NavBar = () => {
 	let requestBlock;
 	let userBlock;
 	if (searchOffers || searchRequests || searchUsers) {
+        let offerIds = [];
+        let requestIds = [];
+        let userIds = [];
+
 		offerBlock = searchOffers?.map((offer, i) => {
-			return (
-				<div key={offer.id}>
-					<a
-						key={`link${i}`}
-						href={`/offers/${offer.id}`}
-						className="tradeNav"
-					>
-						<div key={`liked'_${offer.id}`} className="singleTrade">
-							<h4 className="tradeTitle">{offer.title}</h4>
-						</div>
-					</a>
-				</div>
-			);
+            if(offerIds.includes(offer.id)) return
+            else {
+                offerIds.push(offer.id);
+                return (
+                    <div key={`offerS_${offer.id}`}>
+                        <a
+                            key={`link${i}`}
+                            href={`/offers/${offer.id}`}
+                            className="tradeNav"
+                        >
+                            <div key={`liked'_${offer.id}`} className="singleTrade">
+                                <h4 className="tradeTitle">{offer.title}</h4>
+                            </div>
+                        </a>
+                    </div>
+                );
+            }
 		});
 		requestBlock = searchRequests?.map((request, i) => {
-			return (
-				<div key={request.id}>
-					<a
-						key={`link${i}`}
-						href={`/requests/${request.id}`}
-						className="tradeNav"
-					>
-						<div
-							key={`liked'_${request.id}`}
-							className="singleTrade"
-						>
-							<h4 className="tradeTitle">{request.title}</h4>
-						</div>
-					</a>
-				</div>
-			);
+            if(requestIds.includes(request.id)) return
+            else {
+                requestIds.push(request.id)
+                return (
+                    <div key={`requestS_${request.id}`}>
+                        <a
+                            key={`link${i}`}
+                            href={`/requests/${request.id}`}
+                            className="tradeNav"
+                        >
+                            <div
+                                key={`liked'_${request.id}`}
+                                className="singleTrade"
+                            >
+                                <h4 className="tradeTitle">{request.title}</h4>
+                            </div>
+                        </a>
+                    </div>
+                );
+            }
 		});
 		userBlock = searchUsers?.map((user, i) => {
-			return (
-				<div key={user.id}>
-					<a
-						key={`link${i}`}
-						href={`/users/${user.id}`}
-						className="tradeNav"
-					>
-						<div key={`liked'_${user.id}`} className="singleTrade">
-							<h4 className="tradeTitle">{user.username}</h4>
-						</div>
-					</a>
-				</div>
-			);
+            if(userIds.includes(user.id)) return
+            else {
+                userIds.push(user.id)
+                return (
+                    <div key={`userS_${user.id}`}>
+                        <a
+                            key={`link${i}`}
+                            href={`/users/${user.id}`}
+                            className="tradeNav"
+                        >
+                            <div key={`liked'_${user.id}`} className="singleTrade">
+                                <h4 className="tradeTitle">{user.username}</h4>
+                            </div>
+                        </a>
+                    </div>
+                );
+            }
 		});
 	}
 
