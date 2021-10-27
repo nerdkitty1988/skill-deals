@@ -76,8 +76,13 @@ def close_offers(user_id):
 
 @offer_routes.route('/<int:offer_id>/')
 def single_offer(offer_id):
+    user_id = session['_user_id']
+    user = User.query.get(user_id)
+    user_info = [user.lat, user.lon]
     offer = Offer.query.get(offer_id)
-    return {"offer": offer.to_dict()}
+    offer_info = [offer.user.lat, offer.user.lon]
+    distance = Haversine(user_info, offer_info).miles
+    return {"offer": offer.to_dict(), "distance" : distance}
 
 
 @offer_routes.route('/delete/<int:offer_id>/', methods=['DELETE'])

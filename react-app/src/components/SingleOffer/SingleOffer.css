@@ -41,4 +41,11 @@
     background-color: rgb(97, 97, 97);
     border-radius: 3px;
     max-width: 800px;
+    margin-left: 13%;
+}
+
+
+.singleDistance {
+    font-size: large;
+    color: lightcyan;
 }

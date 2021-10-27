@@ -4,14 +4,17 @@ import "./SingleOffer.css";
 
 
 const SingleOffer = () => {
-    const { offerId } = useParams()
-    const [offer, setOffer] = useState()
+    const { offerId } = useParams();
+    const [offer, setOffer] = useState();
+    const [offerDistance, setOfferDistance] = useState();
 
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(`/api/offers/${offerId}/`);
             await res.json().then((data) => {
                 setOffer(data.offer);
+                setOfferDistance(data.distance)
+
             });
         }
         fetchData();
@@ -24,6 +27,7 @@ const SingleOffer = () => {
                 <NavLink className='authorLink' to={`/users/${offer?.userId}`} ><h2>by: {offer?.user.username}</h2></NavLink>
                 <h2 className='postedDate'>Posted on: {new Date(offer?.createdAt).toLocaleDateString()}</h2>
                 <p className='description'>Description: {offer?.description}</p>
+                <p className="singleDistance">{offerDistance ? offerDistance.toFixed() : offerDistance} miles away</p>
             </div>
         </div>
     )
