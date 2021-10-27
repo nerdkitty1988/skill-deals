@@ -71,9 +71,9 @@ const Home = () => {
 
 	return (
 		<div className="homeContainer">
-            <div className="homepageImg"/>
 			<div className="offersAndRequests">
                 <div className="intro">
+                    <div className="homepageImg"/>
                     <p>Welcome to Skill Deals!  Do you have a task that requires a skill you don't possess? </p><p> Search for offers in your area, or create a new "request" and let other users find you!</p> <p>Have a skill you are willing to barter with?  Create a new offer!  </p> <p>The only catch, no cash is traded in these transactions.  Pay with a SERVICE you can provide!</p>
                 </div>
 				<div className="cardContainer">
