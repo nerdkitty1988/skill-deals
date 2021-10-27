@@ -44,8 +44,18 @@ def update_offer(offer_id):
 
 @offer_routes.route('/')
 def offers():
-    offers = Offer.query.order_by(desc(Offer.time_created)).all()
-    return {"offers": [offer.to_dict() for offer in offers]}
+    offerList = []
+    offerDistance = {}
+    user_id = session['_user_id']
+    user = User.query.get(user_id)
+    user_info = [user.lat, user.lon]
+    offers = Offer.query.order_by(Offer.time_created).all()
+    for offer in offers:
+        offer_info = [offer.user.lat, offer.user.lon]
+        distance = Haversine(user_info, offer_info).miles
+        offerDistance[offer.id] = distance
+        offerList.append(offer)
+    return {"offers": [offr.to_dict() for offr in offerList], "offerDistance": offerDistance}
 
 
 @offer_routes.route('/near/<int:user_id>/')

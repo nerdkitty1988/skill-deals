@@ -71,8 +71,7 @@ const UserPage = () => {
 			}
 			fetchUser();
 		},
-		[userId],
-		[handleDeleteOffer, handleDeleteRequest, handleDeleteReview]
+		[userId, user?.offers, user?.requests, user?.publicEmail, user?.range, user?.address, user?.profilePic],
 	);
 
 	//create offer cards
