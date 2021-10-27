@@ -46,6 +46,7 @@
     background-color: rgba(0, 0, 0, 0.849);
     height: fit-content;
     padding-bottom: 260px;
+    justify-content: center;
 }
 
 
@@ -57,17 +58,14 @@
 
 
 .homepageImg {
-    position: sticky;
-    top: 20%;
-    left: 10px;
-    width: 40%;
-    height: 550px;
     background: url(homegraphic.png) center;
     background-size: cover;
     border-radius: 25px;
     opacity: 65%;
     box-shadow: 0px 0px 3px 3px rgba(1, 0, 2, 0.692);
-    z-index: 5;
+    width: 550px;
+    height: auto;
+
 }
 
 
@@ -90,4 +88,6 @@
     text-align: center;
     margin-left: 80px;
     font-family: 'Dosis', sans-serif;
+    display: flex;
+    flex-direction: row;
 }

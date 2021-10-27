@@ -27,7 +27,6 @@ body {
 	width: 100px;
 	height: 100px;
 	display: flex;
-	z-index: 3;
 	border-radius: 50%;
 }
 
@@ -61,10 +60,10 @@ body {
 	padding: 10px;
 	background-color: rgba(128, 124, 124, 0.678);
 	border-radius: 8px;
-    font-size: large;
-    font-family: 'Dosis', sans-serif;
-    font-weight: 600;
-    border: none;
+	font-size: large;
+	font-family: "Dosis", sans-serif;
+	font-weight: 600;
+	border: none;
 }
 
 .fa-search-dollar {
@@ -74,20 +73,20 @@ body {
 
 .fa-search-dollar:hover {
 	cursor: pointer;
-    color: lightskyblue;
+	color: lightskyblue;
 }
 
 #site-search-input::placeholder {
-    color: rgba(224, 255, 255, 0.932);
-    font-weight: 500;
-    font-family: 'Dosis', sans-serif;
-    font-size: large;
+	color: rgba(224, 255, 255, 0.932);
+	font-weight: 500;
+	font-family: "Dosis", sans-serif;
+	font-size: large;
 }
 
 .fa-plus-circle {
-    font-size: large;
+	font-size: large;
 }
 
-#addCard{
-    background-color: transparent;
+#addCard {
+	background-color: transparent;
 }
