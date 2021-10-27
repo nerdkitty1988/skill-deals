@@ -65,11 +65,13 @@ const UserPage = () => {
 	//get visiting user
 	useEffect(
 		() => {
+            let isSubscribed = true;
 			async function fetchUser() {
 				const result = await fetch(`/api/users/${parseInt(userId)}/`);
 				await result.json().then((newUser) => setUser(newUser));
 			}
 			fetchUser();
+            return () => (isSubscribed = false)
 		},
 		[userId, user?.offers, user?.requests, user?.publicEmail, user?.range, user?.address, user?.profilePic],
 	);

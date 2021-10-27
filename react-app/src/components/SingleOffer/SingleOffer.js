@@ -23,6 +23,7 @@ const SingleOffer = () => {
     return (
         <div className="wholeTradePage">
             <div className="tradeContainer">
+                <NavLink to='/offers' className='backNav'>Back to Offers</NavLink>
                 <h1 className='title'>{offer?.title}</h1>
                 <NavLink className='authorLink' to={`/users/${offer?.userId}`} ><h2>by: {offer?.user.username}<div className='profilePicDiv'><img alt="profile" className="profilePicSingle" src={offer?.user.profilePic} /></div></h2></NavLink>
                 <h2 className='postedDate'>Posted on: {new Date(offer?.createdAt).toLocaleDateString()}</h2>
