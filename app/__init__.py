@@ -12,6 +12,7 @@ from .api.request_routes import request_routes
 from .api.offer_routes import offer_routes
 from .api.review_routes import review_routes
 from .api.search_routes import search_routes
+from .api.chat_routes import chat_routes
 
 from .seeds import seed_commands
 
@@ -39,6 +40,7 @@ app.register_blueprint(request_routes, url_prefix='/api/requests')
 app.register_blueprint(offer_routes, url_prefix='/api/offers')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(search_routes, url_prefix='/api/search')
+app.register_blueprint(chat_routes, url_prefix='/api/chats')
 db.init_app(app)
 Migrate(app, db)
 

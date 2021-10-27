@@ -5,7 +5,6 @@ from app.api.route_helpers import Haversine
 from app.models import User, Offer, db
 from flask_login import login_required
 from sqlalchemy import desc
-# from app.api.route_helpers import get_distance
 
 
 offer_routes = Blueprint('offers', __name__)
