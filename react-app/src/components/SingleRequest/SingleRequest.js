@@ -22,6 +22,7 @@ const SingleRequest = () => {
     return (
         <div className="wholeTradePage">
             <div className="tradeContainer">
+                <NavLink to='/requests' className='backNav'>Back to Requests</NavLink>
                 <h1 className='title'>{request?.title}</h1>
                 <NavLink className='authorLink' to={`/users/${request?.userId}`} ><h2>by: {request?.user.username}<div className='profilePicDiv'><img alt="profile" className="profilePicSingle" src={request?.user.profilePic} /></div></h2></NavLink>
                 <h2 className='postedDate'>Posted on: {new Date(request?.createdAt).toLocaleDateString()}</h2>
