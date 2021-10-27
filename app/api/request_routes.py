@@ -76,8 +76,13 @@ def close_requests(user_id):
 
 @request_routes.route('/<int:request_id>/')
 def single_request(request_id):
-    single_request = Request.query.get(request_id)
-    return {"request": single_request.to_dict()}
+    user_id = session['_user_id']
+    user = User.query.get(user_id)
+    user_info = [user.lat, user.lon]
+    req = Request.query.get(request_id)
+    request_info = [req.user.lat, req.user.lon]
+    distance = Haversine(user_info, request_info).miles
+    return {"request": req.to_dict(), "distance": distance}
 
 
 @request_routes.route('/delete/<int:request_id>/', methods=['DELETE'])
