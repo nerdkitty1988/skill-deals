@@ -16,7 +16,7 @@
     text-align: center;
     box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.616);
     margin: 10px;
-    max-width: min-content;
+    max-width: max-content;
     background-color: rgb(60, 63, 66);
 }
 

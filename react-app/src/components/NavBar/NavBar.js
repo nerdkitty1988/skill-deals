@@ -1,15 +1,90 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import "./NavBar.css";
 import ReactModal from "react-modal";
-import TradeForm from "../NewTrade/NewTrade"
+import TradeForm from "../NewTrade/NewTrade";
 
 const NavBar = () => {
 	const [showCreateModal, setShowCreateModal] = useState(false);
+	const [search, setSearch] = useState("");
+	const [searchOffers, setSearchOffers] = useState();
+	const [searchRequests, setSearchRequests] = useState();
+	const [searchUsers, setSearchUsers] = useState();
 	const sessionUser = useSelector((state) => state.session.user);
+
+	let offerBlock;
+	let requestBlock;
+	let userBlock;
+	if (searchOffers || searchRequests || searchUsers) {
+		offerBlock = searchOffers?.map((offer, i) => {
+			return (
+				<div key={offer.id}>
+					<a
+						key={`link${i}`}
+						href={`/offers/${offer.id}`}
+						className="tradeNav"
+					>
+						<div key={`liked'_${offer.id}`} className="singleTrade">
+							<h4 className="tradeTitle">{offer.title}</h4>
+						</div>
+					</a>
+				</div>
+			);
+		});
+		requestBlock = searchRequests?.map((request, i) => {
+			return (
+				<div key={request.id}>
+					<a
+						key={`link${i}`}
+						href={`/requests/${request.id}`}
+						className="tradeNav"
+					>
+						<div
+							key={`liked'_${request.id}`}
+							className="singleTrade"
+						>
+							<h4 className="tradeTitle">{request.title}</h4>
+						</div>
+					</a>
+				</div>
+			);
+		});
+		userBlock = searchUsers?.map((user, i) => {
+			return (
+				<div key={user.id}>
+					<a
+						key={`link${i}`}
+						href={`/users/${user.id}`}
+						className="tradeNav"
+					>
+						<div key={`liked'_${user.id}`} className="singleTrade">
+							<h4 className="tradeTitle">{user.username}</h4>
+						</div>
+					</a>
+				</div>
+			);
+		});
+	}
+
+	const clearSearch = () => {
+		setSearch("");
+	};
+
+	useEffect(() => {
+		if (search) {
+			async function fetchData() {
+				const response = await fetch(`/api/search/${search}`);
+				const responseData = await response.json();
+				setSearchOffers(responseData.offers);
+				setSearchRequests(responseData.requests);
+				setSearchUsers(responseData.users);
+			}
+			fetchData();
+		}
+	}, [search]);
 
 	return (
 		<div className="navContainer">
@@ -48,14 +123,15 @@ const NavBar = () => {
 						id="addCard"
 						onClick={() => setShowCreateModal(true)}
 					>
-						Add Offer or Request <i className="fas fa-plus-circle"></i>
+						Add Offer or Request{" "}
+						<i className="fas fa-plus-circle"></i>
 					</button>
 					<ReactModal
 						isOpen={showCreateModal}
 						contentLabel="CreateModal"
 						className="loginModal"
 					>
-						<TradeForm setShowCreateModal = {setShowCreateModal}/>
+						<TradeForm setShowCreateModal={setShowCreateModal} />
 						<button
 							className="windowCloseButton"
 							onClick={() => setShowCreateModal(false)}
@@ -74,6 +150,7 @@ const NavBar = () => {
 							id="site-search-input"
 							type="text"
 							placeholder="Find..."
+							onChange={(e) => setSearch(e.target.value)}
 						/>
 						<button className="submit-btn" type="button">
 							<i className="fas fa-search-dollar"></i>
@@ -81,6 +158,22 @@ const NavBar = () => {
 					</form>
 					<LogoutButton />
 				</div>
+				{search ? (
+					<div className="searchResultsContainer">
+						<h3>Offers</h3>
+						<ul className="searchedOffers">{offerBlock}</ul>
+						<h3>Requests</h3>
+						<ul className="searchedRequests">{requestBlock}</ul>
+						<h3>Users</h3>
+						<ul className="searchedUsers">{userBlock}</ul>
+						<button
+							className="clearSearchButton"
+							onClick={clearSearch}
+						>
+							Clear results
+						</button>
+					</div>
+				) : null}
 			</nav>
 		</div>
 	);
