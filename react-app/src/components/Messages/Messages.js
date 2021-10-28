@@ -16,6 +16,19 @@ const Messages = (props) => {
         fetchMessageList();
     }, [messageList.length, props.roomId])
 
+    let receiverId;
+
+    const setReceiver = () => {
+        const id1 = props.roomId.split('-')[0];
+        const id2 = props.roomId.split('-')[1];
+        if(sessionUser.id === parseInt(id1)) {
+            receiverId = id2;
+        }
+        else {
+            receiverId = id1
+        }
+    }
+
     const chats = messageList?.map((message) => {
         return (
             <div key={`div_${message.id}`} className='chatLine'>
@@ -25,16 +38,18 @@ const Messages = (props) => {
         )
     })
 
+
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const res = await fetch(`/api/chats/`, {
+        setReceiver();
+        const res = await fetch('/api/chats/', {
             method: 'POST',
             headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
 				sender_id: sessionUser.id,
-                receiver_id: props.receiverId,
+                receiver_id: receiverId,
                 content: chatText,
 				room_id: props.roomId,
 			}),
@@ -56,6 +71,7 @@ const Messages = (props) => {
             </div>
             <form onSubmit={handleSubmit}>
                 <textarea
+                    name='content'
                     className='chatInput'
                     value={chatText}
                     onChange={(e) => {

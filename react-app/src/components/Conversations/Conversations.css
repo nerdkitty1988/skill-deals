@@ -1,0 +1,15 @@
+.chatListPage {
+    min-height: 70vmin;
+    max-height: fit-content;
+    background-color: rgba(0, 0, 0, 0.849);
+}
+
+.chatList {
+    display: flex;
+
+}
+
+.chatBubble {
+    border: 1px solid black;
+    width: 250px;
+}

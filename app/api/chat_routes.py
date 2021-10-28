@@ -5,13 +5,14 @@ from sqlalchemy import desc, or_
 from flask_login import login_required
 from collections import defaultdict
 from app.forms.message_form import MessageForm
-from app.api.auth_routes import validation_errors_to_error_messages
+from app.api.auth_routes import login, validation_errors_to_error_messages
 
 
 chat_routes = Blueprint('chats', __name__)
 
 
 @chat_routes.route('/<roomId>/')
+@login_required
 def get_messsages(roomId):
     messages = Message.query.filter(Message.room_id == roomId ).order_by(Message.time_created).all()
     return {'messages': [message.to_dict() for message in messages]}
@@ -31,6 +32,7 @@ def get_user_chats():
 
 
 @chat_routes.route('/', methods=['POST'])
+@login_required
 def post_message():
     form = MessageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -41,6 +43,8 @@ def post_message():
             content = form.data['content'],
             room_id = form.data['room_id']
         )
+        print('!!!!!!')
+        print(new_message)
         db.session.add(new_message)
         db.session.commit()
         return new_message.to_dict()
