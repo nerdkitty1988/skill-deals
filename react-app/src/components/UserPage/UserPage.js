@@ -74,7 +74,7 @@ const UserPage = () => {
 			}
 			fetchUser()
 		},
-		[userId, user?.offers.length, user?.requests.length, user?.publicEmail, user?.range, user?.address, user?.profilePic],
+		[userId, user?.offers, user?.requests, user?.publicEmail, user?.range, user?.address, user?.profilePic],
 	);
 
     useEffect(
