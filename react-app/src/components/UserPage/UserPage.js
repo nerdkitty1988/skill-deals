@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "./UserPage.css";
 import EditTradeForm from "../EditTrade/EditTrade";
 import EditProfileForm from "../EditProfile/EditProfile";
+import Messages from "../Messages/Messages";
 import ReactModal from "react-modal";
 
 const UserPage = () => {
@@ -17,6 +18,8 @@ const UserPage = () => {
 	const [tradeId, setTradeId] = useState(0);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
+    const [roomId, setRoomId] = useState("");
+    const [showChat, setShowChat] = useState(false);
 
 	//user profile to display
 	const { userId } = useParams();
@@ -65,16 +68,33 @@ const UserPage = () => {
 	//get visiting user
 	useEffect(
 		() => {
-            let isSubscribed = true;
 			async function fetchUser() {
 				const result = await fetch(`/api/users/${parseInt(userId)}/`);
 				await result.json().then((newUser) => setUser(newUser));
 			}
-			fetchUser();
-            return () => (isSubscribed = false)
+			fetchUser()
 		},
-		[userId, user?.offers, user?.requests, user?.publicEmail, user?.range, user?.address, user?.profilePic],
+		[userId, user?.offers.length, user?.requests.length, user?.publicEmail, user?.range, user?.address, user?.profilePic],
 	);
+
+    useEffect(
+        () => {
+            async function fetchChat() {
+                const res = await fetch(`/api/chats/${sessionUser.id}-${userId}/`)
+                const chat1 = await res.json();
+                const result = await fetch(`/api/chats/${userId}-${sessionUser.id}/`)
+                const chat2 = await result.json();
+                if(chat1) {
+                    setRoomId(`${sessionUser.id}-${userId}`)
+                }else if(chat2) {
+                    setRoomId(`${userId}-${sessionUser.id}`)
+                }else{
+                    setRoomId(`${sessionUser.id}-${userId}`)
+                }
+            }
+            fetchChat();
+        }, [userId, sessionUser]
+    )
 
 	//create offer cards
 	const offerCard =
@@ -294,6 +314,7 @@ const UserPage = () => {
 					>
 						Write a review for {user.username}
 					</Link>
+                    <button type='button' className='chatButton' onClick={(e) => setShowChat(true)}>Send a Message!</button>
 				</div>
 			);
 		}
@@ -356,6 +377,7 @@ const UserPage = () => {
 				isOpen={showEditModal}
 				contentLabel="EditModal"
 				className="loginModal"
+
 			>
 				<EditTradeForm
 					setShowEditModal={setShowEditModal}
@@ -363,6 +385,7 @@ const UserPage = () => {
 					tradeId={tradeId}
 					title={title}
 					description={description}
+                    appElement={EditTradeForm}
 				/>
 				<button
 					className="windowCloseButton"
@@ -379,10 +402,30 @@ const UserPage = () => {
 				<EditProfileForm
 					setShowEditProfileModal={setShowEditProfileModal}
 					user={sessionUser}
+                    appElement={EditProfileForm}
 				/>
 				<button
 					className="windowCloseButton"
 					onClick={() => setShowEditProfileModal(false)}
+				>
+					<i className="fas fa-window-close"></i>
+				</button>
+			</ReactModal>
+            <ReactModal
+				isOpen={showChat}
+				contentLabel="chatModal"
+				className="chatModal"
+
+			>
+				<Messages
+					setShowChat={setShowChat}
+					roomId={roomId}
+                    receiverId={userId}
+                    appElement={Messages}
+				/>
+				<button
+					className="windowCloseButton"
+					onClick={() => setShowChat(false)}
 				>
 					<i className="fas fa-window-close"></i>
 				</button>

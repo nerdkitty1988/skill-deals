@@ -24,8 +24,7 @@ const NavBar = () => {
         let userIds = [];
 
 		offerBlock = searchOffers?.map((offer, i) => {
-            if(offerIds.includes(offer.id)) return
-            else {
+            if(!offerIds.includes(offer.id)){
                 offerIds.push(offer.id);
                 return (
                     <div key={`offerS_${offer.id}`}>
@@ -40,10 +39,12 @@ const NavBar = () => {
                         </a>
                     </div>
                 );
+            }else{
+                return null;
             }
 		});
 		requestBlock = searchRequests?.map((request, i) => {
-            if(requestIds.includes(request.id)) return
+            if(requestIds.includes(request.id)) return null;
             else {
                 requestIds.push(request.id)
                 return (
@@ -65,7 +66,7 @@ const NavBar = () => {
             }
 		});
 		userBlock = searchUsers?.map((user, i) => {
-            if(userIds.includes(user.id)) return
+            if(userIds.includes(user.id)) return null;
             else {
                 userIds.push(user.id)
                 return (

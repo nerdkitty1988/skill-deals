@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String(255), nullable=False)
     lat = db.Column(db.Float, nullable=False)
     lon = db.Column(db.Float, nullable=False)
-    profile_pic = db.Column(db.String(255), nullable=True)
+    profile_pic = db.Column(db.Text, nullable=True)
 
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())

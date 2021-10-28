@@ -11,6 +11,7 @@ import Offer from './components/Offer/Offer';
 import NewReview from './components/NewReview/NewReview';
 import SingleOffer from './components/SingleOffer/SingleOffer';
 import SingleRequest from './components/SingleRequest/SingleRequest';
+import Conversations from './components/Conversations/Conversations';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import UserPage from './components/UserPage/UserPage';
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <UserPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/chats' exact={true} >
+          <Conversations />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Splash />
