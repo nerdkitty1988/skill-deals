@@ -314,7 +314,7 @@ const UserPage = () => {
 					>
 						Write a review for {user.username}
 					</Link>
-                    <button type='button' className='chatButton' onClick={(e) => setShowChat(true)}>Send a Message!</button>
+                    <button type='button' className='addReviewButton' onClick={(e) => setShowChat(true)}>Send a Message!</button>
 				</div>
 			);
 		}

@@ -1,0 +1,62 @@
+.chatPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(63, 62, 62);
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 8px;
+    width: 50rem;
+    min-height: fit-content;
+    max-height: 50rem;
+    overflow-y: scroll;
+    color: rgb(196, 224, 224);
+}
+
+.scroll {
+    margin-left: 10px;
+}
+
+.chatForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.chatInput {
+    height: fit-content;
+    width: 100%;
+    top: 730px;
+    resize: none;
+}
+
+.chatButton {
+
+    top: 730px;
+    height: fit-content;
+    padding: 7px;
+    border-radius: 5px;
+
+}
+
+
+.chatLine {
+    display: flex;
+    padding: 10px;
+
+}
+
+.senderName {
+    font-weight: 600;
+    margin-right: 15px;
+    font-size: x-large;
+}
+
+
+.inputText {
+    font-size: larger;
+
+}

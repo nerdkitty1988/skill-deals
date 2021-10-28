@@ -32,7 +32,7 @@ const Messages = (props) => {
     const chats = messageList?.map((message) => {
         return (
             <div key={`div_${message.id}`} className='chatLine'>
-                <div key={`div1_${message.id}`} className='senderName'>{message.sender.username}</div>
+                <div key={`div1_${message.id}`} className='senderName'>{message.sender.username}: </div>
                 <div key={`div2_${message.id}`} className='inputText'>{message.content}</div>
             </div>
         )
@@ -69,7 +69,7 @@ const Messages = (props) => {
             <div className='chatWindow'>
                 {chats}
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className='chatForm' onSubmit={handleSubmit}>
                 <textarea
                     name='content'
                     className='chatInput'
@@ -79,7 +79,7 @@ const Messages = (props) => {
                         setChatText(e.target.value)
                     }}
                 />
-                <button type='submit'>Send</button>
+                <button className='chatButton' type='submit'>Send</button>
             </form>
         </div>
     )
