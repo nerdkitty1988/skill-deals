@@ -43,8 +43,6 @@ def post_message():
             content = form.data['content'],
             room_id = form.data['room_id']
         )
-        print('!!!!!!')
-        print(new_message)
         db.session.add(new_message)
         db.session.commit()
         return new_message.to_dict()

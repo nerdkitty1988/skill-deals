@@ -38,6 +38,7 @@
 
 .welcomeNav:hover {
     text-shadow: 0px 0px 25px blue;
+    cursor: pointer;
 }
 
 .links {

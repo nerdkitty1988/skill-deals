@@ -21,7 +21,7 @@ const Home = () => {
 			// setNearOffers(offers.offers);
 		}
 		fetchData();
-	}, [setNearOffers, sessionUser.id]);
+	}, [ sessionUser.id ]);
 
 	useEffect(() => {
 		async function fetchData2() {
