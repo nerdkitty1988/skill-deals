@@ -39,9 +39,6 @@ The front end is built with React and Javascript while utilizing Redux architect
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-Here is everything we need you to do to get started with Fulcrum Physio.
 
 ### Installation
 
