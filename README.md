@@ -1,13 +1,54 @@
-# Flask React Project
+<br />
+<p align="center">
+    <img src="https://github.com/nerdkitty1988/skill-deals/blob/main/react-app/src/components/NavBar/logo.jpg" alt="Logo" style="background-color:white">
 
-This is the starter for the Flask React project.
+  <h3 align="center">Skill Deals</h3>
 
-## Getting started
+  <p align="center">
+   Skill deals is an app to connect people who would like to barter services.  Users can either post an offer of a service they would trade, or they can post a request for a service they are in need of.  If the user finds an offer or request they are interested in, there is a messaging feature enabled to connect the users in a private chat room for conversations.
+    <br />
+    <a href="https://github.com/nerdkitty1988/skill-deals/wiki"><strong>Skill Deals Wiki »</strong></a>
+    <br />
+    <br />
+    <a href="https://skill-deals.herokuapp.com/">Live Site Here</a>
+  </p>
+</p>
+
+
+## Overall Structure
+
+### Back End
+The app was built using Flask, SQLAlchemy, and Python on the back end with a PostgreSQL database. The backend structure is RESTful API. Model associations are used to minimize database queries to the backend, assuring speed and reliability.
+
+### Front End
+The front end is built with React and Javascript while utilizing Redux architecture, producing a lightning-fast user interface and calling upon dynamically rendered components.
+
+### Built With
+
+* [React](https://reactjs.org/)
+* [JavaScript](https://www.javascript.com/)
+* [Python](https://docs.python.org/3/)
+* [Redux](https://redux.js.org/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+* [PostgreSQL](https://www.postgresql.org/docs/current/)
+* [CSS](http://www.css3.info/)
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+Here is everything we need you to do to get started with Fulcrum Physio.
+
+### Installation
 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/nerdkitty1988/skill-deals.git
    ```
 
 2. Install dependencies
@@ -40,95 +81,33 @@ This is the starter for the Flask React project.
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+## Usage
+### An easy-to-use login with a pre-configured Demo User.
+### View requests and offers close to the user, or view a full page of offers or requests.
+### Create your own offers or requests
+### Rate other users based on user experience
+### View user profile to edit or delete user trades, or to edit user profile
+### Chat with other users to work out fine details of your trade
+### Search to find trades or users
 
-## Deploy to Heroku
+## Challenges
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
+- This app features the Haversine formula for calculating distance.  While I can't take credit for the amazing formula, implementing it without drastically slowing my site was a hurdle.
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+- This app also features a messaging feature.  This feature did not need to be robust, and also needed to be custom fit for the app.  I built my own messaging page with private chat rooms without the use of websockets (yet).  This was a challenge, but I do plan on expanding this feature.
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+- This app is a mixture of dynamic elements and rendered ones.  A large challenge was finding the right combination of useEffect functions and their dependency arrays.
 
-   ```bash
-   heroku login
-   ```
+- This app also features multiple modals.  Implementing those so that the data was passed between them was a bit of a blocker.  I was able to also implement these with a mixture of dynamic and rendered elements.
 
-6. Login to the heroku container registry
 
-   ```bash
-   heroku container:login
-   ```
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+## Contact
 
-9. Release your docker container to heroku
+* Jami Travers- [LinkedIn](https://www.linkedin.com/in/jami-travers-3393711aa/) - [GitHub](https://github.com/nerdkitty1988)
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
 
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+Project Link: [https://skill-deals.herokuapp.com/](https://skill-deals.herokuapp.com/)
