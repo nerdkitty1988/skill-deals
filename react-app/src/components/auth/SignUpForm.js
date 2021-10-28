@@ -73,15 +73,16 @@ const SignUpForm = () => {
 	}
 
 	return (
-		<form onSubmit={onSignUp}>
+		<form className='signinForm' onSubmit={onSignUp}>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
 				))}
 			</div>
-			<div>
+			<div className='signinElements'>
 				<label>User Name</label>
 				<input
+                    className='signupInput'
 					type="text"
 					name="username"
 					onChange={updateUsername}
@@ -92,6 +93,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Email</label>
 				<input
+                    className='signupInput'
 					type="text"
 					name="email"
 					onChange={updateEmail}
@@ -102,6 +104,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Public Email</label>
 				<input
+                    className='signupInput'
 					type="text"
 					name="public_email"
 					placeholder="Email you can share"
@@ -112,6 +115,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Address</label>
 				<input
+                    className='signupInput'
 					name="address"
 					onChange={updateAddress}
 					value={address}
@@ -120,6 +124,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Miles you are willing to travel</label>
 				<input
+                    className='signupInput'
 					name="range"
 					onChange={updateRange}
 					value={range}
@@ -128,6 +133,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Password</label>
 				<input
+                    className='signupInput'
 					type="password"
 					name="password"
 					onChange={updatePassword}
@@ -138,6 +144,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Repeat Password</label>
 				<input
+                    className='signupInput'
 					type="password"
 					name="repeat_password"
 					onChange={updateRepeatPassword}
@@ -149,6 +156,7 @@ const SignUpForm = () => {
 			<div>
 				<label>Profile Photo Url</label>
 				<input
+                    className='signupInput'
 					type="text"
 					name="profile_pic"
 					onChange={updateProfilePic}
@@ -156,7 +164,7 @@ const SignUpForm = () => {
 					placeholder="Enter your picture URL"
 				></input>
 			</div>
-			<button type="submit">Sign Up</button>
+			<button className='loginButton' type="submit">Sign Up</button>
 		</form>
 	);
 };

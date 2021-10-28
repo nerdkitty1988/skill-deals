@@ -29,6 +29,20 @@
 
 }
 
+.signupInput {
+    font-family: 'Dosis', sans-serif;
+    background-color: rgba(128, 128, 128, 0.548);
+    align-self: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+}
+
+.signupInput::placeholder {
+    color: lightcyan;
+}
+
 .signinInput::placeholder {
     color: lightcyan;
 }

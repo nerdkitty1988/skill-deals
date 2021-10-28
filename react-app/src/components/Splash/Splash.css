@@ -71,3 +71,12 @@
     height: fit-content;
     box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 0.596);
 }
+
+
+.fa-window-close {
+    font-size: x-large;
+}
+
+.windowCloseButton:hover {
+    cursor: pointer;
+}
