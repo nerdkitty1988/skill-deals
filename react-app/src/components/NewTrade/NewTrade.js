@@ -61,6 +61,7 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 						setTitle(e.target.value);
 					}}
 					value={title}
+                    required={true}
 					placeholder="Choose a title for your trade"
 				/>
 			</div>
@@ -72,6 +73,7 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 						setDescription(e.target.value);
 					}}
 					value={description}
+                    required={true}
 					placeholder="Write a description of this trade"
 				/>
 			</div>
