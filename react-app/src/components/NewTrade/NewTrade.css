@@ -1,0 +1,54 @@
+
+
+.newTradeTitle {
+    width: 50%;
+    border: none;
+    background-color: lightcyan;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.newTradeSelect {
+    border: none;
+    background-color: lightcyan;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    margin: 5px;
+
+}
+
+
+.newTradeForm {
+    font-family: 'Dosis', sans-serif;
+    padding: 5px;
+}
+
+
+.descriptionInput {
+    resize: none;
+    width: 75%;
+    border-radius: 5px;
+    background-color: lightcyan;
+    font-size: medium;
+    font-family: 'Dosis', sans-serif;
+}
+
+
+.submitTradeButton {
+    padding: 5px;
+    font-size: medium;
+    font-family: 'Dosis', sans-serif;
+    border: none;
+    background-color: rgba(224, 255, 255, 0.692);
+    border-radius: 5px;
+
+}
+
+.submitTradeButton:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px 3px 2px gray;
+    background-color: lightcyan;
+}

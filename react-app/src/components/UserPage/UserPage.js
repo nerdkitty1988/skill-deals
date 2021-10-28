@@ -71,8 +71,9 @@ const UserPage = () => {
 			async function fetchUser() {
 				const result = await fetch(`/api/users/${parseInt(userId)}/`);
 				await result.json().then((newUser) => setUser(newUser));
+                return () => console.log('unsubscribe')
 			}
-			fetchUser()
+			fetchUser();
 		},
 		[userId, user?.offers, user?.requests, user?.publicEmail, user?.range, user?.address, user?.profilePic],
 	);
