@@ -53,6 +53,7 @@ const LoginForm = () => {
 					placeholder="Email"
 					value={email}
 					onChange={updateEmail}
+                    required={true}
 					className="signinInput"
 				/>
 			</div>
@@ -65,6 +66,7 @@ const LoginForm = () => {
 					type="password"
 					placeholder="Password"
 					value={password}
+                    required={true}
 					onChange={updatePassword}
 					className="signinInput"
 				/>
