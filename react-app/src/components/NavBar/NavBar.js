@@ -167,6 +167,7 @@ const NavBar = () => {
 							id="site-search-input"
 							type="text"
 							placeholder="Find..."
+                            value={search}
 							onChange={(e) => setSearch(e.target.value)}
 						/>
 						<button className="submit-btn" type="button">

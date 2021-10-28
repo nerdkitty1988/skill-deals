@@ -96,7 +96,7 @@ body {
     width: min-content;
     position: absolute;
     right: 250px;
-    background-color: rgb(92, 92, 92);
+    background-color: rgb(129, 129, 129);
     border: 1px solid rgba(92, 92, 92, 0.801);
     padding: 10px;
     z-index: 3;
@@ -109,4 +109,17 @@ body {
 .tradeNav {
     text-decoration: none;
     color: lightcyan;
+}
+
+
+.clearSearchButton {
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: lightcyan;
+}
+
+.clearSearchButton:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 2px grey;
 }
