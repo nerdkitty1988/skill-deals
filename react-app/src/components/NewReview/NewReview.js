@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, NavLink } from "react-router-dom";
 import './NewReview.css';
 
 const NewReview = () => {
@@ -100,6 +100,7 @@ const NewReview = () => {
 						}}
 					/>
 					<button className='createReviewButton' type="submit">Submit</button>
+                    <NavLink className='createReviewButton' to={`/users/${reviewedUser.id}`}>Cancel</NavLink>
 				</form>
 			</div>
 		</div>

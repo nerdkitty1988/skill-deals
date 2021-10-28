@@ -11,10 +11,9 @@ from app.api.auth_routes import validation_errors_to_error_messages
 chat_routes = Blueprint('chats', __name__)
 
 
-@chat_routes.route('/<int:roomId>/')
-@login_required
+@chat_routes.route('/<roomId>/')
 def get_messsages(roomId):
-    messages = Message.query.filter_by(roomId == Message.room_id).order_by(Message.time_created).all()
+    messages = Message.query.filter(Message.room_id == roomId ).order_by(Message.time_created).all()
     return {'messages': [message.to_dict() for message in messages]}
 
 
@@ -22,7 +21,7 @@ def get_messsages(roomId):
 @login_required
 def get_user_chats():
     user_id = session['_user_id']
-    messages = Message.query.filter_by(or_(user_id == Message.sender_id, user_id == Message.receiver_id)).order_by(Message.time_created).all()
+    messages = Message.query.filter((Message.sender_id == user_id) | (Message.receiver_id == user_id) ).order_by(Message.time_created).all()
     rooms = defaultdict(list)
 
     for message in messages:
@@ -32,7 +31,6 @@ def get_user_chats():
 
 
 @chat_routes.route('/', methods=['POST'])
-@login_required
 def post_message():
     form = MessageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -49,7 +47,7 @@ def post_message():
     return {'errors':validation_errors_to_error_messages(form.errors)}, 401
 
 
-@chat_routes.route('/<int:chat_id>/')
+@chat_routes.route('/<int:chat_id>/', methods=['DELETE'])
 @login_required
 def delete_chat(chat_id):
     message = Message.query.get(chat_id)
