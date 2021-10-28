@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime
 from .review import Review
+from .message import Message
 
 
 
@@ -29,6 +30,9 @@ class User(db.Model, UserMixin):
 
     offers = db.relationship('Offer', back_populates='user', cascade="all, delete")
     requests = db.relationship('Request', back_populates='user', cascade="all, delete")
+
+    messages_sent = db.relationship('Message', back_populates='sender', cascade="all, delete", foreign_keys=Message.sender_id)
+    messages_received = db.relationship('Message', back_populates='receiver', cascade="all, delete", foreign_keys=Message.receiver_id)
 
 
     @property
