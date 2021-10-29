@@ -24,19 +24,20 @@
     align-self: center;
     padding: 10px;
     border-radius: 5px;
-    margin-top: -50px;
     border: none;
 
 }
 
 .signupInput {
     font-family: 'Dosis', sans-serif;
-    background-color: rgba(128, 128, 128, 0.548);
+    background-color: rgba(165, 173, 184, 0.548);
     align-self: center;
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     border: none;
     margin: 5px;
+    font-weight: 600;
+    font-size: medium;
 }
 
 .signupInput::placeholder {
@@ -53,6 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .signinElements {
