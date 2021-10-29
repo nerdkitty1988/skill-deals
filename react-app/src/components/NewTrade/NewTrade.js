@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import "./NewTrade.css"
 
 const NewTradeForm = ({ setShowCreateModal }) => {
 	const [errors, setErrors] = useState([]);
@@ -38,7 +39,7 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 	};
 
 	return (
-		<form onSubmit={onCreate}>
+		<form className='newTradeForm' onSubmit={onCreate}>
 			<div>
 				{errors.map((error, ind) => (
 					<div key={ind}>{error}</div>
@@ -46,7 +47,7 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 			</div>
 			<div>
 				<label for="type">Type</label>
-				<select name="type" onChange={(e) => setType(e.target.value)}>
+				<select name="type" className='newTradeSelect' onChange={(e) => setType(e.target.value)}>
 					<option>Choose One:</option>
 					<option value="requests">Request</option>
 					<option value="offers">Offer</option>
@@ -55,27 +56,31 @@ const NewTradeForm = ({ setShowCreateModal }) => {
 			<div>
 				<label for="title">Title</label>
 				<input
+                    className='newTradeTitle'
 					type="text"
 					name="title"
 					onChange={(e) => {
 						setTitle(e.target.value);
 					}}
 					value={title}
-					placeholder="Choose a title for your trade"
+                    required={true}
+					placeholder="Trade Title"
 				/>
 			</div>
 			<div>
 				<label for="description">Description</label>
 				<textarea
+                    className='descriptionInput'
 					name="description"
 					onChange={(e) => {
 						setDescription(e.target.value);
 					}}
 					value={description}
+                    required={true}
 					placeholder="Write a description of this trade"
 				/>
 			</div>
-			<button type="submit">Create</button>
+			<button className="submitTradeButton" type="submit">Create</button>
 		</form>
 	);
 };

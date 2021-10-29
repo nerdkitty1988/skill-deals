@@ -73,6 +73,7 @@ const Messages = (props) => {
                 <textarea
                     name='content'
                     className='chatInput'
+                    id='chatInput'
                     value={chatText}
                     onChange={(e) => {
                         e.preventDefault();

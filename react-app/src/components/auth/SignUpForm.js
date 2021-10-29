@@ -87,7 +87,8 @@ const SignUpForm = () => {
 					name="username"
 					onChange={updateUsername}
 					value={username}
-					placeholder="Who are you?"
+                    required={true}
+					placeholder="User name"
 				></input>
 			</div>
 			<div>
@@ -98,6 +99,7 @@ const SignUpForm = () => {
 					name="email"
 					onChange={updateEmail}
 					value={email}
+                    required={true}
 					placeholder="Email used to log in"
 				></input>
 			</div>
@@ -109,6 +111,7 @@ const SignUpForm = () => {
 					name="public_email"
 					placeholder="Email you can share"
 					onChange={updatePublicEmail}
+                    required={true}
 					value={public_email}
 				></input>
 			</div>
@@ -119,6 +122,8 @@ const SignUpForm = () => {
 					name="address"
 					onChange={updateAddress}
 					value={address}
+                    required={true}
+                    placeholder="City, ST zipcode"
 				></input>
 			</div>
 			<div>
@@ -127,6 +132,7 @@ const SignUpForm = () => {
                     className='signupInput'
 					name="range"
 					onChange={updateRange}
+                    required={true}
 					value={range}
 				></input>
 			</div>
@@ -138,6 +144,7 @@ const SignUpForm = () => {
 					name="password"
 					onChange={updatePassword}
 					value={password}
+                    required={true}
 					placeholder="Enter a password"
 				></input>
 			</div>

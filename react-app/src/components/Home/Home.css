@@ -58,7 +58,7 @@
 
 
 .homepageImg {
-    background: url(homegraphic.png) center;
+    background: url('./homegraphic.png') center;
     background-size: cover;
     border-radius: 25px;
     opacity: 65%;

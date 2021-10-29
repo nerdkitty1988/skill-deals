@@ -48,6 +48,7 @@ const EditProfileForm = (props) => {
             <div>
 				<label htmlFor="public_email">Public Email</label>
 				<input
+                    className='newTradeTitle'
 					type="text"
 					name="public_email"
 					onChange={(e) => {
@@ -59,6 +60,7 @@ const EditProfileForm = (props) => {
 			<div>
 				<label htmlFor="range">Mile Range</label>
 				<input
+                    className='newTradeTitle'
 					name="range"
 					onChange={(e) => {
 						setRange(e.target.value);
@@ -69,6 +71,7 @@ const EditProfileForm = (props) => {
             <div>
 				<label htmlFor="address">Address</label>
 				<textarea
+                    className='descriptionInput'
 					name="address"
 					onChange={(e) => {
 						setAddress(e.target.value);
@@ -79,6 +82,7 @@ const EditProfileForm = (props) => {
             <div>
 				<label htmlFor="profile_pic">Profile Photo URL</label>
 				<input
+                    className='newTradeTitle'
 					name="profile_pic"
 					onChange={(e) => {
 						setProfilePic(e.target.value);
@@ -86,7 +90,7 @@ const EditProfileForm = (props) => {
 					defaultValue={profile_pic}
 				/>
 			</div>
-			<button type="submit">Submit</button>
+			<button className='submitTradeButton' type="submit">Submit</button>
 		</form>
 	);
 };
