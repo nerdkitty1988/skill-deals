@@ -7,7 +7,6 @@ import './NavDrop.css'
 function NavDrop() {
 	const [showDrop, setShowDrop] = useState(false);
 	const sessionUser = useSelector((state) => state.session?.user);
-	const userId = sessionUser?.id;
 
 	const dropDown = () => {
 		setShowDrop(true);
@@ -28,7 +27,11 @@ function NavDrop() {
 		<>
 			<div className="profileButtonDiv">
 				<img
-					src={sessionUser.profilePic}
+					src={sessionUser?.profilePic
+                        ? sessionUser.profilePic
+                        : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+                }
+
 					id="navProfilePic"
 					alt="avatar"
 					onClick={dropDown}

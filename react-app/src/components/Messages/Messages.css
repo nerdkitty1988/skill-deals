@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: rgb(63, 62, 62);
     border: 1px solid black;
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
     width: 50rem;
     min-height: fit-content;
@@ -31,6 +31,8 @@
     width: 100%;
     top: 730px;
     resize: none;
+    font-size: large;
+    font-family: 'Dosis', sans-serif;
 }
 
 .chatButton {

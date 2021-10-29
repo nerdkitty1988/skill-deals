@@ -9,7 +9,7 @@
     padding: 15px;
     margin: 15px;
     border-radius: 5px;
-    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.233);
+    box-shadow: 0px 0px 3px 3px rgba(224, 255, 255, 0.281);
     font-size: larger;
     font-family: 'Dosis', sans-serif;
     text-align: center;
@@ -17,7 +17,7 @@
 
 .singleOffer:hover {
     color: lightcyan;
-    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.459);
+    box-shadow: 0px 0px 3px 3px rgba(224, 255, 255, 0.74);
 }
 
 .cardLists {
@@ -61,7 +61,7 @@
     background: url('./homegraphic.png') center;
     background-size: cover;
     border-radius: 25px;
-    opacity: 65%;
+    opacity: .85;
     box-shadow: 0px 0px 3px 3px rgba(1, 0, 2, 0.692);
     width: 550px;
     height: auto;

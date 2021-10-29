@@ -7,3 +7,14 @@
     flex-wrap: wrap;
 
 }
+
+
+.requestHead {
+    width: 100vw;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+    color: lightcyan;
+    font-size: 50px;
+    border: 2px dotted rgba(224, 255, 255, 0.616);
+    padding: 15px;
+}

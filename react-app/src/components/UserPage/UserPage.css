@@ -160,3 +160,12 @@
 fa-window-close {
     font-size: x-large;
 }
+
+
+#profileIcon {
+    font-size: xx-large;
+}
+
+#profileIcon:hover {
+    cursor: initial;
+}

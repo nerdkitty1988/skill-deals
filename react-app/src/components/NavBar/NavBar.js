@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import "./NavBar.css";

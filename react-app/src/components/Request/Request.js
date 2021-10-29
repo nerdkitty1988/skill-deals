@@ -38,6 +38,9 @@ const Request = () => {
 		);
 	});
 
-	return <div className="requestPage1">{requestCard}</div>;
+	return (
+
+        <div className="requestPage1"><h1 className="requestHead">Requests <i id='offerIcon' class="far fa-list-alt"></i></h1>{requestCard}</div>
+    )
 };
 export default Request;

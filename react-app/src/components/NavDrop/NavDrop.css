@@ -11,6 +11,7 @@
 	line-height: 50px;
 	text-align: center;
 	border: 1px solid rgba(129, 127, 127, 0.699);
+    object-fit: cover;
 }
 
 .profileButtonDiv {
@@ -38,8 +39,9 @@
     padding: 10px;
     font-size: larger;
     border-radius: 3px;
-    background-color: rgba(63, 63, 66, 0.678);
+    background-color: rgb(35, 35, 36);
     box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.541);
+
 
 
 }
@@ -54,6 +56,7 @@
 
 .navbarDropList:hover {
     color: lightcyan;
+
 }
 
 
@@ -65,5 +68,18 @@
 
 
 .profile-dropdown li {
-    margin: 15px;
+    text-decoration: none;
+	color: rgba(224, 255, 255, 0.616);
+	font-size: larger;
+	border: 1px solid rgba(0, 0, 0, 0.582);
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	padding: 5px;
+	box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.425);
+	font-family: "Dosis", sans-serif;
+    margin: 10px 10px;
+}
+
+.profile-dropdown li:hover {
+    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.849);
 }

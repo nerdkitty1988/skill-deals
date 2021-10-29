@@ -2,35 +2,61 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import "./SingleRequest.css";
 
-
 const SingleRequest = () => {
-    const { requestId } = useParams()
-    const [request, setRequest] = useState()
-    const [distance, setDistance] = useState()
+	const { requestId } = useParams();
+	const [request, setRequest] = useState();
+	const [distance, setDistance] = useState();
 
-    useEffect(() => {
-        async function fetchData() {
-            const res = await fetch(`/api/requests/${requestId}/`);
-            await res.json().then((data) => {
-                setRequest(data.request);
-                setDistance(data.distance)
-            });
-        }
-        fetchData();
-    }, [requestId]);
+	useEffect(() => {
+		async function fetchData() {
+			const res = await fetch(`/api/requests/${requestId}/`);
+			await res.json().then((data) => {
+				setRequest(data.request);
+				setDistance(data.distance);
+			});
+		}
+		fetchData();
+	}, [requestId]);
 
-    return (
-        <div className="wholeTradePage">
-            <div className="tradeContainer">
-                <NavLink to='/requests' className='backNav'>Back to Requests</NavLink>
-                <h1 className='title'>{request?.title}</h1>
-                <NavLink className='authorLink' to={`/users/${request?.userId}`} ><h2>by: {request?.user.username}<div className='profilePicDiv'><img alt="profile" className="profilePicSingle" src={request?.user.profilePic} /></div></h2></NavLink>
-                <h2 className='postedDate'>Posted on: {new Date(request?.createdAt).toLocaleDateString()}</h2>
-                <p className='description'>Description: {request?.description}</p>
-                <p className="singleDistance">{distance ? distance.toFixed() : distance} miles away</p>
-            </div>
-        </div>
-    )
-}
+	return (
+		<div className="wholeTradePage">
+			<div className="tradeContainer">
+				<NavLink to="/requests" className="backNav">
+					Back to Requests
+				</NavLink>
+				<h1 className="title">{request?.title}</h1>
+				<NavLink
+					className="authorLink"
+					to={`/users/${request?.userId}`}
+				>
+					<h2>
+						by: {request?.user.username}
+						<div className="profilePicDiv">
+							<img
+								alt="profile"
+								className="profilePicSingle"
+								src={
+									request?.user.profilePic
+										? request?.user.profilePic
+										: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+								}
+							/>
+						</div>
+					</h2>
+				</NavLink>
+				<h2 className="postedDate">
+					Posted on:{" "}
+					{new Date(request?.createdAt).toLocaleDateString()}
+				</h2>
+				<p className="description">
+					Description: {request?.description}
+				</p>
+				<p className="singleDistance">
+					{distance ? distance.toFixed() : distance} miles away
+				</p>
+			</div>
+		</div>
+	);
+};
 
 export default SingleRequest;
