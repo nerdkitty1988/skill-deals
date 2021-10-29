@@ -75,7 +75,7 @@ const NewReview = () => {
 				<form className='addReviewForm' onSubmit={(e) => onSubmit(e)}>
 					<div>
 						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
+							<div className='errors' key={ind}>{error}</div>
 						))}
 					</div>
 					<label className='addReviewLabel' for="rating">Rating</label>
@@ -100,7 +100,7 @@ const NewReview = () => {
 						}}
 					/>
 					<button className='createReviewButton' type="submit">Submit</button>
-                    <NavLink className='createReviewButton' to={`/users/${reviewedUser.id}`}>Cancel</NavLink>
+                    <NavLink className='cancelButton' to={`/users/${reviewedUser.id}`}>Cancel</NavLink>
 				</form>
 			</div>
 		</div>

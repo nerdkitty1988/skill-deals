@@ -10,6 +10,12 @@
 }
 
 
+.ReactModal__Body--open {
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: black;
+}
+
 .splashPage {
     display: flex;
     flex-direction: row-reverse;
@@ -60,11 +66,11 @@
     align-content: center;
     border: 1px solid rgba(100, 106, 128, 0.493);
     border-radius: 5px;
-    background-color: rgba(113, 115, 121, 0.616);
+    background-color: rgba(85, 87, 92, 0.945);
     padding: 10px;
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
-    width: 25%;
+    min-width: 25%;
     height: fit-content;
     box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 0.596);
     position: absolute;

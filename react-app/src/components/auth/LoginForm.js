@@ -37,10 +37,11 @@ const LoginForm = () => {
 
 	return (
 		<form className="signinForm" onSubmit={onLogin}>
-            <h1 className="signInHead">Have an account?  Sign In... <i className="fas fa-arrow-circle-down" /></h1>
+            <h1 className="signInHead">Have an account?  Sign In... </h1>
+            <i className="fas fa-arrow-circle-down" />
 			<div className="signinElements">
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='errors' key={ind}>{error}</div>
 				))}
 			</div>
 			<div className="signinElements">
@@ -74,9 +75,6 @@ const LoginForm = () => {
             <div className="buttonContainer">
                 <button className="loginButton" type="submit">
                     Login
-                </button>
-                <button className="loginButton" type="button">
-                    Sign Up
                 </button>
                 <button
                     className="loginButton"

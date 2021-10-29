@@ -41,7 +41,7 @@ const EditProfileForm = (props) => {
 		<form onSubmit={(e)=> onSubmit(e)}>
 			<div>
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='errors' key={ind}>{error}</div>
 				))}
 			</div>
 

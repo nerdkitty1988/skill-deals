@@ -4,7 +4,6 @@
     margin: 5px;
     border: none;
     background-color: transparent;
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.425);
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
     color: rgba(255, 0, 0, 0.507);
@@ -15,28 +14,30 @@
 .logoutButton:hover {
     color: red;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.658);
 }
 
 .signinInput {
     font-family: 'Dosis', sans-serif;
-    background-color: rgba(128, 128, 128, 0.548);
+    background-color: rgba(165, 173, 184, 0.548);
     align-self: center;
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
-    margin-top: -50px;
     border: none;
+    font-weight: 600;
+    font-size: medium;
 
 }
 
 .signupInput {
     font-family: 'Dosis', sans-serif;
-    background-color: rgba(128, 128, 128, 0.548);
+    background-color: rgba(165, 173, 184, 0.548);
     align-self: center;
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     border: none;
     margin: 5px;
+    font-weight: 600;
+    font-size: medium;
 }
 
 .signupInput::placeholder {
@@ -53,6 +54,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .signinElements {
@@ -93,4 +95,12 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+}
+
+
+.errors {
+    display: flex;
+    color: lightcyan;
+    width: .9;
+    flex-direction: column;
 }

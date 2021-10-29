@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './EditTrade.css';
 
 const EditTradeForm = (props) => {
 	const [errors, setErrors] = useState([]);
@@ -40,15 +41,16 @@ const EditTradeForm = (props) => {
 
 	return (
 
-		<form onSubmit={onSubmit}>
+		<form className='editTradeForm' onSubmit={onSubmit}>
 			<div>
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='errors' key={ind}>{error}</div>
 				))}
 			</div>
 			<div>
 				<label for="type">Type</label>
 				<select
+                    className='requestInput'
 					name="type"
 					defaultValue={type}
 					onChange={(e) => setType(e.target.value)}
@@ -61,6 +63,7 @@ const EditTradeForm = (props) => {
 			<div>
 				<label for="title">Title</label>
 				<input
+                    className='titleInput'
 					type="text"
 					name="title"
 					onChange={(e) => {
@@ -72,6 +75,7 @@ const EditTradeForm = (props) => {
 			<div>
 				<label for="description">Description</label>
 				<textarea
+                    className='tradeDescription'
 					name="description"
 					onChange={(e) => {
 						setDescription(e.target.value);
@@ -79,7 +83,7 @@ const EditTradeForm = (props) => {
 					defaultValue={description}
 				/>
 			</div>
-			<button type="submit">Submit</button>
+			<button className='tradeSubmit' type="submit">Submit</button>
 		</form>
 	);
 };
