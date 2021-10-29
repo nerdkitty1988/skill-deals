@@ -64,10 +64,6 @@ const SignUpForm = () => {
 		setRange(e.target.value);
 	};
 
-	const updateProfilePic = (e) => {
-		setProfilePic(e.target.value);
-	};
-
 	if (user) {
 		return <Redirect to="/" />;
 	}
@@ -163,10 +159,11 @@ const SignUpForm = () => {
 			<div>
 				<label>Profile Photo Url</label>
 				<input
+                    type='url'
                     className='signupInput'
 					name="profile_pic"
-					onChange={(e) => setProfilePic(e.target.value)}
 					value={profile_pic}
+					onChange={(e) => setProfilePic(e.target.value)}
 					placeholder="Enter your picture URL"
 				></input>
 			</div>
