@@ -5,14 +5,14 @@ import { signUp } from "../../store/session";
 
 const SignUpForm = () => {
 	const [errors, setErrors] = useState([]);
-	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [public_email, setPublicEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [repeatPassword, setRepeatPassword] = useState("");
-	const [address, setAddress] = useState("");
+	const [username, setUsername] = useState();
+	const [email, setEmail] = useState();
+	const [public_email, setPublicEmail] = useState();
+	const [password, setPassword] = useState();
+	const [repeatPassword, setRepeatPassword] = useState();
+	const [address, setAddress] = useState();
 	const [range, setRange] = useState(50);
-	const [profile_pic, setProfilePic] = useState("");
+	const [profile_pic, setProfilePic] = useState();
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
@@ -85,7 +85,7 @@ const SignUpForm = () => {
                     className='signupInput'
 					type="text"
 					name="username"
-					onChange={updateUsername}
+					onChange={(e) => updateUsername(e)}
 					value={username}
                     required={true}
 					placeholder="User name"
@@ -97,7 +97,7 @@ const SignUpForm = () => {
                     className='signupInput'
 					type="text"
 					name="email"
-					onChange={updateEmail}
+					onChange={(e) => updateEmail(e)}
 					value={email}
                     required={true}
 					placeholder="Email used to log in"
@@ -110,7 +110,7 @@ const SignUpForm = () => {
 					type="text"
 					name="public_email"
 					placeholder="Email you can share"
-					onChange={updatePublicEmail}
+					onChange={(e) => updatePublicEmail(e)}
                     required={true}
 					value={public_email}
 				></input>
@@ -120,7 +120,7 @@ const SignUpForm = () => {
 				<input
                     className='signupInput'
 					name="address"
-					onChange={updateAddress}
+					onChange={(e) => updateAddress(e)}
 					value={address}
                     required={true}
                     placeholder="City, ST zipcode"
@@ -131,7 +131,7 @@ const SignUpForm = () => {
 				<input
                     className='signupInput'
 					name="range"
-					onChange={updateRange}
+					onChange={(e) => updateRange(e)}
                     required={true}
 					value={range}
 				></input>
@@ -142,7 +142,7 @@ const SignUpForm = () => {
                     className='signupInput'
 					type="password"
 					name="password"
-					onChange={updatePassword}
+					onChange={(e) => updatePassword(e)}
 					value={password}
                     required={true}
 					placeholder="Enter a password"
@@ -154,7 +154,7 @@ const SignUpForm = () => {
                     className='signupInput'
 					type="password"
 					name="repeat_password"
-					onChange={updateRepeatPassword}
+					onChange={(e) => updateRepeatPassword(e)}
 					value={repeatPassword}
 					required={true}
 					placeholder="Re-enter the password"
@@ -164,9 +164,8 @@ const SignUpForm = () => {
 				<label>Profile Photo Url</label>
 				<input
                     className='signupInput'
-					type="text"
 					name="profile_pic"
-					onChange={updateProfilePic}
+					onChange={(e) => setProfilePic(e.target.value)}
 					value={profile_pic}
 					placeholder="Enter your picture URL"
 				></input>

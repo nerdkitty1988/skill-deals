@@ -96,7 +96,7 @@ export const editUser =
 	};
 
 export const signUp =
-	(username, email, public_email, password, address, range, profilePic) =>
+	(username, email, public_email, password, address, range, profile_pic) =>
 	async (dispatch) => {
 		const response = await fetch("/api/auth/signup/", {
 			method: "POST",
@@ -110,7 +110,7 @@ export const signUp =
 				password,
 				address,
 				range,
-				profilePic,
+				profile_pic,
 			}),
 		});
 
