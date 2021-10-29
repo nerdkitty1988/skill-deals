@@ -37,6 +37,6 @@ const Offer = () => {
 		);
 	});
 
-	return <div className="offerPage1">{offerCard}</div>;
+	return <div className="offerPage1"><h1 className="requestHead">Offers <i id='offerIcon' class="far fa-list-alt"></i></h1>{offerCard}</div>;
 };
 export default Offer;

@@ -7,3 +7,8 @@
     flex-wrap: wrap;
 
 }
+
+
+#offerIcon:hover {
+    cursor: initial;
+}

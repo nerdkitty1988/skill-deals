@@ -273,6 +273,7 @@ const UserPage = () => {
 						/>
 					</div>
 					<h1 className="profileHeads">{user.username}'s Profile</h1>
+                    <i class="far fa-id-badge" id='profileIcon'></i>
 					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
