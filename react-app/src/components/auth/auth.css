@@ -4,7 +4,6 @@
     margin: 5px;
     border: none;
     background-color: transparent;
-    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.425);
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
     color: rgba(255, 0, 0, 0.507);
@@ -15,7 +14,6 @@
 .logoutButton:hover {
     color: red;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 2px rgba(128, 128, 128, 0.658);
 }
 
 .signinInput {

@@ -6,6 +6,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import ReactModal from "react-modal";
 import TradeForm from "../NewTrade/NewTrade";
+import NavDrop from "../NavDrop/NavDrop";
 
 const NavBar = () => {
 	const [showCreateModal, setShowCreateModal] = useState(false);
@@ -128,13 +129,6 @@ const NavBar = () => {
 					>
 						All Requests
 					</NavLink>
-					<NavLink
-						to={`/users/${sessionUser?.id}`}
-						exact={true}
-						className="navbarButtons"
-					>
-						{sessionUser?.username}'s Profile
-					</NavLink>
 					<button
 						className="navbarButtons"
 						id="addCard"
@@ -174,7 +168,7 @@ const NavBar = () => {
 							<i className="fas fa-search-dollar"></i>
 						</button>
 					</form>
-					<LogoutButton />
+                    <NavDrop />
 				</div>
 				{search ? (
 					<div className="searchResultsContainer">

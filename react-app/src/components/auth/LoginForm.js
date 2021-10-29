@@ -41,7 +41,7 @@ const LoginForm = () => {
             <i className="fas fa-arrow-circle-down" />
 			<div className="signinElements">
 				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
+					<div className='errors' key={ind}>{error}</div>
 				))}
 			</div>
 			<div className="signinElements">

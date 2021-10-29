@@ -49,7 +49,7 @@ const Conversations = () => {
 
 	return (
 		<div className="chatListPage">
-			<div className="chatList">{chatBlock}</div>
+			<div className="chatList"><h1 className='chatHead'>Active Chats</h1>{chatBlock}</div>
 			<ReactModal
 				isOpen={showChat}
 				contentLabel="chat2Modal"
