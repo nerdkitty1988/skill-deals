@@ -100,7 +100,7 @@ const NewReview = () => {
 						}}
 					/>
 					<button className='createReviewButton' type="submit">Submit</button>
-                    <NavLink className='createReviewButton' to={`/users/${reviewedUser.id}`}>Cancel</NavLink>
+                    <NavLink className='cancelButton' to={`/users/${reviewedUser.id}`}>Cancel</NavLink>
 				</form>
 			</div>
 		</div>

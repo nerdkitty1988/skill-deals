@@ -1,0 +1,41 @@
+.requestInput {
+    border: none;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: rgba(224, 255, 255, 0.856);
+    margin-bottom: 3px;
+}
+
+.titleInput {
+    border: none;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: rgba(224, 255, 255, 0.856);
+    margin-bottom: 3px;
+}
+
+.editTradeForm {
+    font-family: 'Dosis', sans-serif;
+}
+
+.tradeDescription {
+    background-color: rgba(224, 255, 255, 0.856);
+    font-family: sans-serif;
+    resize: none;
+    min-height: 60px;
+    border: none;
+    border-radius: 3px;
+}
+
+.tradeSubmit {
+    border-radius: 3px;
+    border: none;
+    background-color: lightcyan;
+    padding: 3px;
+}
+
+
+.tradeSubmit:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 1px rgba(224, 255, 255, 0.705);
+}

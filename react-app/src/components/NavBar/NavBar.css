@@ -91,6 +91,9 @@ body {
 	background-color: transparent;
 }
 
+#addCard:hover {
+    cursor: pointer;
+}
 
 .searchResultsContainer {
     width: min-content;
