@@ -81,13 +81,32 @@ To get a local copy up and running follow these simple steps.
 
 
 ## Usage
-### An easy-to-use login with a pre-configured Demo User.
-### View requests and offers close to the user, or view a full page of offers or requests.
-### Create your own offers or requests
-### Rate other users based on user experience
-### View user profile to edit or delete user trades, or to edit user profile
+### Only registered users can use the site.  Splash page before sign in or sign up:
+![SplashPage](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/splash-ss.png)
+### An easy-to-use login with a pre-configured Demo User:
+![Login](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/login-ss.png)
+### Users can create their own account with an easy sign up:
+![Signup](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/signup-ss.png)
+### Once logged in, you can see a navigation bar to help guide you around the site.  On the navigation bar, there is a dropdown menu to view user profile, messages, or to log out:
+![DropDown](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/dropdown-ss.png)
+### Home lets the user View requests and offers close to them:
+![Home](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/home-ss.png)
+### Or view all requests or offers in their own pages:
+![AllOffers](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/offers-ss.png)
+### Go into the individual trade to view more details, and a clickable link to the author's profile:
+![SingleTrade](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/singletrade-ss.png)
+### Create your own offers or requests:
+![CreateTrade](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/newtrade-ss.png)
+### Rate other users based on user experience:
+![Reviews](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/review-ss.png)
+### View your own profile to edit or delete user trades, or to edit your profile:
+![Profile](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/profile-ss.png)
+### Or view other users profiles to rate users, or see their other offers and requests:
+![UserProfile](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/userprofile-ss.png)
 ### Chat with other users to work out fine details of your trade
-### Search to find trades or users
+![Messages](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/chat-ss.png)
+### Search to find trades or users:
+![Search](https://github.com/nerdkitty1988/skill-deals/blob/main/githubImg/searchresults-ss.png)
 
 ## Challenges
 
