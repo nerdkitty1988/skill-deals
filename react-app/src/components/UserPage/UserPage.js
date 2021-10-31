@@ -266,14 +266,12 @@ const UserPage = () => {
 							alt={user.username}
 							src={
 								user.profilePic
-									? user.profilePic
-									: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
 							}
 							className="profilePic"
 						/>
 					</div>
 					<h1 className="profileHeads">{user.username}'s Profile</h1>
-                    <i class="far fa-id-badge" id='profileIcon'></i>
+                    <i className="far fa-id-badge" id='profileIcon'></i>
 					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<h3>Email: {user.email}</h3>
@@ -294,14 +292,13 @@ const UserPage = () => {
 						<img
 							alt={user.username}
 							src={
-								user.profilePic
-									? user.profilePic
-									: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+								user?.profilePic
 							}
 							className="profilePic"
 						/>
 					</div>
 					<h1>{user.username}'s Profile</h1>
+                    <i className="far fa-id-badge" id='profileIcon'></i>
 					<h3>Rating: {user.avgRating.toFixed(2)}%</h3>
 					<h3>Public Email: {user.publicEmail}</h3>
 					<Link
@@ -416,7 +413,7 @@ const UserPage = () => {
             <ReactModal
 				isOpen={showChat}
 				contentLabel="chatModal"
-				className="chatModal"
+				className="loginModal"
 
 			>
 				<Messages

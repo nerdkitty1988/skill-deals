@@ -77,13 +77,13 @@ const Home = () => {
                     <p>Welcome to Skill Deals!  Do you have a task that requires a skill you don't possess? </p><p> Search for offers in your area, or create a new "request" and let other users find you!</p> <p>Have a skill you are willing to barter with?  Create a new offer!  </p> <p>The only catch, no cash is traded in these transactions.  Pay with a SERVICE you can provide!</p>
                 </div>
 				<div className="cardContainer">
-					<h1 className="cardLabel">Offers near {sessionUser.username} <i class="fas fa-map-marked-alt"></i></h1>
+					<h1 className="cardLabel">Offers near {sessionUser.username} <i className="fas fa-map-marked-alt"></i></h1>
 					<div className="cardLineup">
 						<ul className="cardLists">{nearOfferCard}</ul>
 					</div>
 				</div>
 				<div className="cardContainer">
-					<h1 className="cardLabel">Requests near {sessionUser.username} <i class="fas fa-map-marked-alt"></i></h1>
+					<h1 className="cardLabel">Requests near {sessionUser.username} <i className="fas fa-map-marked-alt"></i></h1>
 					<div className="cardLineup">
 						<ul className="cardLists">{nearRequestCard}</ul>
 					</div>

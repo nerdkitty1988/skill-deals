@@ -53,7 +53,7 @@ const Conversations = () => {
 			<ReactModal
 				isOpen={showChat}
 				contentLabel="chat2Modal"
-				className="chatModal"
+				className="loginModal"
 			>
 				<Messages
 					setShowChat={setShowChat}

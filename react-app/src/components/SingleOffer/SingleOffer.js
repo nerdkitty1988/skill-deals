@@ -34,8 +34,6 @@ const SingleOffer = () => {
 								className="profilePicSingle"
 								src={
 									offer?.user.profilePic
-										? offer?.user.profilePic
-										: "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
 								}
 							/>
 						</div>

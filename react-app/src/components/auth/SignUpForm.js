@@ -12,7 +12,7 @@ const SignUpForm = () => {
 	const [repeatPassword, setRepeatPassword] = useState();
 	const [address, setAddress] = useState();
 	const [range, setRange] = useState(50);
-	const [profile_pic, setProfilePic] = useState();
+	const [profile_pic, setProfilePic] = useState("https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png");
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
