@@ -101,6 +101,6 @@
 .errors {
     display: flex;
     color: lightcyan;
-    width: .9;
+    width: 90%;
     flex-direction: column;
 }

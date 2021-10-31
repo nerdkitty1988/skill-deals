@@ -75,7 +75,7 @@ const SignUpForm = () => {
 					<div key={ind}>*Input {error}</div>
 				))}
 			</div>
-			<div className='signinElements'>
+			<div>
 				<label>User Name</label>
 				<input
                     className='signupInput'
@@ -162,7 +162,7 @@ const SignUpForm = () => {
                     type='url'
                     className='signupInput'
 					name="profile_pic"
-					value={profile_pic}
+					defaultValue={profile_pic}
 					onChange={(e) => setProfilePic(e.target.value)}
 					placeholder="Enter your picture URL"
 				></input>
