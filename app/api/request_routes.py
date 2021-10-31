@@ -49,7 +49,7 @@ def requests():
     user_id = session['_user_id']
     current_user = User.query.get(user_id)
     user_info = [current_user.lat, current_user.lon]
-    reqs = Request.query.order_by(Request.time_created).all()
+    reqs = Request.query.order_by(desc(Request.time_created)).all()
     for req in reqs:
         req_info = [req.user.lat, req.user.lon]
         distance = Haversine(user_info, req_info).miles
@@ -64,7 +64,7 @@ def close_requests(user_id):
     requestDistance = {}
     user = User.query.get(user_id)
     user_info = [user.lat, user.lon]
-    reqs = Request.query.order_by(Request.time_created).all()
+    reqs = Request.query.order_by(desc(Request.time_created)).all()
     for req in reqs:
         req_info = [req.user.lat, req.user.lon]
         distance = Haversine(user_info, req_info).miles
