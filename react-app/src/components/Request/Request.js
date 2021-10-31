@@ -27,6 +27,15 @@ const Request = () => {
 			>
 				<div key={`request'_${request.id}`} className="singleOffer">
 					<h4 className="requestTitle">{request.title}</h4>
+                    <div className="profilePicDiv">
+						<img
+							alt="profile"
+							className="profilePicSingle"
+							src={
+								request?.user.profilePic
+							}
+						/>
+					</div>
 					<p className="authorName">by: {request.user.username} </p>
                     <p className="distance">{reqDistance[request.id] ? reqDistance[request.id].toFixed() : reqDistance[request.id]} miles away</p>
 					<p className="posted">

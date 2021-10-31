@@ -27,6 +27,15 @@ const Offer = () => {
 			>
 				<div key={`offer'_${offer.id}`} className="singleOffer">
 					<h4 className="offerTitle">{offer.title}</h4>
+                    <div className="profilePicDiv">
+						<img
+							alt="profile"
+							className="profilePicSingle"
+							src={
+								offer?.user.profilePic
+							}
+						/>
+					</div>
 					<p className="authorName">by: {offer.user.username} </p>
 					<p className="distance">{offerDistance[offer.id] ? offerDistance[offer.id].toFixed() : offerDistance[offer.id]} miles away</p>
                     <p>
