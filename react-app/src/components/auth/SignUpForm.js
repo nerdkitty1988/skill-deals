@@ -33,7 +33,9 @@ const SignUpForm = () => {
 			if (data) {
 				setErrors(data);
 			}
-		}
+		}else{
+            setErrors([...errors, 'Repeat Password: Passwords must match'])
+        }
 	};
 
 	const updateUsername = (e) => {
