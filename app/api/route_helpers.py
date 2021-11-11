@@ -1,6 +1,5 @@
 from geopy.geocoders import Nominatim
 geocoder = Nominatim(user_agent = 'skill-deals')
-from geopy.extra.rate_limiter import RateLimiter
 geocode = geocoder.geocode
 # from haversine import haversine, Unit
 import math
