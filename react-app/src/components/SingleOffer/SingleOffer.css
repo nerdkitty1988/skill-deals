@@ -78,6 +78,13 @@
 
 }
 
+#messageButton {
+    background-color: transparent;
+}
+
+#messageButton:hover {
+    background-color: lightcyan;
+}
 .backNav:hover {
     background-color: lightcyan;
     color: black;
