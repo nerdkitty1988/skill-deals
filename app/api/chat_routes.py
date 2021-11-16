@@ -56,3 +56,11 @@ def delete_chat(chat_id):
     db.session.delete(message)
     db.session.commit()
     return {'message': 'chat deleted successfully'}
+
+@chat_routes.route('/read/<int:chat_id>/', methods=['PATCH'])
+@login_required
+def mark_read(chat_id):
+    message = Message.query.get(chat_id)
+    message.read = True
+    db.session.commit()
+    return {'message': message.to_dict()}
