@@ -84,8 +84,10 @@
 
 #messageButton:hover {
     background-color: lightcyan;
+    cursor: pointer;
 }
 .backNav:hover {
     background-color: lightcyan;
     color: black;
+
 }
