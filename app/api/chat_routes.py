@@ -64,3 +64,13 @@ def mark_read(chat_id):
     message.read = True
     db.session.commit()
     return {'message': message.to_dict()}
+
+@chat_routes.route('/new/')
+@login_required
+def new_message():
+    user_id = session['_user_id']
+    new_messages = Message.query.filter_by(receiver_id = user_id, read = False).all()
+    if(new_messages):
+        return {'newMessage': 'true'}
+    else:
+        return {'newMessage': 'false'}

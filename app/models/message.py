@@ -11,7 +11,7 @@ class Message(db.Model):
     receiver_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     room_id = db.Column(db.String, nullable=False)
-    read = db.Column(db.String, default=False)
+    read = db.Column(db.Boolean, default=False)
 
     time_created = db.Column(DateTime(timezone=True), server_default=func.now())
     time_updated = db.Column(DateTime(timezone=True), onupdate=func.now())
