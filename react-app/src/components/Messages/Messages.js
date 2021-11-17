@@ -44,8 +44,8 @@ const Messages = (props) => {
     }
 
     const chats = messageList?.map((message) => {
-        console.log(message)
-        if(message.read === 'false' && message.receiverId === sessionUser.id) {
+        if(message.read === false && message.receiverId === sessionUser.id) {
+            markRead(message)
         }
         return (
             <div key={`div_${message.id}`} className='chatLine'>

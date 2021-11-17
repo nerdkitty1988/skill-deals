@@ -111,7 +111,7 @@ const NavBar = () => {
             if (data.newMessage === 'true') setNewMessage(true)
         }
         fetchNewMessage();
-    })
+    }, [])
 
 	return (
 		<div className="navContainer">
