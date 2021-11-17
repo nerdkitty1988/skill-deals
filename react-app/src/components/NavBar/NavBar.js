@@ -108,7 +108,7 @@ const NavBar = () => {
         async function fetchNewMessage() {
             const res = await fetch('/api/chats/new/');
             const data = await res.json();
-            if (data.newMessage === true) setNewMessage(true)
+            if (data.newMessage === 'true') setNewMessage(true)
         }
         fetchNewMessage();
     })
@@ -178,7 +178,7 @@ const NavBar = () => {
 						</button>
 					</form>
                     <div hidden={!newMessage}>
-                        NEW MESSAGE
+                        <NavLink to='/chats' exact='true' className='notify'>NEW MESSAGE</NavLink>
                     </div>
                     <NavDrop />
 				</div>
