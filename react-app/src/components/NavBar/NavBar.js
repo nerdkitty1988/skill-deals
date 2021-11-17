@@ -13,6 +13,7 @@ const NavBar = () => {
 	const [searchOffers, setSearchOffers] = useState();
 	const [searchRequests, setSearchRequests] = useState();
 	const [searchUsers, setSearchUsers] = useState();
+    const [newMessage, setNewMessage] = useState(false);
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let offerBlock;
@@ -103,6 +104,15 @@ const NavBar = () => {
 		}
 	}, [search]);
 
+    useEffect(()=> {
+        async function fetchNewMessage() {
+            const res = await fetch('/api/chats/new/');
+            const data = await res.json();
+            if (data.newMessage === 'true') setNewMessage(true)
+        }
+        fetchNewMessage();
+    }, [])
+
 	return (
 		<div className="navContainer">
 			<nav id="navbar" hidden={!sessionUser}>
@@ -167,6 +177,9 @@ const NavBar = () => {
 							<i className="fas fa-search-dollar"></i>
 						</button>
 					</form>
+                    <div hidden={!newMessage}>
+                        <NavLink to='/chats' exact='true' className='notify'>NEW MESSAGE</NavLink>
+                    </div>
                     <NavDrop />
 				</div>
 				{search ? (

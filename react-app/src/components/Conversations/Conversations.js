@@ -20,6 +20,15 @@ const Conversations = () => {
 		fetchConvos();
 	}, []);
 
+    const hasUnread = (convo) => {
+        console.log(convo)
+        for(let i = 0; i < convo.length; i++) {
+            let msg = convo[i]
+            if(msg.read === false && msg.receiverId === sessionUser.id) return true;
+        };
+        return false;
+    }
+
 	const chatBlock = !convos ? (
 		<div className="nothingHere">
 			<h1>No chats to show</h1>
@@ -29,7 +38,7 @@ const Conversations = () => {
 			return (
 				<div
 					key={Object.keys(convos).indexOf(convo)}
-					className="chatBubble"
+					className={hasUnread(convos[convo]) ? "unread" : "chatBubble"}
 				>
 					<button
 						value={convo}

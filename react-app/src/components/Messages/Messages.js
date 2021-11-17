@@ -29,7 +29,24 @@ const Messages = (props) => {
         }
     }
 
+    const markRead = async (message) => {
+        const response = await fetch(`/api/chats/read/${message.id}/`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+        if (response.ok) {
+            const data = await response.json()
+            message = data.message;
+            return;
+        }
+    }
+
     const chats = messageList?.map((message) => {
+        if(message.read === false && message.receiverId === sessionUser.id) {
+            markRead(message)
+        }
         return (
             <div key={`div_${message.id}`} className='chatLine'>
                 <div key={`div1_${message.id}`} className='senderName'>{message.sender.username}: </div>
